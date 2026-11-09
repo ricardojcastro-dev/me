@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ricardojcastro × Platform Engineering — Events Growth</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="A two-sided events growth flywheel and a first San Francisco playbook, by Ricardo Castro, for the Senior Events Growth Manager role.">
+<meta property="og:title" content="ricardojcastro × Platform Engineering — Events Growth">
+<meta property="og:description" content="Fill the right rooms. Prove the value. Make the next one easier to fill.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2215%22 fill=%22%2315171B%22/%3E%3Ccircle cx=%2240%22 cy=%2215%22 r=%225.5%22 fill=%22%23F7931A%22/%3E%3Cpath d=%22M40 28v15a11 11 0 0 1-11 11h-5%22 fill=%22none%22 stroke=%22%23F7931A%22 stroke-width=%228.5%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22/%3E%3C/svg%3E" type="image/svg+xml">
+<meta name="theme-color" content="#F3F4F6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121316" media="(prefers-color-scheme: dark)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F3F4F6;--ink:#15171B;--mute:#697079;--line:#DADCE1;--card:#FFFFFF;--soft:#ECEDF0;--accent:#F7931A;--sans:"Inter Tight",system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+@media (prefers-color-scheme:dark){:root{--bg:#121316;--ink:#ECEDEF;--mute:#8C929B;--line:#2A2D33;--card:#1A1C20;--soft:#222429}}
+html{color-scheme:light dark;scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:1.0625rem;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:clip}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+::selection{background:var(--accent);color:#15171B}
+.wrap{max-width:72rem;margin:0 auto;padding:0 clamp(1rem,5vw,3rem)}
+
+nav{display:flex;justify-content:space-between;align-items:center;padding:1.75rem 0;font-size:.95rem}
+.sig{font-weight:600;letter-spacing:-.02em;text-decoration:none}
+.sig b,.j{color:var(--accent);font-weight:inherit}
+.nav-right{display:flex;gap:1.25rem;align-items:center}
+.nav-right a{color:var(--mute);text-decoration:none;display:inline-flex}
+.nav-right a:hover{color:var(--ink)}
+.toc{display:flex;flex-wrap:wrap;gap:.4rem;margin:0;padding:0;list-style:none}
+.toc a{display:inline-block;padding:.35rem .8rem;border:1px solid var(--line);border-radius:999px;font-size:.85rem;color:var(--mute);text-decoration:none}
+.toc a:hover{color:var(--ink);border-color:var(--accent)}
+
+.hero{padding:clamp(1.5rem,6vh,4.5rem) 0 clamp(2.5rem,6vh,4rem)}
+.tag{display:inline-flex;gap:.5rem;align-items:center;margin:0 0 1.5rem;padding:.4rem .85rem;border:1px solid var(--line);border-radius:999px;font-size:.88rem;color:var(--mute)}
+.tag i{width:.5rem;height:.5rem;border-radius:50%;background:var(--accent);display:block;flex:none}
+h1{margin:0;max-width:54rem;font-weight:500;font-size:clamp(2.1rem,6vw,4.4rem);line-height:1.02;letter-spacing:-.05em}
+h1 span,.big span{color:var(--accent)}
+.lede{margin:1.5rem 0 0;max-width:40rem;font-size:clamp(1.08rem,1.8vw,1.3rem);color:var(--mute);line-height:1.45}
+.btns{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:2rem}
+.btn{display:inline-block;padding:.7rem 1.25rem;border:1px solid var(--ink);border-radius:999px;text-decoration:none;font-weight:500;font-size:.95rem;transition:background .2s,color .2s,border-color .2s}
+.btn.solid{background:var(--accent);border-color:var(--accent);color:#15171B}
+.btn.solid:hover{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.btn:not(.solid):hover{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.facts{list-style:none;margin:clamp(2.5rem,6vh,3.5rem) 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.75rem 2rem}
+.facts li{color:var(--mute);font-size:.95rem;max-width:15rem}
+.facts strong{display:block;color:var(--ink);font-size:clamp(1.8rem,4vw,2.5rem);font-weight:500;letter-spacing:-.04em;line-height:1.1}
+@media (min-width:900px){.facts{grid-template-columns:repeat(4,minmax(0,1fr))}}
+
+section{border-top:1px solid var(--line);padding:clamp(2.5rem,6vw,4.5rem) 0}
+.sh{display:grid;grid-template-columns:minmax(0,12rem) minmax(0,1fr);gap:1rem 3rem;margin-bottom:2rem}
+.sh h2{margin:0;font-size:.95rem;font-weight:500;color:var(--mute)}
+@media (max-width:760px){.sh{grid-template-columns:1fr}}
+.big{margin:0;max-width:44rem;font-size:clamp(1.35rem,2.8vw,2rem);line-height:1.2;letter-spacing:-.03em}
+.body{margin:1rem 0 0;max-width:44rem;color:var(--mute)}
+.body b{color:var(--ink);font-weight:500}
+.label{display:inline-block;font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.mock{display:inline-flex;gap:.4rem;align-items:center;font-size:.78rem;color:var(--mute);border:1px dashed var(--line);border-radius:999px;padding:.2rem .65rem}
+
+/* two-sided */
+.sides{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1rem}
+.side{background:var(--card);border-radius:18px;padding:1.4rem}
+.side h3{margin:.5rem 0 .4rem;font-size:1.15rem;font-weight:500;letter-spacing:-.01em}
+.side p{margin:0;color:var(--mute);font-size:.95rem}
+.side.mid{background:var(--ink);color:var(--bg)}
+.side.mid p{color:color-mix(in srgb,var(--bg) 72%,transparent)}
+
+/* flywheel */
+.fw{display:grid;grid-template-columns:minmax(0,26rem) minmax(0,1fr);gap:2rem 3rem;align-items:start}
+@media (max-width:900px){.fw{grid-template-columns:1fr}}
+.wheel{position:relative;width:100%;max-width:26rem;margin:0 auto;aspect-ratio:1}
+.wheel svg{position:absolute;inset:0;width:100%;height:100%}
+.wheel .ring{fill:none;stroke:var(--line);stroke-width:.5}
+.wheel .arc{fill:none;stroke:var(--accent);stroke-width:.6;stroke-dasharray:1.2 2.4;stroke-linecap:round}
+@media (prefers-reduced-motion:no-preference){.wheel .arc{animation:spin 30s linear infinite}@keyframes spin{to{stroke-dashoffset:-72}}}
+.core{position:absolute;inset:32%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border-radius:50%;background:var(--card)}
+.core b{font-weight:500;font-size:clamp(.95rem,2.4vw,1.15rem);line-height:1.2;letter-spacing:-.01em}
+.core span{font-size:.75rem;color:var(--mute);margin-top:.3rem}
+.node{position:absolute;transform:translate(-50%,-50%);width:clamp(4.4rem,22%,5.6rem);aspect-ratio:1;border-radius:50%;border:1.5px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:clamp(.64rem,1.8vw,.74rem);font-weight:500;line-height:1.15;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:.3rem;text-align:center;transition:border-color .2s,background .2s,transform .2s}
+.node em{font-style:normal;color:var(--accent);font-weight:600;font-size:.95em;margin-bottom:.15rem}
+.node:hover{border-color:var(--accent)}
+.node[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:#15171B}
+.node[aria-selected="true"] em{color:#15171B}
+.panel{background:var(--card);border-radius:18px;padding:clamp(1.25rem,3vw,1.75rem)}
+.panel h3{margin:.4rem 0 .5rem;font-size:clamp(1.25rem,2.4vw,1.6rem);font-weight:500;letter-spacing:-.025em}
+.panel>div>p{margin:0 0 1rem;color:var(--mute)}
+.panel ul{margin:0;padding:0;list-style:none}
+.panel li{padding:.6rem 0;border-top:1px solid var(--line);font-size:.95rem}
+.panel li b{font-weight:500}
+.panel li span{color:var(--mute)}
+.who{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1rem}
+.who span{font-size:.78rem;padding:.25rem .6rem;border-radius:999px;background:var(--soft);color:var(--mute)}
+.who span.me{background:var(--accent);color:#15171B;font-weight:500}
+.kpi{margin-top:1rem;font-size:.88rem;color:var(--mute)}
+.kpi b{color:var(--ink);font-weight:500}
+
+/* ICP */
+.icp{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:1rem}
+@media (max-width:860px){.icp{grid-template-columns:1fr}}
+.box{background:var(--card);border-radius:18px;padding:1.4rem}
+.box h3{margin:0 0 1rem;font-size:1.05rem;font-weight:500}
+.wt{display:grid;grid-template-columns:6.5rem minmax(0,1fr) 2.5rem;gap:.75rem;align-items:center;padding:.6rem 0;border-top:1px solid var(--line);font-size:.92rem}
+.wt small{grid-column:1/-1;color:var(--mute);font-size:.85rem;margin-top:-.3rem}
+.bar{height:.5rem;border-radius:99px;background:var(--soft);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent);border-radius:99px}
+.wt b{font-weight:500;text-align:right}
+.tiers{display:grid;gap:.6rem}
+.tier{display:grid;grid-template-columns:2.4rem minmax(0,1fr);gap:.9rem;align-items:start;padding:.85rem;border-radius:14px;background:var(--soft)}
+.tier>b{display:flex;align-items:center;justify-content:center;width:2.4rem;height:2.4rem;border-radius:10px;background:var(--card);font-weight:600}
+.tier.a>b{background:var(--accent);color:#15171B}
+.tier p{margin:0;font-size:.9rem;color:var(--mute)}
+.tier p b{color:var(--ink);font-weight:500}
+
+/* SF playbook */
+.event{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:1rem;margin-bottom:1rem}
+.ev{background:var(--card);border-radius:18px;padding:1.3rem 1.4rem}
+.ev time{font-size:.85rem;color:var(--accent);font-weight:600}
+.ev h3{margin:.3rem 0 .35rem;font-size:1.25rem;font-weight:500;letter-spacing:-.02em}
+.ev p{margin:0;color:var(--mute);font-size:.92rem}
+.ev.dark{background:var(--ink);color:var(--bg)}
+.ev.dark p{color:color-mix(in srgb,var(--bg) 70%,transparent)}
+.goals{display:grid;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));gap:1rem;margin:1.5rem 0 0;padding:0;list-style:none}
+.goals li{border-top:2px solid var(--accent);padding-top:.75rem;font-size:.92rem;color:var(--mute)}
+.goals b{display:block;color:var(--ink);font-weight:500;font-size:1.02rem}
+
+.tl{position:relative;margin:2.5rem 0 0;padding:0;list-style:none}
+.tl::before{content:"";position:absolute;left:.45rem;top:.5rem;bottom:.5rem;width:2px;background:var(--line)}
+.tl>li{position:relative;display:grid;grid-template-columns:minmax(0,10rem) minmax(0,1fr);gap:.5rem 2rem;padding:0 0 1.75rem 2.25rem}
+.tl>li::before{content:"";position:absolute;left:0;top:.35rem;width:1rem;height:1rem;border-radius:50%;background:var(--bg);border:2px solid var(--accent)}
+.tl>li.hot::before{background:var(--accent)}
+@media (max-width:700px){.tl>li{grid-template-columns:1fr}}
+.tl time{font-size:.85rem;color:var(--mute)}
+.tl time b{display:block;color:var(--ink);font-weight:600;font-size:.95rem}
+.tl h4{margin:0 0 .4rem;font-size:1.08rem;font-weight:500}
+.tl ul{margin:0;padding-left:1.1rem;color:var(--mute);font-size:.95rem}
+.tl ul li{margin:.2rem 0}
+.chips{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.6rem}
+.chips span{font-size:.75rem;padding:.2rem .55rem;border-radius:999px;border:1px solid var(--line);color:var(--mute)}
+
+.seg{width:100%;border-collapse:collapse;font-size:.92rem}
+.seg th{text-align:left;font-weight:500;color:var(--mute);font-size:.82rem;padding:.6rem .75rem;border-bottom:1px solid var(--line)}
+.seg td{padding:.75rem;border-bottom:1px solid var(--line);vertical-align:top}
+.seg td:first-child{font-weight:500;white-space:nowrap}
+.seg td span{color:var(--mute)}
+.scroll{overflow-x:auto;background:var(--card);border-radius:18px;padding:.5rem}
+.scroll .seg{min-width:40rem}
+
+.tests{display:grid;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));gap:1rem}
+.test{background:var(--card);border-radius:16px;padding:1.2rem 1.25rem}
+.test h4{margin:.35rem 0 .35rem;font-size:1rem;font-weight:500}
+.test p{margin:0;color:var(--mute);font-size:.9rem}
+.test .m{display:block;margin-top:.6rem;font-size:.82rem;color:var(--ink)}
+
+/* dashboard mock */
+.dash{background:var(--card);border-radius:20px;padding:clamp(1rem,3vw,1.5rem);border:1px solid var(--line)}
+.dash-top{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:1.25rem}
+.dash-top b{font-weight:500}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(9.5rem,1fr));gap:.75rem}
+.tile{background:var(--soft);border-radius:14px;padding:.9rem 1rem}
+.tile small{display:block;color:var(--mute);font-size:.8rem}
+.tile strong{display:block;font-size:1.7rem;font-weight:500;letter-spacing:-.04em;line-height:1.15;margin-top:.2rem}
+.tile em{font-style:normal;font-size:.78rem;color:var(--accent);font-weight:500}
+.dgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1rem;margin-top:1rem}
+@media (max-width:760px){.dgrid{grid-template-columns:1fr}}
+.dgrid .tile h5{margin:0 0 .75rem;font-size:.88rem;font-weight:500}
+.row{display:grid;grid-template-columns:7.5rem minmax(0,1fr) 3rem;gap:.6rem;align-items:center;font-size:.85rem;margin:.45rem 0}
+.row span{color:var(--mute)}
+.row b{font-weight:500;text-align:right}
+.funnel .row .bar i{background:var(--ink)}
+.funnel .row:last-child .bar i{background:var(--accent)}
+
+/* proof */
+.case{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,15rem);gap:1rem 2.5rem;padding:1.5rem 0;border-bottom:1px solid var(--line)}
+.case:first-child{border-top:1px solid var(--line)}
+@media (max-width:760px){.case{grid-template-columns:1fr}}
+.case h3{margin:0 0 .5rem;font-size:clamp(1.15rem,2vw,1.4rem);font-weight:500;letter-spacing:-.02em}
+.case p{margin:0;color:var(--mute);max-width:38rem}
+.case ul{margin:.75rem 0 0;padding-left:1.1rem;color:var(--mute);max-width:38rem}
+.case li{margin:.2rem 0}
+.case aside{align-self:start;background:var(--card);border-radius:14px;padding:1rem 1.1rem;font-size:.92rem;color:var(--mute)}
+.case aside strong{display:block;color:var(--ink);font-size:1.6rem;font-weight:500;letter-spacing:-.04em;line-height:1.15}
+
+.plan{display:grid;grid-template-columns:repeat(auto-fit,minmax(10.5rem,1fr));gap:1rem}
+.plan div{border-top:2px solid var(--line);padding-top:1rem}
+.plan div:last-child{border-top-color:var(--accent)}
+.plan time{font-size:.85rem;color:var(--accent);font-weight:600;letter-spacing:.03em}
+.plan h3{margin:.35rem 0 .4rem;font-size:1.05rem;font-weight:500}
+.plan p{margin:0;color:var(--mute);font-size:.95rem}
+
+.note{margin:1.25rem 0 0;font-size:.86rem;color:var(--mute);max-width:44rem}
+.cta{font-size:clamp(1.6rem,5vw,3.2rem);font-weight:500;letter-spacing:-.04em;line-height:1.1;margin:0 0 1.25rem;overflow-wrap:anywhere}
+.cta a{text-decoration:none;border-bottom:2px solid var(--accent)}
+.cta a:hover{color:var(--accent)}
+.links{display:flex;flex-wrap:wrap;gap:.5rem 2rem;margin:0;padding:0;list-style:none;color:var(--mute)}
+.links a:hover{color:var(--accent)}
+footer{border-top:1px solid var(--line);padding:1.75rem 0 2.5rem;color:var(--mute);font-size:.9rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+footer b{color:var(--ink);font-weight:600}
+@media (prefers-reduced-motion:no-preference){h1{animation:in .9s cubic-bezier(.2,.7,.2,1) both}@keyframes in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav>
+  <a class="sig" href="/" aria-label="ricardojcastro home">ricardo<b>j</b>castro</a>
+  <div class="nav-right">
+    <a href="https://www.linkedin.com/in/ricardojcastro" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+    <a href="/">Full portfolio</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <p class="tag"><i></i>For Platform Engineering · Senior Events Growth Manager</p>
+  <h1>Fill the right rooms. Prove the value. Make the <span>next one</span> easier to fill.</h1>
+  <p class="lede">A two-sided events growth flywheel, an ICP model to know who's really in the room, and a first playbook for PlatformCon and AgenticCon in San Francisco.</p>
+  <div class="btns">
+    <a class="btn solid" href="#playbook">See the SF playbook</a>
+    <a class="btn" href="#flywheel">The flywheel</a>
+  </div>
+  <ul class="facts">
+    <li><strong>600+</strong>developers brought in through hackathons and side events</li>
+    <li><strong>20+</strong>global events and hackathons</li>
+    <li><strong>40%</strong>on-chain retention, the highest Rootstock had ever reached</li>
+    <li><strong>$100M+</strong>volume from a single co-marketing campaign</li>
+  </ul>
+</header>
+
+<section id="model">
+  <div class="sh">
+    <h2>The business</h2>
+    <div>
+      <p class="big">Two sides, one room. <span>Events are where they meet.</span></p>
+      <p class="body">Engineers come for knowledge, peers and their careers. Sponsors pay to meet the people who choose and buy their tools. I've sat on the sponsor's side, choosing events, side events and VIP dinners, so I know what makes a sponsor renew: <b>qualified attendance</b>, not registrations.</p>
+    </div>
+  </div>
+  <div class="sides">
+    <div class="side"><span class="label">Community</span><h3>Real value for engineers</h3><p>Talks, peers, certifications and careers. The more relevant the room, the more people bring their colleagues.</p></div>
+    <div class="side mid"><span class="label">Events</span><h3>The right mix in the room</h3><p>Decision makers, technical influencers and practitioners. Qualified, and actually showing up.</p></div>
+    <div class="side"><span class="label">Sponsors</span><h3>Proven access to buyers</h3><p>Meetings with decision makers, audience reports and pipeline. They renew, invest more and bring their own networks.</p></div>
+  </div>
+</section>
+
+<section id="flywheel">
+  <div class="sh">
+    <h2>The flywheel</h2>
+    <div>
+      <p class="big">Seven stages. <span>The last one feeds the first.</span></p>
+      <p class="body">Select a stage to see what happens in it, who owns it and what we measure.</p>
+    </div>
+  </div>
+  <div class="fw">
+    <div class="wheel" role="tablist" aria-label="Flywheel stages">
+      <svg viewBox="0 0 100 100" aria-hidden="true"><circle class="ring" cx="50" cy="50" r="38"/><circle class="arc" cx="50" cy="50" r="38"/></svg>
+      <div class="core"><b>Every event<br>fills the next</b><span>community × sponsors</span></div>
+    </div>
+    <div class="panel" id="fw-panel">
+      <div data-stage="1">
+        <span class="label">Stage 1</span><h3>Awareness &amp; acquisition</h3>
+        <p>Start from the data we already have, then add partners and new channels.</p>
+        <ul>
+          <li><b>HubSpot research and segmentation.</b> <span>Clean up and enrich the database: events attended, attended vs no-show, city, role, company.</span></li>
+          <li><b>ICP score and tiers.</b> <span>Fit, engagement and intent give a score from 0 to 100 and tiers A, B and C.</span></li>
+          <li><b>Sync with performance and lifecycle.</b> <span>One brief per event, with goals set in qualified attendees. Lookalikes from tier A, LinkedIn targeting by title and target accounts, email sequences per tier.</span></li>
+          <li><b>City partners.</b> <span>Meetups, communities, newsletters and local leaders, tiered by audience fit, with tracked codes.</span></li>
+          <li><b>New channels as tests.</b> <span>Web3 infrastructure teams, AI engineering communities, DevRel networks and interactive lead magnets.</span></li>
+        </ul>
+        <div class="who"><span class="me">Me: owner</span><span>Performance</span><span>Lifecycle</span><span>Partners</span></div>
+        <p class="kpi"><b>Measure:</b> new contacts per tier · ICP share by source</p>
+      </div>
+      <div data-stage="2">
+        <span class="label">Stage 2</span><h3>Qualify &amp; convert</h3>
+        <p>Every registration tells us who is coming.</p>
+        <ul>
+          <li><b>Registration questions on Luma.</b> <span>Role, company, team size and whether they're evaluating tools in the next 12 months.</span></li>
+          <li><b>Approval rules by tier.</b> <span>A: instant approval and a Leaders Track invite. B: approved. C: waitlist or the virtual option when capacity is tight.</span></li>
+          <li><b>A message per segment.</b> <span>What an engineer gets is not what a CTO gets.</span></li>
+        </ul>
+        <div class="who"><span class="me">Me: owner</span><span>Content</span><span>Design</span><span>Ops</span></div>
+        <p class="kpi"><b>Measure:</b> registration rate · share of tiers A and B</p>
+      </div>
+      <div data-stage="3">
+        <span class="label">Stage 3</span><h3>Activate &amp; show up</h3>
+        <p>Registration is a promise. Attendance is the result.</p>
+        <ul>
+          <li><b>Pre-event workflow.</b> <span>Confirmation, warm-up content, who's in the room, then reconfirm or release your spot 48h before.</span></li>
+          <li><b>Attendance tests.</b> <span>Speaker invites, team tickets, a convince-your-manager kit and perks that only exist in person.</span></li>
+          <li><b>Pre-booked sponsor meetings for tier A</b> <span>(opt-in). Value for both sides before doors open.</span></li>
+        </ul>
+        <div class="who"><span class="me">Me: owner</span><span>Lifecycle</span><span>Sponsorship</span></div>
+        <p class="kpi"><b>Measure:</b> show-up rate by tier · decision makers present</p>
+      </div>
+      <div data-stage="4">
+        <span class="label">Stage 4</span><h3>Connect on site</h3>
+        <p>Make the room work for both sides.</p>
+        <ul>
+          <li><b>Check-in synced to HubSpot.</b> <span>So we know who actually attended.</span></li>
+          <li><b>Leaders Track.</b> <span>Peer roundtables, a lounge and a VIP dinner. CTOs come for their peers.</span></li>
+          <li><b>Capture interests.</b> <span>Sessions and booths visited, used to personalise the follow-up.</span></li>
+        </ul>
+        <div class="who"><span>Events team</span><span class="me">Me: data &amp; VIP</span><span>Sponsors</span></div>
+        <p class="kpi"><b>Measure:</b> sponsor meetings held · session engagement</p>
+      </div>
+      <div data-stage="5">
+        <span class="label">Stage 5</span><h3>Prove value</h3>
+        <p>The step most event businesses skip.</p>
+        <ul>
+          <li><b>For attendees.</b> <span>Recordings, resources and a clear next step. One follow-up for attendees, another for no-shows.</span></li>
+          <li><b>For sponsors.</b> <span>An audience report (tier mix, companies, meetings), followed by the pipeline they report back.</span></li>
+          <li><b>NPS on both sides.</b></li>
+        </ul>
+        <div class="who"><span class="me">Me: owner</span><span>Sponsorship</span><span>Lifecycle</span></div>
+        <p class="kpi"><b>Measure:</b> attendee NPS · sponsor satisfaction</p>
+      </div>
+      <div data-stage="6">
+        <span class="label">Stage 6</span><h3>Retain &amp; advocate</h3>
+        <p>Attendees and sponsors become a channel.</p>
+        <ul>
+          <li><b>Attendees.</b> <span>They come back, refer colleagues, become speakers or city ambassadors, and get certified.</span></li>
+          <li><b>Sponsors.</b> <span>They renew, upgrade to VIP dinners or custom events, and promote the event to their own customers.</span></li>
+        </ul>
+        <div class="who"><span class="me">Me: owner</span><span>Community</span><span>Sponsorship</span></div>
+        <p class="kpi"><b>Measure:</b> repeat attendance · referral share · sponsor renewal</p>
+      </div>
+      <div data-stage="7">
+        <span class="label">Stage 7</span><h3>Learn &amp; re-segment</h3>
+        <p>The data loop that makes the wheel faster.</p>
+        <ul>
+          <li><b>Update scores with real attendance.</b> <span>No-shows lose points. People who come back gain them.</span></li>
+          <li><b>Rank partners, channels and tests.</b> <span>By cost per qualified attendee who actually showed up.</span></li>
+          <li><b>New lookalikes and a sharper ICP.</b> <span>These feed straight back into stage 1.</span></li>
+        </ul>
+        <div class="who"><span class="me">Me: owner</span><span>Ops</span><span>Performance</span></div>
+        <p class="kpi"><b>Measure:</b> cost per qualified attendee over time</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="icp">
+  <div class="sh">
+    <h2>ICP score</h2>
+    <div>
+      <p class="big">Know who's in the room <span>before they arrive.</span></p>
+      <p class="body">A simple scoring model in HubSpot, updated after every event. Weights are a starting point and would be tuned with real data.</p>
+    </div>
+  </div>
+  <div class="icp">
+    <div class="box">
+      <h3>Score (0–100)</h3>
+      <div class="wt"><span>Fit</span><div class="bar"><i style="width:50%"></i></div><b>50</b><small>Role and seniority, company size, engineering team size, cloud-native stack</small></div>
+      <div class="wt"><span>Engagement</span><div class="bar"><i style="width:30%"></i></div><b>30</b><small>Past events, Slack, newsletter, courses and certifications</small></div>
+      <div class="wt"><span>Intent</span><div class="bar"><i style="width:20%"></i></div><b>20</b><small>Evaluating tools in the next 12 months, on a sponsor's target account list</small></div>
+    </div>
+    <div class="tiers">
+      <div class="tier a"><b>A</b><p><b>Decision makers.</b> CTOs, VPs Engineering, Heads of Platform and AI infra. 1:1 invites, Leaders Track, VIP dinners.</p></div>
+      <div class="tier"><b>B</b><p><b>Technical influencers.</b> Staff and principal engineers, platform leads, architects. Segmented campaigns and speaker invites.</p></div>
+      <div class="tier"><b>C</b><p><b>Practitioners.</b> The heart of the community. Content, meetups, the virtual flagship and a path towards A and B.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="playbook">
+  <div class="sh">
+    <h2>SF playbook · v0.1</h2>
+    <div>
+      <p class="big">San Francisco: <span>two days, one audience strategy.</span></p>
+      <p class="body">A first draft built from public information. It would be validated against the real data, budget and calendar in the first weeks.</p>
+    </div>
+  </div>
+
+  <div class="event">
+    <div class="ev"><time>Wed 24 Feb 2027</time><h3>PlatformCon SF Live Day</h3><p>Platform engineers and platform leaders. Reactivating a known audience.</p></div>
+    <div class="ev dark"><time>Wed 24 Feb · evening</time><h3>Leaders VIP Dinner</h3><p>Tier A from both events, curated with sponsors. It links the two days.</p></div>
+    <div class="ev"><time>Thu 25 Feb 2027</time><h3>AgenticCon</h3><p>AI platform teams, heads of AI infra and security leaders. A launch, so new audience and new positioning.</p></div>
+  </div>
+  <ul class="goals">
+    <li><b>Qualified, not just full</b>Set a target share of tiers A and B per event</li>
+    <li><b>Show-up rate</b>Beat the baseline from past editions</li>
+    <li><b>Decision makers present</b>A named list of tier A accounts, tracked weekly</li>
+    <li><b>Sponsor outcomes</b>Pre-booked meetings and a report within 10 days</li>
+  </ul>
+
+  <h3 class="big" style="margin-top:3rem;font-size:clamp(1.15rem,2.2vw,1.5rem)">Segments</h3>
+  <div class="scroll" style="margin-top:1rem">
+    <table class="seg">
+      <thead><tr><th>Segment</th><th>Who</th><th>Message</th><th>Main channels</th></tr></thead>
+      <tbody>
+        <tr><td>SF returning</td><td><span>Past PlatformCon attendees in the Bay Area and US West</span></td><td><span>"Your people are back in SF"</span></td><td><span>Lifecycle email, Slack, early access</span></td></tr>
+        <tr><td>Platform leaders (A)</td><td><span>CTOs, VPs and Heads of Platform, plus sponsor target accounts</span></td><td><span>Peers, Leaders Track, dinner</span></td><td><span>1:1 invites, LinkedIn, sponsors</span></td></tr>
+        <tr><td>AI platform teams</td><td><span>Heads of AI infra, ML platform, agent security</span></td><td><span>"Own the agentic shift"</span></td><td><span>AI communities, speakers, paid</span></td></tr>
+        <tr><td>Practitioners (C)</td><td><span>Engineers in the community and local meetups</span></td><td><span>Learn, network, career</span></td><td><span>Newsletter, meetups, partners</span></td></tr>
+        <tr><td>Test: Web3 infra</td><td><span>Infra teams at exchanges, custodians, node and RPC providers</span></td><td><span>Platform engineering for blockchain infra</span></td><td><span>Roundtable, ecosystem partners</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="big" style="margin-top:3rem;font-size:clamp(1.15rem,2.2vw,1.5rem)">Timeline</h3>
+  <ol class="tl">
+    <li><time><b>T-14 weeks</b>from 18 Nov</time><div><h4>Foundation</h4><ul><li>HubSpot audit for Bay Area and US West; first ICP scoring and tier lists</li><li>SF partner map: local platform and cloud-native meetups, AI engineering groups, newsletters, local leaders</li><li>One brief per event for performance and lifecycle; Luma pages with registration questions</li></ul><div class="chips"><span>Me</span><span>Ops</span><span>Performance</span><span>Lifecycle</span></div></div></li>
+    <li><time><b>T-12 weeks</b>from 2 Dec</time><div><h4>Community first</h4><ul><li>Early access for the community: Slack, Platform Weekly, past attendees</li><li>Ambassador, speaker and sponsor codes go live</li><li>Two-day pass for people interested in both events</li></ul><div class="chips"><span>Me</span><span>Community</span><span>Content</span></div></div></li>
+    <li><time><b>T-10 to T-7</b>mid Dec to early Jan</time><div><h4>Holiday mode: warm, not loud</h4><ul><li>Light content and retargeting; no hard pushes</li><li>Build tier A target lists with sponsors (ABM)</li><li>Recruit SF speakers and co-hosts for warm-up meetups</li></ul><div class="chips"><span>Me</span><span>Sponsorship</span><span>Partners</span></div></div></li>
+    <li class="hot"><time><b>T-6 weeks</b>from 13 Jan</time><div><h4>Acquisition push</h4><ul><li>Warm-up meetup co-hosted with an SF partner</li><li>LinkedIn campaigns by title and target accounts; lookalikes from tier A</li><li>Test: Web3 infra roundtable · AI community partnerships for AgenticCon</li></ul><div class="chips"><span>Me</span><span>Performance</span><span>Partners</span></div></div></li>
+    <li><time><b>T-4 weeks</b>from 27 Jan</time><div><h4>Leaders and social proof</h4><ul><li>1:1 Leaders Track and VIP dinner invites to tier A</li><li>"Who's in the room" emails: companies, roles, speakers</li><li>Convince-your-manager kit and team tickets</li></ul><div class="chips"><span>Me</span><span>Lifecycle</span><span>Sponsorship</span></div></div></li>
+    <li><time><b>T-2 weeks</b>from 10 Feb</time><div><h4>Convert and calibrate</h4><ul><li>Last conversion push per segment; manage the waitlist</li><li>Calibrate overbooking by tier from historical no-shows</li><li>Pre-book sponsor meetings for tier A (opt-in)</li></ul><div class="chips"><span>Me</span><span>Events</span><span>Sponsorship</span></div></div></li>
+    <li class="hot"><time><b>T-48h</b>22 Feb</time><div><h4>Reconfirm or release</h4><ul><li>"Still coming?" Released spots go to the waitlist</li><li>Calendar holds plus a day-of message (test SMS against email)</li></ul><div class="chips"><span>Lifecycle</span><span>Me</span></div></div></li>
+    <li class="hot"><time><b>24–25 Feb</b>event days</time><div><h4>Connect</h4><ul><li>Check-in synced to HubSpot; Leaders Track and sponsor meetings</li><li>VIP dinner on the evening of the 24th, between both events</li></ul><div class="chips"><span>Events</span><span>Me</span><span>Sponsors</span></div></div></li>
+    <li><time><b>T+1 to T+14</b>until 10 Mar</time><div><h4>Prove and loop</h4><ul><li>Separate follow-ups for attendees and no-shows; invite to the next city</li><li>Sponsor audience reports within 10 days</li><li>Re-score, rank channels and partners, and update the playbook</li></ul><div class="chips"><span>Me</span><span>Sponsorship</span><span>Ops</span></div></div></li>
+  </ol>
+
+  <h3 class="big" style="margin-top:2rem;font-size:clamp(1.15rem,2.2vw,1.5rem)">Tests for SF</h3>
+  <div class="tests" style="margin-top:1rem">
+    <div class="test"><span class="label">Show-up</span><h4>Approval vs open RSVP</h4><p>Does curation raise commitment?</p><span class="m">Show-up rate per variant</span></div>
+    <div class="test"><span class="label">Show-up</span><h4>Reconfirm or release</h4><p>48h nudge with the waitlist backfilled.</p><span class="m">Spots recovered · show-up rate</span></div>
+    <div class="test"><span class="label">Quality</span><h4>Sponsor ABM invites</h4><p>Decision makers from sponsors' target accounts.</p><span class="m">Tier A present · meetings held</span></div>
+    <div class="test"><span class="label">Acquisition</span><h4>Web3 infra roundtable</h4><p>Do blockchain infra teams match the ICP?</p><span class="m">Share of tiers A and B · show-up</span></div>
+    <div class="test"><span class="label">Acquisition</span><h4>Speaker codes</h4><p>Speakers invite their own networks.</p><span class="m">Qualified registrations per speaker</span></div>
+    <div class="test"><span class="label">Cross-event</span><h4>Two-day pass</h4><p>Bundle vs separate tickets.</p><span class="m">Attendees at both days · cannibalization</span></div>
+  </div>
+
+  <h3 class="big" style="margin-top:3rem;font-size:clamp(1.15rem,2.2vw,1.5rem)">Weekly dashboard</h3>
+  <div class="dash" style="margin-top:1rem">
+    <div class="dash-top"><b>PlatformCon SF · week T-4</b><span class="mock">Mockup · illustrative data</span></div>
+    <div class="tiles">
+      <div class="tile"><small>Registrations</small><strong>612</strong><em>+18% WoW</em></div>
+      <div class="tile"><small>Tier A + B share</small><strong>54%</strong><em>target 50%</em></div>
+      <div class="tile"><small>Tier A confirmed</small><strong>71</strong><em>of 120 target accounts</em></div>
+      <div class="tile"><small>Expected show-up</small><strong>63%</strong><em>model, by tier</em></div>
+      <div class="tile"><small>Sponsor meetings</small><strong>38</strong><em>pre-booked</em></div>
+    </div>
+    <div class="dgrid">
+      <div class="tile">
+        <h5>Qualified registrations by source</h5>
+        <div class="row"><span>Community &amp; returning</span><div class="bar"><i style="width:82%"></i></div><b>34%</b></div>
+        <div class="row"><span>Partners &amp; meetups</span><div class="bar"><i style="width:52%"></i></div><b>21%</b></div>
+        <div class="row"><span>Paid (LinkedIn)</span><div class="bar"><i style="width:40%"></i></div><b>17%</b></div>
+        <div class="row"><span>Speakers &amp; sponsors</span><div class="bar"><i style="width:36%"></i></div><b>15%</b></div>
+        <div class="row"><span>Tests (Web3, AI)</span><div class="bar"><i style="width:30%"></i></div><b>13%</b></div>
+      </div>
+      <div class="tile funnel">
+        <h5>Funnel (tier A + B)</h5>
+        <div class="row"><span>Reached</span><div class="bar"><i style="width:100%"></i></div><b>4.1k</b></div>
+        <div class="row"><span>Registered</span><div class="bar"><i style="width:48%"></i></div><b>330</b></div>
+        <div class="row"><span>Reconfirmed</span><div class="bar"><i style="width:36%"></i></div><b>245</b></div>
+        <div class="row"><span>Expected present</span><div class="bar"><i style="width:30%"></i></div><b>208</b></div>
+      </div>
+    </div>
+  </div>
+  <p class="note">All numbers in the dashboard are illustrative, to show the format. Real targets come from the baselines in the first 30 days.</p>
+</section>
+
+<section id="proof">
+  <div class="sh">
+    <h2>Proof</h2>
+    <div><p class="big">I've already built this loop. <span>Just for a different audience.</span></p></div>
+  </div>
+  <div>
+    <article class="case">
+      <div>
+        <h3>Owning presence at the biggest global events</h3>
+        <p>ETHGlobal, DevCon and more. I ran Rootstock's event strategy with BD and led the team on site.</p>
+        <ul>
+          <li>Chose the events, side events, partners and VIP dinners, and built the guest lists</li>
+          <li>Owned sponsorship, developer acquisition and merch, and coordinated with our DevEx team</li>
+          <li>Acted as sales enabler, passing qualified dev-team contacts to the commercial team</li>
+        </ul>
+      </div>
+      <aside><strong>Sponsor side</strong>I know what makes a sponsor renew</aside>
+    </article>
+    <article class="case">
+      <div>
+        <h3>A developer flywheel: acquire, activate, retain</h3>
+        <p>Hackathons and side events at major conferences brought developers in. Grants and our Hacktivator program, with tasks that kept people building, gave them a reason to stay.</p>
+      </div>
+      <aside><strong>600+</strong>developers brought into the ecosystem</aside>
+    </article>
+    <article class="case">
+      <div>
+        <h3>Golden Sats Challenge + RIF Me Up</h3>
+        <p>A partner-led campaign I designed end to end: name, branding, partners, mechanics, on-chain tracking and the Discord community. It ran in seasons, built so people would come back.</p>
+        <ul>
+          <li>10,000+ transactions and $100M+ in volume (Golden Sats)</li>
+          <li>35K+ transactions, 7,500+ unique wallets and 900K+ $RIF staked (combined)</li>
+        </ul>
+      </div>
+      <aside><strong>40%</strong>on-chain retention, the highest Rootstock had ever reached</aside>
+    </article>
+    <article class="case">
+      <div>
+        <h3>HubSpot, ABM and senior audiences</h3>
+        <p>Segmentation, workflows, lead capture and follow-up so every event fed the pipeline. ABM and tailored VIP experiences for institutional, senior audiences, such as at Money20/20.</p>
+      </div>
+      <aside><strong>Hands-on</strong>Copy, email, paid, newsletters, co-marketing, design when needed</aside>
+    </article>
+  </div>
+</section>
+
+<section id="plan">
+  <div class="sh">
+    <h2>First 180 days</h2>
+    <div><p class="big">Prove it on SF, <span>then scale the playbook.</span></p></div>
+  </div>
+  <div class="plan">
+    <div><time>DAYS 1–30</time><h3>Understand</h3><p>Audience, data, past results and processes. Set baselines and the first version of the ICP score.</p></div>
+    <div><time>DAYS 31–60</time><h3>Test</h3><p>Run the SF playbook live: segments, partners and attendance tests.</p></div>
+    <div><time>DAYS 61–90</time><h3>Playbook</h3><p>Document what worked: one core workflow with versions for PlatformCon and AgenticCon.</p></div>
+    <div><time>DAYS 91–180</time><h3>Prove</h3><p>Apply it to the next cities: higher show-up, a better tier mix and sponsors who renew.</p></div>
+  </div>
+  <p class="note">I won't promise percentages before seeing the baselines.</p>
+</section>
+
+<section id="contact">
+  <div class="sh">
+    <h2>Contact</h2>
+    <div>
+      <p class="cta"><a href="mailto:me@ricardojcastro.pt">me@ricardojcastro.pt</a></p>
+      <ul class="links">
+        <li><a href="https://www.linkedin.com/in/ricardojcastro" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+        <li><a href="https://t.me/ricardojcastro" target="_blank" rel="noopener">Telegram ↗</a></li>
+        <li><a href="/">Full portfolio →</a></li>
+      </ul>
+      <p class="note">Built from public information and conversations so far. These are working hypotheses, and I'd validate them with the team first.</p>
+    </div>
+  </div>
+</section>
+
+<footer><span><b>ricardo<span class="j">j</span>castro</b></span><span><b>Growth Marketing</b> &amp; RevOps</span></footer>
+</div>
+
+<script>
+(function(){
+  var names=["Awareness & acquisition","Qualify & convert","Activate & show up","Connect on site","Prove value","Retain & advocate","Learn & re-segment"];
+  var wheel=document.querySelector('.wheel');
+  var stages=[].slice.call(document.querySelectorAll('#fw-panel [data-stage]'));
+  if(!wheel||!stages.length)return;
+  var btns=[];
+  names.forEach(function(n,i){
+    var a=(-90+i*360/7)*Math.PI/180;
+    var b=document.createElement('button');
+    b.className='node';b.type='button';b.setAttribute('role','tab');
+    b.style.left=(50+38*Math.cos(a))+'%';b.style.top=(50+38*Math.sin(a))+'%';
+    b.innerHTML='<em>0'+(i+1)+'</em>'+n.replace(' & ',' &amp; ');
+    b.addEventListener('click',function(){show(i)});
+    b.addEventListener('keydown',function(e){
+      if(e.key==='ArrowRight'||e.key==='ArrowDown'){e.preventDefault();show((i+1)%7,true)}
+      if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();show((i+6)%7,true)}
+    });
+    wheel.appendChild(b);btns.push(b);
+  });
+  function show(i,focus){
+    stages.forEach(function(s,j){s.hidden=j!==i});
+    btns.forEach(function(b,j){b.setAttribute('aria-selected',j===i?'true':'false');b.tabIndex=j===i?0:-1});
+    if(focus)btns[i].focus();
+  }
+  show(0);
+})();
+</script>
+</body>
+</html>
