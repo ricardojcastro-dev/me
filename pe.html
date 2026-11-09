@@ -268,6 +268,15 @@ details.L .lb{padding:0 0 2.5rem}
 .ch{margin:clamp(2.5rem,6vh,3.5rem) 0 0;font-size:clamp(1.3rem,2.6vw,1.8rem);font-weight:500;letter-spacing:-.03em}
 .ch+.contrib{margin-top:1.25rem}
 @media (min-width:1000px){.contrib{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.qs{margin:1.5rem 0 0;padding:0;list-style:none;counter-reset:q;max-width:46rem}
+.qs li{counter-increment:q;display:grid;grid-template-columns:2.25rem minmax(0,1fr);gap:.5rem;padding:1rem 0;border-top:1px solid var(--line);font-size:clamp(1rem,1.6vw,1.12rem);line-height:1.45}
+.qs li::before{content:counter(q,decimal-leading-zero);color:var(--accent);font-weight:600;font-size:.88rem;padding-top:.2rem}
+.w6 .ring{fill:none;stroke:var(--line);stroke-width:.5;stroke-dasharray:1.2 1.6}
+.w6 .seg6{fill:none;stroke:var(--accent);stroke-width:.9;stroke-linecap:round}
+.w6 .core{inset:30%}
+.w6 .node{width:auto;min-width:5.6rem;aspect-ratio:auto;border-radius:999px;flex-direction:row;gap:.35rem;padding:.55rem .95rem;font-size:clamp(.78rem,1.9vw,.92rem);font-weight:600;white-space:nowrap;box-shadow:0 1px 0 var(--line)}
+.w6 .node em{margin:0;font-size:.78em}
+@media (max-width:480px){.w6 .node{min-width:0;padding:.45rem .7rem}}
 </style>
 </head>
 <body>
@@ -352,20 +361,29 @@ details.L .lb{padding:0 0 2.5rem}
   </details>
 
   <details class="L" id="l2">
-    <summary><span class="ln">Layer 2</span><span><span class="lt">Growth &amp; retention flywheel</span><span class="ls">What builds up between events, so every city has an audience to draw on</span></span><span class="pl" aria-hidden="true">+</span></summary>
+    <summary><span class="ln">Layer 2</span><span><span class="lt">Growth &amp; retention flywheel</span><span class="ls">Every event increases the value and the reach of the next one</span></span><span class="pl" aria-hidden="true">+</span></summary>
     <div class="lb">
-      <p class="intro">Select a stage to see what happens in it, who owns it and what we measure. <b>The last stage feeds the first.</b></p>
+      <p class="intro">Six stages around one goal: <b>community and audience growth</b>, city by city. Select a stage to see what happens in it, who owns it and what we measure.</p>
       <div class="fw">
-        <div class="wheel" role="tablist" aria-label="Flywheel stages">
-          <svg viewBox="0 0 100 100" aria-hidden="true"><circle class="ring" cx="50" cy="50" r="38"/><circle class="arc" cx="50" cy="50" r="38"/></svg>
-          <div class="core"><b>Every event<br>fills the next</b><span>city by city</span></div>
+        <div class="wheel w6" role="tablist" aria-label="Flywheel stages">
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <defs><marker id="ah6" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="4.5" markerHeight="4.5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#F7931A"/></marker></defs>
+            <circle class="ring" cx="50" cy="50" r="34"/>
+            <path class="seg6" d="M59.6 17.4 A34 34 0 0 1 77.3 30.1" marker-end="url(#ah6)"/>
+            <path class="seg6" d="M84 45 A34 34 0 0 1 82 62" marker-end="url(#ah6)"/>
+            <path class="seg6" d="M76 73 A34 34 0 0 1 60 82.5" marker-end="url(#ah6)"/>
+            <path class="seg6" d="M40.4 82.6 A34 34 0 0 1 22.7 69.9" marker-end="url(#ah6)"/>
+            <path class="seg6" d="M16 55 A34 34 0 0 1 18 38" marker-end="url(#ah6)"/>
+            <path class="seg6" d="M24 27 A34 34 0 0 1 40 17.5" marker-end="url(#ah6)"/>
+          </svg>
+          <div class="core"><b>Community<br>&amp; audience</b><span>growth</span></div>
         </div>
         <div class="panel" id="fw-panel">
           <div data-stage="1">
-            <span class="label">Stage 1</span><h3>Build the city audience</h3>
-            <p>Start from the data we already have, then add partners and new channels.</p>
+            <span class="label">Stage 1</span><h3>Attract</h3>
+            <p>Build each city's audience from the data we already have, then add partners and new channels.</p>
             <ul>
-              <li><b>HubSpot research and segmentation.</b> <span>Events attended, attended vs no-show, city, role, company.</span></li>
+              <li><b>HubSpot research and segmentation.</b> <span>Events attended, attended vs no-show, city, role and company.</span></li>
               <li><b>ICP score and tiers.</b> <span>Fit, engagement and intent give tiers A, B and C.</span></li>
               <li><b>Sync with performance and lifecycle.</b> <span>Goals set in qualified attendees. Lookalikes from tier A, LinkedIn targeting by title, email per tier.</span></li>
               <li><b>City partners and leaders.</b> <span>Meetups, communities, newsletters and local leaders, with tracked codes.</span></li>
@@ -375,68 +393,60 @@ details.L .lb{padding:0 0 2.5rem}
             <p class="kpi"><b>Measure:</b> city audience size · share of tiers A and B by source</p>
           </div>
           <div data-stage="2">
-            <span class="label">Stage 2</span><h3>Qualify &amp; convert</h3>
+            <span class="label">Stage 2</span><h3>Register</h3>
             <p>A Luma page that converts, and registrations that tell us who's coming.</p>
             <ul>
-              <li><b>Event page with design and content.</b> <span>Strong visuals and copy per event.</span></li>
+              <li><b>Event page with design and content.</b> <span>Strong visuals and copy for every event.</span></li>
               <li><b>Registration questions.</b> <span>Role, company, team size and whether they're evaluating tools.</span></li>
               <li><b>Approval rules by tier.</b> <span>A: instant approval and a leaders invite. B: approved. C: waitlist or virtual when space is tight.</span></li>
+              <li><b>A message per segment.</b> <span>What an engineer gets is not what a CTO gets.</span></li>
             </ul>
             <div class="who"><span class="me">Me: owner</span><span>Design</span><span>Content</span></div>
             <p class="kpi"><b>Measure:</b> page conversion · tier mix</p>
           </div>
           <div data-stage="3">
-            <span class="label">Stage 3</span><h3>Show up</h3>
+            <span class="label">Stage 3</span><h3>Attend</h3>
             <p>Registration is a promise. Attendance is the result.</p>
             <ul>
-              <li><b>Attendance engine.</b> <span>Who's in the room emails, reconfirm or release 48h before, calendar holds, day-of message.</span></li>
+              <li><b>Attendance engine.</b> <span>Who's-in-the-room emails, reconfirm or release 48h before, calendar holds and a day-of message.</span></li>
               <li><b>Attendance tests.</b> <span>Speaker invites, team tickets, a convince-your-manager kit and perks that only exist in person.</span></li>
+              <li><b>Check-in synced to HubSpot.</b> <span>Reliable attendance data for every person.</span></li>
             </ul>
-            <div class="who"><span class="me">Me: owner</span><span>Lifecycle</span></div>
+            <div class="who"><span class="me">Me: owner</span><span>Lifecycle</span><span>Events team</span></div>
             <p class="kpi"><b>Measure:</b> attendance rate by tier</p>
           </div>
           <div data-stage="4">
-            <span class="label">Stage 4</span><h3>Experience &amp; capture</h3>
-            <p>The events team runs the room. I make sure we learn from it.</p>
-            <ul>
-              <li><b>Check-in synced to HubSpot.</b> <span>Reliable attendance data per person.</span></li>
-              <li><b>Interests captured.</b> <span>Sessions and roundtables attended, for personal follow-ups.</span></li>
-              <li><b>Audience profile to sponsorship.</b> <span>So sponsors meet the right people.</span></li>
-            </ul>
-            <div class="who"><span>Events team</span><span class="me">Me: data</span><span>Sponsorship</span></div>
-            <p class="kpi"><b>Measure:</b> data completeness · qualified attendance</p>
-          </div>
-          <div data-stage="5">
-            <span class="label">Stage 5</span><h3>Re-engage between events</h3>
-            <p>Keep the audience warm, the way we kept Golden Sats participants active across four seasons.</p>
+            <span class="label">Stage 4</span><h3>Engage</h3>
+            <p>Keep the audience warm between events, the way we kept Golden Sats participants active across four seasons.</p>
             <ul>
               <li><b>Follow-ups.</b> <span>Recordings and resources for attendees; a second chance for no-shows.</span></li>
               <li><b>City rhythm.</b> <span>City Luma calendars, local meetups, newsletter blocks and community content.</span></li>
+              <li><b>Audience profile to sponsorship.</b> <span>Who came and what they cared about, so sponsors meet the right people.</span></li>
             </ul>
-            <div class="who"><span class="me">Me: owner</span><span>Lifecycle</span><span>Community</span></div>
-            <p class="kpi"><b>Measure:</b> engaged share of the city audience</p>
+            <div class="who"><span class="me">Me: owner</span><span>Lifecycle</span><span>Community</span><span>Sponsorship</span></div>
+            <p class="kpi"><b>Measure:</b> engaged share of each city's audience</p>
+          </div>
+          <div data-stage="5">
+            <span class="label">Stage 5</span><h3>Advocate</h3>
+            <p>Turn your best attendees into the voice of the next event.</p>
+            <ul>
+              <li><b>Ambassadors as city hosts.</b> <span>Ambassador Program members and meetup organisers co-host warm-up meetups and get their own codes.</span></li>
+              <li><b>PlatformCon Alumni.</b> <span>Early access, an alumni price and a returning-attendee badge.</span></li>
+              <li><b>Speakers and certified engineers.</b> <span>A speaker kit with "I'm speaking" cards, plus an in-person moment for certified engineers.</span></li>
+            </ul>
+            <div class="who"><span class="me">Me: owner</span><span>Community</span><span>Content</span></div>
+            <p class="kpi"><b>Measure:</b> repeat attendance · active advocates per city</p>
           </div>
           <div data-stage="6">
-            <span class="label">Stage 6</span><h3>Advocate &amp; refer</h3>
-            <p>Attendees become a channel.</p>
+            <span class="label">Stage 6</span><h3>Refer</h3>
+            <p>Every attendee brings the next one, and the data makes the wheel faster.</p>
             <ul>
-              <li><b>Referrals and team invites.</b> <span>Bring your platform lead or your team.</span></li>
-              <li><b>Speakers and ambassadors.</b> <span>Local leaders and meetup organisers with their own codes.</span></li>
-              <li><b>Partners.</b> <span>The best-performing partners are invited back for the next event.</span></li>
+              <li><b>Referrals and team invites.</b> <span>"Bring your platform lead" right after registering, plus "I'm attending" cards.</span></li>
+              <li><b>Partners back.</b> <span>The best-performing partners return for the next event.</span></li>
+              <li><b>Learn and re-segment.</b> <span>Update scores with real attendance and rank channels by cost per attendee. This feeds straight back into Attract.</span></li>
             </ul>
-            <div class="who"><span class="me">Me: owner</span><span>Community</span><span>Partners</span></div>
-            <p class="kpi"><b>Measure:</b> repeat attendance · referral and partner share</p>
-          </div>
-          <div data-stage="7">
-            <span class="label">Stage 7</span><h3>Learn &amp; re-segment</h3>
-            <p>The data loop that makes the wheel faster.</p>
-            <ul>
-              <li><b>Update scores with real attendance.</b> <span>No-shows lose points; people who come back gain them.</span></li>
-              <li><b>Rank channels, partners and tests</b> <span>by cost per attendee who actually showed up.</span></li>
-              <li><b>Sharper lookalikes and ICP.</b> <span>These feed straight back into stage 1.</span></li>
-            </ul>
-            <div class="who"><span class="me">Me: owner</span><span>Ops</span><span>Performance</span></div>
-            <p class="kpi"><b>Measure:</b> cost per attendee over time</p>
+            <div class="who"><span class="me">Me: owner</span><span>Partners</span><span>Ops</span></div>
+            <p class="kpi"><b>Measure:</b> share of registrations from referrals, ambassadors and partners</p>
           </div>
         </div>
       </div>
@@ -597,6 +607,21 @@ details.L .lb{padding:0 0 2.5rem}
   </details>
 </section>
 
+<section id="questions">
+  <div class="sh">
+    <h2>Questions for you</h2>
+    <div>
+      <p class="big">What I'd love to <span>understand first.</span></p>
+      <ol class="qs">
+        <li>What's currently the biggest bottleneck in your events growth engine: registrations, attendance rates, or reaching the right audience?</li>
+        <li>How much of your current event attendance comes from your existing community versus new audience acquisition?</li>
+        <li>How mature is the data today? Is HubSpot already the source of truth for attendees, or would part of the job be building that foundation?</li>
+        <li>AgenticCon and AgentCon (Global AI Community) are both San Francisco AI events with very similar names. How are you thinking about positioning and search to avoid confusion?</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
 <section id="contact">
   <div class="sh">
     <h2>Contact</h2>
@@ -617,21 +642,21 @@ details.L .lb{padding:0 0 2.5rem}
 
 <script>
 (function(){
-  var names=["City audience","Qualify & convert","Show up","Experience & capture","Re-engage","Advocate & refer","Learn & re-segment"];
+  var names=["Attract","Register","Attend","Engage","Advocate","Refer"];
   var wheel=document.querySelector('.wheel');
   var stages=[].slice.call(document.querySelectorAll('#fw-panel [data-stage]'));
   if(wheel&&stages.length){
     var btns=[];
     names.forEach(function(n,i){
-      var a=(-90+i*360/7)*Math.PI/180;
+      var N=names.length,a=(-90+i*360/N)*Math.PI/180;
       var b=document.createElement('button');
       b.className='node';b.type='button';b.setAttribute('role','tab');
-      b.style.left=(50+38*Math.cos(a))+'%';b.style.top=(50+38*Math.sin(a))+'%';
-      b.innerHTML='<em>0'+(i+1)+'</em>'+n.replace(' & ',' &amp; ');
+      b.style.left=(50+40*Math.cos(a))+'%';b.style.top=(50+40*Math.sin(a))+'%';
+      b.innerHTML='<em>0'+(i+1)+'</em>'+n;
       b.addEventListener('click',function(){show(i)});
       b.addEventListener('keydown',function(e){
-        if(e.key==='ArrowRight'||e.key==='ArrowDown'){e.preventDefault();show((i+1)%7,true)}
-        if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();show((i+6)%7,true)}
+        if(e.key==='ArrowRight'||e.key==='ArrowDown'){e.preventDefault();show((i+1)%names.length,true)}
+        if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();show((i+names.length-1)%names.length,true)}
       });
       wheel.appendChild(b);btns.push(b);
     });
