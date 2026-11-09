@@ -200,6 +200,71 @@ section{border-top:1px solid var(--line);padding:clamp(2.5rem,6vw,4.5rem) 0}
 footer{border-top:1px solid var(--line);padding:1.75rem 0 2.5rem;color:var(--mute);font-size:.9rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
 footer b{color:var(--ink);font-weight:600}
 @media (prefers-reduced-motion:no-preference){h1{animation:in .9s cubic-bezier(.2,.7,.2,1) both}@keyframes in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}}
+
+.layers{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1rem}
+@media (max-width:900px){.layers{grid-template-columns:1fr}}
+.layer{background:var(--card);border-radius:18px;padding:clamp(1.25rem,3vw,1.75rem)}
+.layer h3{margin:.4rem 0 1rem;font-size:clamp(1.2rem,2.2vw,1.5rem);font-weight:500;letter-spacing:-.02em}
+.wf{list-style:none;margin:0;padding:0;counter-reset:w}
+.wf li{counter-increment:w;display:grid;grid-template-columns:2rem minmax(0,1fr);gap:0 .75rem;padding:.7rem 0;border-top:1px solid var(--line)}
+.wf li::before{content:counter(w,decimal-leading-zero);grid-row:span 2;color:var(--accent);font-weight:600;font-size:.88rem;padding-top:.1rem}
+.wf b{font-weight:500}
+.wf span{color:var(--mute);font-size:.92rem}
+.cw{width:100%;max-width:24rem;height:auto;display:block;margin:0 auto}
+.cw .ring{fill:none;stroke:var(--line);stroke-width:2}
+.cw .arc{fill:none;stroke:var(--accent);stroke-width:2.5;stroke-dasharray:6 12;stroke-linecap:round}
+@media (prefers-reduced-motion:no-preference){.cw .arc{animation:cspin 30s linear infinite}@keyframes cspin{to{stroke-dashoffset:-360}}}
+.cw .nodes circle{fill:var(--bg);stroke:var(--line);stroke-width:1.5}
+.cw .n text{fill:var(--accent);font:600 15px var(--sans);text-anchor:middle}
+.cw .lbl text{fill:var(--ink);font:500 15px var(--sans);text-anchor:middle}
+.cw .c1{fill:var(--ink);font:500 21px var(--sans);text-anchor:middle}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:1rem}
+.kg{background:var(--card);border-radius:18px;padding:1.4rem}
+.kg:first-child{background:var(--ink);color:var(--bg)}
+.kg:first-child span:not(.label){color:color-mix(in srgb,var(--bg) 70%,transparent)!important}
+.kg:first-child li{border-color:color-mix(in srgb,var(--bg) 18%,transparent)}
+.kg h3{margin:.4rem 0 .75rem;font-size:1.1rem;font-weight:500}
+.kg ul{list-style:none;margin:0;padding:0}
+.kg li{padding:.6rem 0;border-top:1px solid var(--line)}
+.kg li b{display:block;font-weight:500}
+.kg li span{color:var(--mute);font-size:.9rem}
+.cad{display:grid;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));gap:1rem;margin-top:1.5rem}
+.cad div{border-top:2px solid var(--accent);padding-top:.7rem}
+.cad b{display:block;font-weight:500}
+.cad span{color:var(--mute);font-size:.9rem}
+.tests.t4{grid-template-columns:repeat(auto-fit,minmax(13rem,1fr))}
+
+/* layers */
+.contrib{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1rem;margin-top:1.75rem}
+.cb{background:var(--card);border-radius:18px;padding:1.3rem 1.35rem}
+.cb h3{margin:.45rem 0 .4rem;font-size:1.05rem;font-weight:500;letter-spacing:-.01em}
+.cb p{margin:0;color:var(--mute);font-size:.92rem}
+.cb .for{display:block;margin-top:.75rem;font-size:.82rem;color:var(--ink)}
+.cb .for::before{content:"→ ";color:var(--accent)}
+.lhead{display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;flex-wrap:wrap;margin-bottom:1.25rem}
+.lhead h2{margin:0;font-size:clamp(1.35rem,2.8vw,2rem);font-weight:500;letter-spacing:-.03em;line-height:1.2;max-width:40rem}
+.lhead h2 span{color:var(--accent)}
+.toggle-all{background:none;border:1px solid var(--line);border-radius:999px;padding:.45rem .95rem;font:inherit;font-size:.88rem;color:var(--mute);cursor:pointer}
+.toggle-all:hover{border-color:var(--accent);color:var(--ink)}
+details.L{border-bottom:1px solid var(--line)}
+details.L:first-of-type{border-top:1px solid var(--line)}
+details.L>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:5.5rem minmax(0,1fr) 2.5rem;gap:1rem;align-items:center;padding:1.4rem 0}
+details.L>summary::-webkit-details-marker{display:none}
+details.L>summary .ln{font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+details.L>summary .lt{display:block;font-size:clamp(1.15rem,2.4vw,1.55rem);font-weight:500;letter-spacing:-.02em;line-height:1.2}
+details.L>summary .ls{display:block;color:var(--mute);font-size:.92rem;margin-top:.25rem}
+details.L>summary .pl{justify-self:end;width:2.25rem;height:2.25rem;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--mute);font-size:1.3rem;font-weight:300;transition:transform .25s,background .2s,color .2s,border-color .2s}
+details.L>summary:hover .lt{color:var(--accent)}
+details.L>summary:hover .pl{border-color:var(--accent)}
+details.L[open]>summary .pl{transform:rotate(45deg);background:var(--accent);border-color:var(--accent);color:#15171B}
+details.L .lb{padding:0 0 2.5rem}
+@media (max-width:620px){details.L>summary{grid-template-columns:minmax(0,1fr) 2.25rem}details.L>summary .ln{grid-column:1/-1;margin-bottom:-.6rem}}
+.sub{margin:2.25rem 0 1rem;font-size:clamp(1.1rem,2vw,1.35rem);font-weight:500;letter-spacing:-.02em}
+.intro{margin:0 0 1.5rem;max-width:44rem;color:var(--mute)}
+.intro b{color:var(--ink);font-weight:500}
+.evid{margin-top:1rem;background:var(--card);border-radius:16px;padding:1.2rem 1.3rem;border-left:3px solid var(--accent)}
+.evid p{margin:0;color:var(--mute);font-size:.95rem}
+.evid b{color:var(--ink);font-weight:500}
 </style>
 </head>
 <body>
@@ -215,139 +280,47 @@ footer b{color:var(--ink);font-weight:600}
 
 <header class="hero">
   <p class="tag"><i></i>For Platform Engineering · Senior Events Growth Manager</p>
-  <h1>Fill the right rooms. Prove the value. Make the <span>next one</span> easier to fill.</h1>
-  <p class="lede">A two-sided events growth flywheel, an ICP model to know who's really in the room, and a first playbook for PlatformCon and AgenticCon in San Francisco.</p>
-  <div class="btns">
-    <a class="btn solid" href="#playbook">See the SF playbook</a>
-    <a class="btn" href="#flywheel">The flywheel</a>
-  </div>
+  <h1>Fill the right rooms. Make sure they <span>show up</span>. Make the next one easier to fill.</h1>
+  <p class="lede">I've spent five years using events as a growth channel for technical audiences, and I've sat on the sponsor's side. Here's what I bring, and how I'd run events growth at Platform Engineering.</p>
   <ul class="facts">
-    <li><strong>600+</strong>developers brought in through hackathons and side events</li>
+    <li><strong>10+</strong>years in marketing, the last 5 in Web3, DeFi and fintech</li>
     <li><strong>20+</strong>global events and hackathons</li>
+    <li><strong>600+</strong>developers brought in through hackathons and side events</li>
     <li><strong>40%</strong>on-chain retention, the highest Rootstock had ever reached</li>
-    <li><strong>$100M+</strong>volume from a single co-marketing campaign</li>
   </ul>
+
+  <div class="contrib">
+    <div class="cb"><span class="label">Events &amp; sponsor side</span><h3>I've chosen events as the buyer</h3><p>At Rootstock I chose with BD which events to sponsor, which side events and VIP dinners to run and who to invite, then led the team on site (ETHGlobal, DevCon).</p><span class="for">Qualified attendance that sponsors value</span></div>
+    <div class="cb"><span class="label">Audience growth</span><h3>A developer flywheel</h3><p>Hackathons and side events brought 600+ developers in. Grants and our Hacktivator program kept them building.</p><span class="for">Reusable audiences in every city</span></div>
+    <div class="cb"><span class="label">Retention</span><h3>Built so people come back</h3><p>Golden Sats + RIF Me Up, designed end to end: $100M+ in volume, 7,500+ wallets, 40% on-chain retention and most participants active across all four seasons.</p><span class="for">Growth loops, not one-off campaigns</span></div>
+    <div class="cb"><span class="label">Systems &amp; execution</span><h3>HubSpot, ABM, hands-on</h3><p>Segmentation, workflows and lead capture. ABM for senior audiences. Copy, email, paid, newsletters, co-marketing and design when needed.</p><span class="for">A playbook that runs without firefighting</span></div>
+  </div>
+  <div class="btns">
+    <a class="btn solid" href="#layers">Explore the approach</a>
+    <a class="btn" href="mailto:me@ricardojcastro.pt?subject=Senior%20Events%20Growth%20Manager">Get in touch</a>
+  </div>
 </header>
 
-<section id="model">
-  <div class="sh">
-    <h2>The business</h2>
-    <div>
-      <p class="big">Two sides, one room. <span>Events are where they meet.</span></p>
-      <p class="body">Engineers come for knowledge, peers and their careers. Sponsors pay to meet the people who choose and buy their tools. I've sat on the sponsor's side, choosing events, side events and VIP dinners, so I know what makes a sponsor renew: <b>qualified attendance</b>, not registrations.</p>
-    </div>
+<section id="layers">
+  <div class="lhead">
+    <h2>Five layers. <span>Open the one you need.</span></h2>
+    <button class="toggle-all" type="button" aria-pressed="false">Expand all</button>
   </div>
-  <div class="sides">
-    <div class="side"><span class="label">Community</span><h3>Real value for engineers</h3><p>Talks, peers, certifications and careers. The more relevant the room, the more people bring their colleagues.</p></div>
-    <div class="side mid"><span class="label">Events</span><h3>The right mix in the room</h3><p>Decision makers, technical influencers and practitioners. Qualified, and actually showing up.</p></div>
-    <div class="side"><span class="label">Sponsors</span><h3>Proven access to buyers</h3><p>Meetings with decision makers, audience reports and pipeline. They renew, invest more and bring their own networks.</p></div>
-  </div>
-</section>
 
-<section id="flywheel">
-  <div class="sh">
-    <h2>The flywheel</h2>
-    <div>
-      <p class="big">Seven stages. <span>The last one feeds the first.</span></p>
-      <p class="body">Select a stage to see what happens in it, who owns it and what we measure.</p>
-    </div>
-  </div>
-  <div class="fw">
-    <div class="wheel" role="tablist" aria-label="Flywheel stages">
-      <svg viewBox="0 0 100 100" aria-hidden="true"><circle class="ring" cx="50" cy="50" r="38"/><circle class="arc" cx="50" cy="50" r="38"/></svg>
-      <div class="core"><b>Every event<br>fills the next</b><span>community × sponsors</span></div>
-    </div>
-    <div class="panel" id="fw-panel">
-      <div data-stage="1">
-        <span class="label">Stage 1</span><h3>Awareness &amp; acquisition</h3>
-        <p>Start from the data we already have, then add partners and new channels.</p>
-        <ul>
-          <li><b>HubSpot research and segmentation.</b> <span>Clean up and enrich the database: events attended, attended vs no-show, city, role, company.</span></li>
-          <li><b>ICP score and tiers.</b> <span>Fit, engagement and intent give a score from 0 to 100 and tiers A, B and C.</span></li>
-          <li><b>Sync with performance and lifecycle.</b> <span>One brief per event, with goals set in qualified attendees. Lookalikes from tier A, LinkedIn targeting by title and target accounts, email sequences per tier.</span></li>
-          <li><b>City partners.</b> <span>Meetups, communities, newsletters and local leaders, tiered by audience fit, with tracked codes.</span></li>
-          <li><b>New channels as tests.</b> <span>Web3 infrastructure teams, AI engineering communities, DevRel networks and interactive lead magnets.</span></li>
-        </ul>
-        <div class="who"><span class="me">Me: owner</span><span>Performance</span><span>Lifecycle</span><span>Partners</span></div>
-        <p class="kpi"><b>Measure:</b> new contacts per tier · ICP share by source</p>
-      </div>
-      <div data-stage="2">
-        <span class="label">Stage 2</span><h3>Qualify &amp; convert</h3>
-        <p>Every registration tells us who is coming.</p>
-        <ul>
-          <li><b>Registration questions on Luma.</b> <span>Role, company, team size and whether they're evaluating tools in the next 12 months.</span></li>
-          <li><b>Approval rules by tier.</b> <span>A: instant approval and a Leaders Track invite. B: approved. C: waitlist or the virtual option when capacity is tight.</span></li>
-          <li><b>A message per segment.</b> <span>What an engineer gets is not what a CTO gets.</span></li>
-        </ul>
-        <div class="who"><span class="me">Me: owner</span><span>Content</span><span>Design</span><span>Ops</span></div>
-        <p class="kpi"><b>Measure:</b> registration rate · share of tiers A and B</p>
-      </div>
-      <div data-stage="3">
-        <span class="label">Stage 3</span><h3>Activate &amp; show up</h3>
-        <p>Registration is a promise. Attendance is the result.</p>
-        <ul>
-          <li><b>Pre-event workflow.</b> <span>Confirmation, warm-up content, who's in the room, then reconfirm or release your spot 48h before.</span></li>
-          <li><b>Attendance tests.</b> <span>Speaker invites, team tickets, a convince-your-manager kit and perks that only exist in person.</span></li>
-          <li><b>Pre-booked sponsor meetings for tier A</b> <span>(opt-in). Value for both sides before doors open.</span></li>
-        </ul>
-        <div class="who"><span class="me">Me: owner</span><span>Lifecycle</span><span>Sponsorship</span></div>
-        <p class="kpi"><b>Measure:</b> show-up rate by tier · decision makers present</p>
-      </div>
-      <div data-stage="4">
-        <span class="label">Stage 4</span><h3>Connect on site</h3>
-        <p>Make the room work for both sides.</p>
-        <ul>
-          <li><b>Check-in synced to HubSpot.</b> <span>So we know who actually attended.</span></li>
-          <li><b>Leaders Track.</b> <span>Peer roundtables, a lounge and a VIP dinner. CTOs come for their peers.</span></li>
-          <li><b>Capture interests.</b> <span>Sessions and booths visited, used to personalise the follow-up.</span></li>
-        </ul>
-        <div class="who"><span>Events team</span><span class="me">Me: data &amp; VIP</span><span>Sponsors</span></div>
-        <p class="kpi"><b>Measure:</b> sponsor meetings held · session engagement</p>
-      </div>
-      <div data-stage="5">
-        <span class="label">Stage 5</span><h3>Prove value</h3>
-        <p>The step most event businesses skip.</p>
-        <ul>
-          <li><b>For attendees.</b> <span>Recordings, resources and a clear next step. One follow-up for attendees, another for no-shows.</span></li>
-          <li><b>For sponsors.</b> <span>An audience report (tier mix, companies, meetings), followed by the pipeline they report back.</span></li>
-          <li><b>NPS on both sides.</b></li>
-        </ul>
-        <div class="who"><span class="me">Me: owner</span><span>Sponsorship</span><span>Lifecycle</span></div>
-        <p class="kpi"><b>Measure:</b> attendee NPS · sponsor satisfaction</p>
-      </div>
-      <div data-stage="6">
-        <span class="label">Stage 6</span><h3>Retain &amp; advocate</h3>
-        <p>Attendees and sponsors become a channel.</p>
-        <ul>
-          <li><b>Attendees.</b> <span>They come back, refer colleagues, become speakers or city ambassadors, and get certified.</span></li>
-          <li><b>Sponsors.</b> <span>They renew, upgrade to VIP dinners or custom events, and promote the event to their own customers.</span></li>
-        </ul>
-        <div class="who"><span class="me">Me: owner</span><span>Community</span><span>Sponsorship</span></div>
-        <p class="kpi"><b>Measure:</b> repeat attendance · referral share · sponsor renewal</p>
-      </div>
-      <div data-stage="7">
-        <span class="label">Stage 7</span><h3>Learn &amp; re-segment</h3>
-        <p>The data loop that makes the wheel faster.</p>
-        <ul>
-          <li><b>Update scores with real attendance.</b> <span>No-shows lose points. People who come back gain them.</span></li>
-          <li><b>Rank partners, channels and tests.</b> <span>By cost per qualified attendee who actually showed up.</span></li>
-          <li><b>New lookalikes and a sharper ICP.</b> <span>These feed straight back into stage 1.</span></li>
-        </ul>
-        <div class="who"><span class="me">Me: owner</span><span>Ops</span><span>Performance</span></div>
-        <p class="kpi"><b>Measure:</b> cost per qualified attendee over time</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="icp">
-  <div class="sh">
-    <h2>ICP score</h2>
-    <div>
-      <p class="big">Know who's in the room <span>before they arrive.</span></p>
-      <p class="body">A simple scoring model in HubSpot, updated after every event. Weights are a starting point and would be tuned with real data.</p>
-    </div>
-  </div>
+  <details class="L" id="l1">
+    <summary><span class="ln">Layer 1</span><span><span class="lt">Every event brief</span><span class="ls">The exact workflow I'd follow each time a new brief lands</span></span><span class="pl" aria-hidden="true">+</span></summary>
+    <div class="lb">
+      <p class="intro">From audience to event page to campaigns to attendance. <b>One core workflow</b>, with versions for PlatformCon (reactivating a known audience) and AgenticCon (a launch with new positioning).</p>
+      <ol class="wf">
+        <li><b>Brief intake</b><span>Capacity, date, target attendance rate, ICP mix and budget, agreed upfront.</span></li>
+        <li><b>Audience pull</b><span>City lists in HubSpot, the city's Luma calendar subscribers, partners and community leaders.</span></li>
+        <li><b>Event page</b><span>A Luma page with design and content, plus registration questions that qualify each attendee.</span></li>
+        <li><b>Campaigns</b><span>Briefs for performance and lifecycle, social, partners, speakers and community channels.</span></li>
+        <li><b>Attendance engine</b><span>Approval rules, reconfirm-or-release, reminders and waitlist backfill.</span></li>
+        <li><b>Post-event</b><span>Separate follow-ups for attendees and no-shows. Data goes back to HubSpot and the audience profile goes to sponsorship.</span></li>
+        <li><b>Retro</b><span>Score channels, partners and tests, then update the playbook.</span></li>
+      </ol>
+      <h3 class="sub">ICP score: who's in the room before they arrive</h3>
   <div class="icp">
     <div class="box">
       <h3>Score (0–100)</h3>
@@ -361,16 +334,111 @@ footer b{color:var(--ink);font-weight:600}
       <div class="tier"><b>C</b><p><b>Practitioners.</b> The heart of the community. Content, meetups, the virtual flagship and a path towards A and B.</p></div>
     </div>
   </div>
-</section>
 
-<section id="playbook">
-  <div class="sh">
-    <h2>SF playbook · v0.1</h2>
-    <div>
-      <p class="big">San Francisco: <span>two days, one audience strategy.</span></p>
-      <p class="body">A first draft built from public information. It would be validated against the real data, budget and calendar in the first weeks.</p>
+      <div class="sides" style="margin-top:1rem">
+        <div class="side"><span class="label">I own</span><h3>Registrations and attendance</h3><p>Segments, Luma pages, campaigns, the attendance engine, city audiences and the playbook.</p></div>
+        <div class="side"><span class="label">I brief and work with</span><h3>Design, content, performance, lifecycle</h3><p>Clear briefs, shared goals in attendees (not registrations), weekly syncs.</p></div>
+        <div class="side"><span class="label">I hand over</span><h3>Audience data to sponsorship and events</h3><p>Who's coming and who came, so sponsors meet the right people.</p></div>
+      </div>
     </div>
-  </div>
+  </details>
+
+  <details class="L" id="l2">
+    <summary><span class="ln">Layer 2</span><span><span class="lt">Growth &amp; retention flywheel</span><span class="ls">What builds up between events, so every city has an audience to draw on</span></span><span class="pl" aria-hidden="true">+</span></summary>
+    <div class="lb">
+      <p class="intro">Select a stage to see what happens in it, who owns it and what we measure. <b>The last stage feeds the first.</b></p>
+      <div class="fw">
+        <div class="wheel" role="tablist" aria-label="Flywheel stages">
+          <svg viewBox="0 0 100 100" aria-hidden="true"><circle class="ring" cx="50" cy="50" r="38"/><circle class="arc" cx="50" cy="50" r="38"/></svg>
+          <div class="core"><b>Every event<br>fills the next</b><span>city by city</span></div>
+        </div>
+        <div class="panel" id="fw-panel">
+          <div data-stage="1">
+            <span class="label">Stage 1</span><h3>Build the city audience</h3>
+            <p>Start from the data we already have, then add partners and new channels.</p>
+            <ul>
+              <li><b>HubSpot research and segmentation.</b> <span>Events attended, attended vs no-show, city, role, company.</span></li>
+              <li><b>ICP score and tiers.</b> <span>Fit, engagement and intent give tiers A, B and C.</span></li>
+              <li><b>Sync with performance and lifecycle.</b> <span>Goals set in qualified attendees. Lookalikes from tier A, LinkedIn targeting by title, email per tier.</span></li>
+              <li><b>City partners and leaders.</b> <span>Meetups, communities, newsletters and local leaders, with tracked codes.</span></li>
+              <li><b>New markets as tests.</b> <span>AI engineering communities for AgenticCon, and Web3 infrastructure teams (Layer 5).</span></li>
+            </ul>
+            <div class="who"><span class="me">Me: owner</span><span>Performance</span><span>Lifecycle</span><span>Partners</span></div>
+            <p class="kpi"><b>Measure:</b> city audience size · share of tiers A and B by source</p>
+          </div>
+          <div data-stage="2">
+            <span class="label">Stage 2</span><h3>Qualify &amp; convert</h3>
+            <p>A Luma page that converts, and registrations that tell us who's coming.</p>
+            <ul>
+              <li><b>Event page with design and content.</b> <span>Strong visuals and copy per event.</span></li>
+              <li><b>Registration questions.</b> <span>Role, company, team size and whether they're evaluating tools.</span></li>
+              <li><b>Approval rules by tier.</b> <span>A: instant approval and a leaders invite. B: approved. C: waitlist or virtual when space is tight.</span></li>
+            </ul>
+            <div class="who"><span class="me">Me: owner</span><span>Design</span><span>Content</span></div>
+            <p class="kpi"><b>Measure:</b> page conversion · tier mix</p>
+          </div>
+          <div data-stage="3">
+            <span class="label">Stage 3</span><h3>Show up</h3>
+            <p>Registration is a promise. Attendance is the result.</p>
+            <ul>
+              <li><b>Attendance engine.</b> <span>Who's in the room emails, reconfirm or release 48h before, calendar holds, day-of message.</span></li>
+              <li><b>Attendance tests.</b> <span>Speaker invites, team tickets, a convince-your-manager kit and perks that only exist in person.</span></li>
+            </ul>
+            <div class="who"><span class="me">Me: owner</span><span>Lifecycle</span></div>
+            <p class="kpi"><b>Measure:</b> attendance rate by tier</p>
+          </div>
+          <div data-stage="4">
+            <span class="label">Stage 4</span><h3>Experience &amp; capture</h3>
+            <p>The events team runs the room. I make sure we learn from it.</p>
+            <ul>
+              <li><b>Check-in synced to HubSpot.</b> <span>Reliable attendance data per person.</span></li>
+              <li><b>Interests captured.</b> <span>Sessions and roundtables attended, for personal follow-ups.</span></li>
+              <li><b>Audience profile to sponsorship.</b> <span>So sponsors meet the right people.</span></li>
+            </ul>
+            <div class="who"><span>Events team</span><span class="me">Me: data</span><span>Sponsorship</span></div>
+            <p class="kpi"><b>Measure:</b> data completeness · qualified attendance</p>
+          </div>
+          <div data-stage="5">
+            <span class="label">Stage 5</span><h3>Re-engage between events</h3>
+            <p>Keep the audience warm, the way we kept Golden Sats participants active across four seasons.</p>
+            <ul>
+              <li><b>Follow-ups.</b> <span>Recordings and resources for attendees; a second chance for no-shows.</span></li>
+              <li><b>City rhythm.</b> <span>City Luma calendars, local meetups, newsletter blocks and community content.</span></li>
+            </ul>
+            <div class="who"><span class="me">Me: owner</span><span>Lifecycle</span><span>Community</span></div>
+            <p class="kpi"><b>Measure:</b> engaged share of the city audience</p>
+          </div>
+          <div data-stage="6">
+            <span class="label">Stage 6</span><h3>Advocate &amp; refer</h3>
+            <p>Attendees become a channel.</p>
+            <ul>
+              <li><b>Referrals and team invites.</b> <span>Bring your platform lead or your team.</span></li>
+              <li><b>Speakers and ambassadors.</b> <span>Local leaders and meetup organisers with their own codes.</span></li>
+              <li><b>Partners.</b> <span>The best-performing partners are invited back for the next event.</span></li>
+            </ul>
+            <div class="who"><span class="me">Me: owner</span><span>Community</span><span>Partners</span></div>
+            <p class="kpi"><b>Measure:</b> repeat attendance · referral and partner share</p>
+          </div>
+          <div data-stage="7">
+            <span class="label">Stage 7</span><h3>Learn &amp; re-segment</h3>
+            <p>The data loop that makes the wheel faster.</p>
+            <ul>
+              <li><b>Update scores with real attendance.</b> <span>No-shows lose points; people who come back gain them.</span></li>
+              <li><b>Rank channels, partners and tests</b> <span>by cost per attendee who actually showed up.</span></li>
+              <li><b>Sharper lookalikes and ICP.</b> <span>These feed straight back into stage 1.</span></li>
+            </ul>
+            <div class="who"><span class="me">Me: owner</span><span>Ops</span><span>Performance</span></div>
+            <p class="kpi"><b>Measure:</b> cost per attendee over time</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <details class="L" id="l3">
+    <summary><span class="ln">Layer 3</span><span><span class="lt">San Francisco playbook</span><span class="ls">v0.1 for PlatformCon SF (24 Feb) and AgenticCon (25 Feb 2027)</span></span><span class="pl" aria-hidden="true">+</span></summary>
+    <div class="lb">
+      <p class="intro">A first draft built from public information. It would be validated against the real data, budget and calendar in the first weeks.</p>
 
   <div class="event">
     <div class="ev"><time>Wed 24 Feb 2027</time><h3>PlatformCon SF Live Day</h3><p>Platform engineers and platform leaders. Reactivating a known audience.</p></div>
@@ -381,10 +449,10 @@ footer b{color:var(--ink);font-weight:600}
     <li><b>Qualified, not just full</b>Set a target share of tiers A and B per event</li>
     <li><b>Show-up rate</b>Beat the baseline from past editions</li>
     <li><b>Decision makers present</b>A named list of tier A accounts, tracked weekly</li>
-    <li><b>Sponsor outcomes</b>Pre-booked meetings and a report within 10 days</li>
+    <li><b>Reusable SF audience</b>A larger, more engaged city audience after the event</li>
   </ul>
 
-  <h3 class="big" style="margin-top:3rem;font-size:clamp(1.15rem,2.2vw,1.5rem)">Segments</h3>
+  <h3 class="sub">Segments</h3>
   <div class="scroll" style="margin-top:1rem">
     <table class="seg">
       <thead><tr><th>Segment</th><th>Who</th><th>Message</th><th>Main channels</th></tr></thead>
@@ -398,30 +466,30 @@ footer b{color:var(--ink);font-weight:600}
     </table>
   </div>
 
-  <h3 class="big" style="margin-top:3rem;font-size:clamp(1.15rem,2.2vw,1.5rem)">Timeline</h3>
+  <h3 class="sub">Timeline</h3>
   <ol class="tl">
     <li><time><b>T-14 weeks</b>from 18 Nov</time><div><h4>Foundation</h4><ul><li>HubSpot audit for Bay Area and US West; first ICP scoring and tier lists</li><li>SF partner map: local platform and cloud-native meetups, AI engineering groups, newsletters, local leaders</li><li>One brief per event for performance and lifecycle; Luma pages with registration questions</li></ul><div class="chips"><span>Me</span><span>Ops</span><span>Performance</span><span>Lifecycle</span></div></div></li>
     <li><time><b>T-12 weeks</b>from 2 Dec</time><div><h4>Community first</h4><ul><li>Early access for the community: Slack, Platform Weekly, past attendees</li><li>Ambassador, speaker and sponsor codes go live</li><li>Two-day pass for people interested in both events</li></ul><div class="chips"><span>Me</span><span>Community</span><span>Content</span></div></div></li>
     <li><time><b>T-10 to T-7</b>mid Dec to early Jan</time><div><h4>Holiday mode: warm, not loud</h4><ul><li>Light content and retargeting; no hard pushes</li><li>Build tier A target lists with sponsors (ABM)</li><li>Recruit SF speakers and co-hosts for warm-up meetups</li></ul><div class="chips"><span>Me</span><span>Sponsorship</span><span>Partners</span></div></div></li>
-    <li class="hot"><time><b>T-6 weeks</b>from 13 Jan</time><div><h4>Acquisition push</h4><ul><li>Warm-up meetup co-hosted with an SF partner</li><li>LinkedIn campaigns by title and target accounts; lookalikes from tier A</li><li>Test: Web3 infra roundtable · AI community partnerships for AgenticCon</li></ul><div class="chips"><span>Me</span><span>Performance</span><span>Partners</span></div></div></li>
+    <li class="hot"><time><b>T-6 weeks</b>from 13 Jan</time><div><h4>Acquisition push</h4><ul><li>Warm-up meetup co-hosted with an SF partner</li><li>LinkedIn campaigns by title and target accounts; lookalikes from tier A</li><li>Market test: Web3 infra roundtable · AI community partnerships for AgenticCon</li></ul><div class="chips"><span>Me</span><span>Performance</span><span>Partners</span></div></div></li>
     <li><time><b>T-4 weeks</b>from 27 Jan</time><div><h4>Leaders and social proof</h4><ul><li>1:1 Leaders Track and VIP dinner invites to tier A</li><li>"Who's in the room" emails: companies, roles, speakers</li><li>Convince-your-manager kit and team tickets</li></ul><div class="chips"><span>Me</span><span>Lifecycle</span><span>Sponsorship</span></div></div></li>
-    <li><time><b>T-2 weeks</b>from 10 Feb</time><div><h4>Convert and calibrate</h4><ul><li>Last conversion push per segment; manage the waitlist</li><li>Calibrate overbooking by tier from historical no-shows</li><li>Pre-book sponsor meetings for tier A (opt-in)</li></ul><div class="chips"><span>Me</span><span>Events</span><span>Sponsorship</span></div></div></li>
+    <li><time><b>T-2 weeks</b>from 10 Feb</time><div><h4>Convert and calibrate</h4><ul><li>Last conversion push per segment; manage the waitlist</li><li>Calibrate overbooking by tier from historical no-shows</li><li>Share the opt-in tier A list with sponsorship</li></ul><div class="chips"><span>Me</span><span>Events</span><span>Sponsorship</span></div></div></li>
     <li class="hot"><time><b>T-48h</b>22 Feb</time><div><h4>Reconfirm or release</h4><ul><li>"Still coming?" Released spots go to the waitlist</li><li>Calendar holds plus a day-of message (test SMS against email)</li></ul><div class="chips"><span>Lifecycle</span><span>Me</span></div></div></li>
-    <li class="hot"><time><b>24–25 Feb</b>event days</time><div><h4>Connect</h4><ul><li>Check-in synced to HubSpot; Leaders Track and sponsor meetings</li><li>VIP dinner on the evening of the 24th, between both events</li></ul><div class="chips"><span>Events</span><span>Me</span><span>Sponsors</span></div></div></li>
-    <li><time><b>T+1 to T+14</b>until 10 Mar</time><div><h4>Prove and loop</h4><ul><li>Separate follow-ups for attendees and no-shows; invite to the next city</li><li>Sponsor audience reports within 10 days</li><li>Re-score, rank channels and partners, and update the playbook</li></ul><div class="chips"><span>Me</span><span>Sponsorship</span><span>Ops</span></div></div></li>
+    <li class="hot"><time><b>24–25 Feb</b>event days</time><div><h4>Connect</h4><ul><li>Check-in synced to HubSpot, so attendance data is reliable</li><li>VIP dinner on the evening of the 24th, between both events</li></ul><div class="chips"><span>Events</span><span>Me</span><span>Sponsors</span></div></div></li>
+    <li><time><b>T+1 to T+14</b>until 10 Mar</time><div><h4>Prove and loop</h4><ul><li>Separate follow-ups for attendees and no-shows; invite to the next city</li><li>Audience data to the sponsorship team within 10 days</li><li>Re-score, rank channels and partners, and update the playbook</li></ul><div class="chips"><span>Me</span><span>Sponsorship</span><span>Ops</span></div></div></li>
   </ol>
 
-  <h3 class="big" style="margin-top:2rem;font-size:clamp(1.15rem,2.2vw,1.5rem)">Tests for SF</h3>
+  <h3 class="sub">Tests for SF</h3>
   <div class="tests" style="margin-top:1rem">
     <div class="test"><span class="label">Show-up</span><h4>Approval vs open RSVP</h4><p>Does curation raise commitment?</p><span class="m">Show-up rate per variant</span></div>
     <div class="test"><span class="label">Show-up</span><h4>Reconfirm or release</h4><p>48h nudge with the waitlist backfilled.</p><span class="m">Spots recovered · show-up rate</span></div>
-    <div class="test"><span class="label">Quality</span><h4>Sponsor ABM invites</h4><p>Decision makers from sponsors' target accounts.</p><span class="m">Tier A present · meetings held</span></div>
+    <div class="test"><span class="label">Quality</span><h4>1:1 leader invites</h4><p>Personal invites to tier A, including target accounts shared by sponsorship.</p><span class="m">Tier A registered and present</span></div>
     <div class="test"><span class="label">Acquisition</span><h4>Web3 infra roundtable</h4><p>Do blockchain infra teams match the ICP?</p><span class="m">Share of tiers A and B · show-up</span></div>
     <div class="test"><span class="label">Acquisition</span><h4>Speaker codes</h4><p>Speakers invite their own networks.</p><span class="m">Qualified registrations per speaker</span></div>
     <div class="test"><span class="label">Cross-event</span><h4>Two-day pass</h4><p>Bundle vs separate tickets.</p><span class="m">Attendees at both days · cannibalization</span></div>
   </div>
 
-  <h3 class="big" style="margin-top:3rem;font-size:clamp(1.15rem,2.2vw,1.5rem)">Weekly dashboard</h3>
+  <h3 class="sub">Weekly dashboard</h3>
   <div class="dash" style="margin-top:1rem">
     <div class="dash-top"><b>PlatformCon SF · week T-4</b><span class="mock">Mockup · illustrative data</span></div>
     <div class="tiles">
@@ -429,7 +497,7 @@ footer b{color:var(--ink);font-weight:600}
       <div class="tile"><small>Tier A + B share</small><strong>54%</strong><em>target 50%</em></div>
       <div class="tile"><small>Tier A confirmed</small><strong>71</strong><em>of 120 target accounts</em></div>
       <div class="tile"><small>Expected show-up</small><strong>63%</strong><em>model, by tier</em></div>
-      <div class="tile"><small>Sponsor meetings</small><strong>38</strong><em>pre-booked</em></div>
+      <div class="tile"><small>SF city audience</small><strong>3.4k</strong><em>+420 new this cycle</em></div>
     </div>
     <div class="dgrid">
       <div class="tile">
@@ -450,59 +518,50 @@ footer b{color:var(--ink);font-weight:600}
     </div>
   </div>
   <p class="note">All numbers in the dashboard are illustrative, to show the format. Real targets come from the baselines in the first 30 days.</p>
-</section>
 
-<section id="proof">
-  <div class="sh">
-    <h2>Proof</h2>
-    <div><p class="big">I've already built this loop. <span>Just for a different audience.</span></p></div>
-  </div>
-  <div>
-    <article class="case">
-      <div>
-        <h3>Owning presence at the biggest global events</h3>
-        <p>ETHGlobal, DevCon and more. I ran Rootstock's event strategy with BD and led the team on site.</p>
-        <ul>
-          <li>Chose the events, side events, partners and VIP dinners, and built the guest lists</li>
-          <li>Owned sponsorship, developer acquisition and merch, and coordinated with our DevEx team</li>
-          <li>Acted as sales enabler, passing qualified dev-team contacts to the commercial team</li>
-        </ul>
-      </div>
-      <aside><strong>Sponsor side</strong>I know what makes a sponsor renew</aside>
-    </article>
-    <article class="case">
-      <div>
-        <h3>A developer flywheel: acquire, activate, retain</h3>
-        <p>Hackathons and side events at major conferences brought developers in. Grants and our Hacktivator program, with tasks that kept people building, gave them a reason to stay.</p>
-      </div>
-      <aside><strong>600+</strong>developers brought into the ecosystem</aside>
-    </article>
-    <article class="case">
-      <div>
-        <h3>Golden Sats Challenge + RIF Me Up</h3>
-        <p>A partner-led campaign I designed end to end: name, branding, partners, mechanics, on-chain tracking and the Discord community. It ran in seasons, built so people would come back.</p>
-        <ul>
-          <li>10,000+ transactions and $100M+ in volume (Golden Sats)</li>
-          <li>35K+ transactions, 7,500+ unique wallets and 900K+ $RIF staked (combined)</li>
-        </ul>
-      </div>
-      <aside><strong>40%</strong>on-chain retention, the highest Rootstock had ever reached</aside>
-    </article>
-    <article class="case">
-      <div>
-        <h3>HubSpot, ABM and senior audiences</h3>
-        <p>Segmentation, workflows, lead capture and follow-up so every event fed the pipeline. ABM and tailored VIP experiences for institutional, senior audiences, such as at Money20/20.</p>
-      </div>
-      <aside><strong>Hands-on</strong>Copy, email, paid, newsletters, co-marketing, design when needed</aside>
-    </article>
-  </div>
-</section>
+    </div>
+  </details>
 
-<section id="plan">
-  <div class="sh">
-    <h2>First 180 days</h2>
-    <div><p class="big">Prove it on SF, <span>then scale the playbook.</span></p></div>
+  <details class="L" id="l4">
+    <summary><span class="ln">Layer 4</span><span><span class="lt">Outcomes</span><span class="ls">How I measure success, and the first 180 days</span></span><span class="pl" aria-hidden="true">+</span></summary>
+    <div class="lb">
+      <p class="intro">One headline number: <b>attendance rate</b>, because that's how the role defines success. Everything else explains it.</p>
+  <div class="kpis">
+    <div class="kg">
+      <span class="label">Outcomes</span><h3>What the role is judged on</h3>
+      <ul>
+        <li><b>Attendance rate</b><span>Attended ÷ registered, per event and city, trending up</span></li>
+        <li><b>Qualified attendance</b><span>Share of attendees in tiers A and B</span></li>
+        <li><b>Reusable city audience</b><span>Size and engagement of each city's audience; share of registrations from it</span></li>
+      </ul>
+    </div>
+    <div class="kg">
+      <span class="label">Efficiency</span><h3>How well we fill rooms</h3>
+      <ul>
+        <li><b>Pacing vs plan</b><span>Registrations against the target curve, week by week</span></li>
+        <li><b>Page conversion</b><span>Luma page views → registrations, per segment</span></li>
+        <li><b>Cost per attendee</b><span>Per channel, counted on people who showed up</span></li>
+        <li><b>Source mix</b><span>Community, partners, paid, speakers, referrals</span></li>
+      </ul>
+    </div>
+    <div class="kg">
+      <span class="label">Compounding</span><h3>Is the system working?</h3>
+      <ul>
+        <li><b>Repeat attendance</b><span>People who come back, across events and cities</span></li>
+        <li><b>Organic share</b><span>Registrations from the existing audience, referrals and partners vs new paid</span></li>
+        <li><b>Playbook speed</b><span>Time from brief to live page; events on target by T-2 weeks with no firefighting</span></li>
+      </ul>
+    </div>
   </div>
+  <div class="cad">
+    <div><b>Weekly</b><span>Pacing dashboard per event</span></div>
+    <div><b>Post-event</b><span>Scorecard within 7 days</span></div>
+    <div><b>Monthly</b><span>City audience review</span></div>
+    <div><b>Quarterly</b><span>Playbook review and new tests</span></div>
+  </div>
+  <p class="note">Shared with sponsorship rather than owned by me: sponsor satisfaction and renewals. Qualified attendance is how I contribute to them.</p>
+
+      <h3 class="sub">First 180 days</h3>
   <div class="plan">
     <div><time>DAYS 1–30</time><h3>Understand</h3><p>Audience, data, past results and processes. Set baselines and the first version of the ICP score.</p></div>
     <div><time>DAYS 31–60</time><h3>Test</h3><p>Run the SF playbook live: segments, partners and attendance tests.</p></div>
@@ -510,6 +569,24 @@ footer b{color:var(--ink);font-weight:600}
     <div><time>DAYS 91–180</time><h3>Prove</h3><p>Apply it to the next cities: higher show-up, a better tier mix and sponsors who renew.</p></div>
   </div>
   <p class="note">I won't promise percentages before seeing the baselines.</p>
+
+    </div>
+  </details>
+
+  <details class="L" id="l5">
+    <summary><span class="ln">Layer 5</span><span><span class="lt">Web3 testing</span><span class="ls">An untapped audience I already know, and one small test to validate it</span></span><span class="pl" aria-hidden="true">+</span></summary>
+    <div class="lb">
+      <p class="intro">Exchanges, custodians, payment companies and node, RPC and L2 infrastructure providers run large platform teams with the same problems: scale, reliability, security and developer experience. <b>The focus is their infrastructure and platform teams, not smart contract developers.</b></p>
+  <div class="tests t4">
+    <div class="test"><span class="label">Hypothesis</span><h4>Same problems, untapped audience</h4><p>A share of Web3 infra and platform leaders fit the PlatformCon and AgenticCon ICP but aren't in the community yet.</p></div>
+    <div class="test"><span class="label">Test</span><h4>One roundtable, one side event</h4><p>"Platform engineering for blockchain infrastructure", next to a major Web3 conference (ETHGlobal, DevCon), plus a Web3 infra segment on an existing PlatformCon page.</p></div>
+    <div class="test"><span class="label">Partners</span><h4>Ecosystem distribution</h4><p>Infra companies and ecosystem partners I've worked with as co-hosts, plus their engineering teams as speakers.</p></div>
+    <div class="test"><span class="label">Decision</span><h4>Scale only if it qualifies</h4><p>Continue if 40%+ of registrants are tier A or B, the show-up rate is at or above average, and sponsors show interest. Otherwise stop.</p></div>
+  </div>
+
+      <div class="evid"><p><b>Signal:</b> I couldn't find any Web3-focused content or events in the Platform Engineering ecosystem. Yet Web3 companies like Consensys already hire platform engineers through your jobs board, and infrastructure providers like Blockdaemon talk about platform engineering. It looks like an untapped segment, worth one small test.</p></div>
+    </div>
+  </details>
 </section>
 
 <section id="contact">
@@ -532,30 +609,38 @@ footer b{color:var(--ink);font-weight:600}
 
 <script>
 (function(){
-  var names=["Awareness & acquisition","Qualify & convert","Activate & show up","Connect on site","Prove value","Retain & advocate","Learn & re-segment"];
+  var names=["City audience","Qualify & convert","Show up","Experience & capture","Re-engage","Advocate & refer","Learn & re-segment"];
   var wheel=document.querySelector('.wheel');
   var stages=[].slice.call(document.querySelectorAll('#fw-panel [data-stage]'));
-  if(!wheel||!stages.length)return;
-  var btns=[];
-  names.forEach(function(n,i){
-    var a=(-90+i*360/7)*Math.PI/180;
-    var b=document.createElement('button');
-    b.className='node';b.type='button';b.setAttribute('role','tab');
-    b.style.left=(50+38*Math.cos(a))+'%';b.style.top=(50+38*Math.sin(a))+'%';
-    b.innerHTML='<em>0'+(i+1)+'</em>'+n.replace(' & ',' &amp; ');
-    b.addEventListener('click',function(){show(i)});
-    b.addEventListener('keydown',function(e){
-      if(e.key==='ArrowRight'||e.key==='ArrowDown'){e.preventDefault();show((i+1)%7,true)}
-      if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();show((i+6)%7,true)}
+  if(wheel&&stages.length){
+    var btns=[];
+    names.forEach(function(n,i){
+      var a=(-90+i*360/7)*Math.PI/180;
+      var b=document.createElement('button');
+      b.className='node';b.type='button';b.setAttribute('role','tab');
+      b.style.left=(50+38*Math.cos(a))+'%';b.style.top=(50+38*Math.sin(a))+'%';
+      b.innerHTML='<em>0'+(i+1)+'</em>'+n.replace(' & ',' &amp; ');
+      b.addEventListener('click',function(){show(i)});
+      b.addEventListener('keydown',function(e){
+        if(e.key==='ArrowRight'||e.key==='ArrowDown'){e.preventDefault();show((i+1)%7,true)}
+        if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();show((i+6)%7,true)}
+      });
+      wheel.appendChild(b);btns.push(b);
     });
-    wheel.appendChild(b);btns.push(b);
-  });
-  function show(i,focus){
-    stages.forEach(function(s,j){s.hidden=j!==i});
-    btns.forEach(function(b,j){b.setAttribute('aria-selected',j===i?'true':'false');b.tabIndex=j===i?0:-1});
-    if(focus)btns[i].focus();
+    var show=function(i,focus){
+      stages.forEach(function(s,j){s.hidden=j!==i});
+      btns.forEach(function(b,j){b.setAttribute('aria-selected',j===i?'true':'false');b.tabIndex=j===i?0:-1});
+      if(focus)btns[i].focus();
+    };
+    show(0);
   }
-  show(0);
+  var all=[].slice.call(document.querySelectorAll('details.L'));
+  var t=document.querySelector('.toggle-all');
+  function sync(){var open=all.every(function(d){return d.open});t.textContent=open?'Collapse all':'Expand all';t.setAttribute('aria-pressed',open?'true':'false')}
+  t.addEventListener('click',function(){var open=all.every(function(d){return d.open});all.forEach(function(d){d.open=!open});sync()});
+  all.forEach(function(d){d.addEventListener('toggle',sync)});
+  if(location.hash){var d=document.querySelector(location.hash);if(d&&d.tagName==='DETAILS')d.open=true}
+  document.querySelectorAll('a[href="#layers"]').forEach(function(a){a.addEventListener('click',function(){var f=document.getElementById('l1');if(f)f.open=true})});
 })();
 </script>
 </body>
