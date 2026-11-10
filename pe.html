@@ -277,6 +277,110 @@ details.L .lb{padding:0 0 2.5rem}
 .w6 .node{width:auto;min-width:5.6rem;aspect-ratio:auto;border-radius:999px;flex-direction:row;gap:.35rem;padding:.55rem .95rem;font-size:clamp(.78rem,1.9vw,.92rem);font-weight:600;white-space:nowrap;box-shadow:0 1px 0 var(--line)}
 .w6 .node em{margin:0;font-size:.78em}
 @media (max-width:480px){.w6 .node{min-width:0;padding:.45rem .7rem}}
+.mx{width:100%;border-collapse:collapse;font-size:.92rem}
+.scroll .mx{min-width:44rem}
+.mx th{text-align:left;font-weight:500;color:var(--mute);font-size:.8rem;padding:.6rem .75rem;border-bottom:1px solid var(--line)}
+.mx td{padding:.8rem .75rem;border-bottom:1px solid var(--line);vertical-align:top}
+.mx td:first-child{white-space:nowrap}
+.mx td b{font-weight:500;display:block}
+.mx td span{color:var(--mute)}
+.q{display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:.2rem .55rem;border-radius:999px}
+.q.qw{background:var(--accent);color:#15171B}.q.bb{background:var(--ink);color:var(--bg)}.q.ts{border:1px solid var(--accent);color:var(--accent)}.q.fi{border:1px solid var(--line);color:var(--mute)}
+.lvl{font-size:.82rem;color:var(--mute);white-space:nowrap}
+.wk{margin-top:1.5rem}
+.wk ul.ev{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:.75rem}
+.wk ul.ev li{background:var(--card);border-radius:14px;padding:1rem 1.1rem;font-size:.92rem;color:var(--mute)}
+.wk ul.ev li b{display:block;color:var(--ink);font-weight:500;margin-bottom:.15rem}
+.wk .did{margin:1rem 0 0;max-width:46rem;color:var(--mute);font-size:.95rem}
+.wk .did b{color:var(--ink);font-weight:500}
+
+/* v5 */
+.facts strong.w{font-size:clamp(1.5rem,3.2vw,2.1rem)}
+details.L details.L{border-top:0}
+details.L details.L>summary{grid-template-columns:4.5rem minmax(0,1fr) 2.25rem;padding:1rem 0}
+details.L details.L>summary .lt{font-size:1.08rem}
+details.L details.L>summary .ls{font-size:.88rem}
+details.L details.L>summary .pl{width:1.9rem;height:1.9rem;font-size:1.1rem}
+details.L details.L .lb{padding:0 0 1.5rem}
+.brief{width:100%;border-collapse:collapse;font-size:.94rem}
+.brief th{text-align:left;font-weight:500;color:var(--mute);font-size:.8rem;padding:.55rem .75rem;border-bottom:1px solid var(--line)}
+.brief td{padding:.75rem;border-bottom:1px solid var(--line);vertical-align:top}
+.brief td:first-child{font-weight:500;white-space:nowrap}
+.brief td.t{white-space:nowrap;color:var(--accent);font-weight:600;font-size:.85rem}
+.brief td span{color:var(--mute)}
+.scroll .brief{min-width:40rem}
+.must{display:grid;grid-template-columns:repeat(auto-fit,minmax(12.5rem,1fr));gap:.75rem}
+.must div{background:var(--card);border-radius:14px;padding:1rem 1.1rem;border-top:3px solid var(--accent)}
+.must b{display:block;font-weight:500;margin-bottom:.25rem}
+.must span{color:var(--mute);font-size:.9rem}
+.logos3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-bottom:1rem}
+@media (max-width:760px){.logos3{grid-template-columns:1fr}}
+.co{background:var(--card);border-radius:18px;padding:1.3rem 1.35rem}
+.co .wm{display:flex;align-items:center;height:2.6rem;font-size:1.45rem;font-weight:600;letter-spacing:-.03em}
+.co .wm img{max-height:2.2rem;width:auto}
+.co ul{margin:.75rem 0 0;padding:0;list-style:none}
+.co li{padding:.55rem 0;border-top:1px solid var(--line);font-size:.9rem;color:var(--mute)}
+.co li b{color:var(--ink);font-weight:500}
+.co .src{margin:.75rem 0 0;font-size:.8rem;color:var(--mute)}
+.co .src a{color:var(--mute);text-underline-offset:3px}
+.co .src a:hover{color:var(--accent)}
+.reach{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:1.5rem;align-items:center;background:var(--ink);color:var(--bg);border-radius:18px;padding:clamp(1.25rem,3vw,1.75rem);margin:1rem 0}
+@media (max-width:760px){.reach{grid-template-columns:1fr}}
+.reach .nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.75rem}
+.reach .nums strong{display:block;font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:500;letter-spacing:-.04em;color:var(--accent);line-height:1.1}
+.reach .nums span{font-size:.8rem;color:color-mix(in srgb,var(--bg) 70%,transparent)}
+.reach p{margin:0;font-size:.95rem;color:color-mix(in srgb,var(--bg) 82%,transparent)}
+.reach p b{color:var(--bg);font-weight:500}
+.reach small{display:block;margin-top:.6rem;font-size:.75rem;color:color-mix(in srgb,var(--bg) 55%,transparent)}
+.reach small a{color:inherit}
+.loopc{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:.75rem}
+.loopc div{background:var(--card);border-radius:14px;padding:1rem 1.1rem}
+.loopc .label{margin-bottom:.35rem;display:block}
+.loopc b{display:block;font-weight:500;margin-bottom:.2rem}
+.loopc span.d{color:var(--mute);font-size:.9rem}
+.cities{display:flex;flex-wrap:wrap;gap:.5rem;margin:1rem 0 0;padding:0;list-style:none}
+.cities li{display:flex;align-items:center;gap:.5rem;padding:.5rem .85rem;border-radius:999px;background:var(--card);font-size:.88rem}
+.cities li b{font-weight:600}
+.cities li span{color:var(--mute)}
+.cities li.now{background:var(--accent);color:#15171B}
+.cities li.now span{color:#15171B}
+.cities li.arrow{background:none;padding:.5rem .1rem;color:var(--mute)}
+#s1 .wk ul.ev{background:none!important;box-shadow:none!important;border:0!important}
+.wk ul.ev li a{color:var(--ink);text-underline-offset:3px}
+.wk ul.ev li a:hover{color:var(--accent)}
+#s1 details.L>summary{grid-template-columns:5rem minmax(0,1fr) 2.25rem}
+.g6{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+@media (max-width:980px){.g6{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.g6{grid-template-columns:1fr}}
+.c6{background:var(--card);border-radius:18px;padding:1.35rem 1.4rem;display:flex;flex-direction:column}
+.c6 h3{margin:.45rem 0 .35rem;font-size:1.12rem;font-weight:500;letter-spacing:-.01em}
+.c6 p{margin:0 0 .75rem;color:var(--mute);font-size:.93rem}
+.c6 ul{margin:0 0 1rem;padding:0;list-style:none}
+.c6 li{position:relative;padding:.35rem 0 .35rem 1rem;font-size:.88rem;color:var(--mute);border-top:1px solid var(--line)}
+.c6 li::before{content:"";position:absolute;left:0;top:.85rem;width:.35rem;height:.35rem;border-radius:50%;background:var(--accent)}
+.c6 .for{margin-top:auto;font-size:.85rem;color:var(--ink)}
+.c6 .for::before{content:"→ ";color:var(--accent)}
+.wk-head{display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;flex-wrap:wrap;margin:2.5rem 0 1rem}
+.wk-head .sub{margin:0}
+.wk-head .sub span{color:var(--mute);font-weight:400;font-size:.9rem}
+.flt{display:flex;flex-wrap:wrap;gap:.4rem}
+.flt button{font:inherit;font-size:.82rem;padding:.4rem .8rem;border-radius:999px;border:1px solid var(--line);background:none;color:var(--mute);cursor:pointer}
+.flt button:hover{border-color:var(--accent);color:var(--ink)}
+.flt button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.eg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+@media (max-width:980px){.eg{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.eg{grid-template-columns:1fr}}
+.ec{display:flex;flex-direction:column;background:var(--card);border-radius:16px;overflow:hidden;text-decoration:none;color:inherit;transition:transform .2s,box-shadow .2s}
+.ec:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.ec[hidden]{display:none}
+.ec .im{display:block;aspect-ratio:800/420;background:#15171B;overflow:hidden}
+.ec .im img{width:100%;height:100%;object-fit:cover;display:block}
+.ec .im.contain{background:#15171B}.ec .im.contain img{object-fit:contain;padding:1.2rem}
+.ec .eb{display:flex;flex-direction:column;gap:.2rem;padding:.9rem 1rem 1.05rem;flex:1}
+.ec .tg{font-size:.7rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--accent)}
+.ec b{font-weight:500;font-size:.98rem;line-height:1.3}
+.ec .mt{font-size:.85rem;color:var(--mute)}
+.ec .rg{margin-top:auto;padding-top:.45rem;font-size:.82rem;color:var(--ink)}
 </style>
 </head>
 <body>
@@ -291,78 +395,135 @@ details.L .lb{padding:0 0 2.5rem}
 </nav>
 
 <header class="hero">
-  <p class="tag"><i></i>For Platform Engineering · Senior Events Growth Manager</p>
-  <h1>Fill the right rooms. Make sure they <span>show up</span>. Make the next one easier to fill.</h1>
-  <p class="lede">I've spent five years using events as a growth channel for technical audiences, and I've sat on the sponsor's side. Here's what I bring, and how I'd run events growth at Platform Engineering.</p>
+  <h1>Events growth for <span>PlatformCon</span> and AgenticCon.</h1>
+  <p class="lede">My experience, the work behind it, and how I'd approach growing registrations and attendance, from the first event brief to a playbook that repeats in every city.</p>
+  <p class="lede" style="margin-top:.6rem;font-size:1rem">Day-to-day work with Product, DevRel, Tech, Marketing and BD.</p>
   <ul class="facts">
     <li><strong>10+</strong>years in marketing, the last 5 in Web3, DeFi and fintech</li>
     <li><strong>20+</strong>global events and hackathons</li>
     <li><strong>600+</strong>developers brought in through hackathons and side events</li>
-    <li><strong>40%</strong>on-chain retention, the highest Rootstock had ever reached</li>
+    <li><strong class="w">ABM &amp; institutional</strong>side events, VIP dinners and campaigns for decision makers</li>
   </ul>
-
-  <h2 class="ch">What I bring to Platform Engineering</h2>
-  <div class="contrib">
-    <div class="cb"><span class="label">Events</span><h3>Developer ecosystems</h3><p>Hackathons, side events and sponsorships at ETHGlobal, DevCon and Encode Club, plus a Bangkok event co-run with Metaschool and our DevRel team.</p><span class="for">Technical audiences that register and show up</span></div>
-    <div class="cb"><span class="label">Community</span><h3>Communities &amp; partners</h3><p>Long-term relationships with developer communities, ecosystem partners and local leaders that kept bringing people to our events.</p><span class="for">A registration and attendance pipeline in every city</span></div>
-    <div class="cb"><span class="label">Acquisition</span><h3>Multi-channel lead gen &amp; co-marketing</h3><p>Email, social, paid, newsletters and partner campaigns. Co-marketing like Golden Sats, which drove $100M+ in volume.</p><span class="for">More qualified sources, less reliance on paid</span></div>
-    <div class="cb"><span class="label">Retention</span><h3>Growth loops that bring people back</h3><p>Grants, Hacktivator tasks and seasonal campaigns: 40% on-chain retention, with most participants active across four seasons.</p><span class="for">Audiences that return event after event</span></div>
-    <div class="cb"><span class="label">ABM</span><h3>Decision makers, not just headcount</h3><p>Target accounts, tailored outreach and VIP experiences for institutional and senior audiences, such as at Money20/20.</p><span class="for">The CTOs and platform leaders sponsors want to meet</span></div>
-    <div class="cb"><span class="label">Operations</span><h3>HubSpot &amp; marketing ops</h3><p>Segmentation, lead scoring, tags, workflows and lead capture, from every event through to sales.</p><span class="for">Segments and a playbook that repeat without firefighting</span></div>
-    <div class="cb"><span class="label">Collaboration</span><h3>Cross-functional by default</h3><p>Day-to-day work with Product, DevRel, Tech, Marketing and BD to tie events to business goals.</p><span class="for">One plan across design, content, performance and lifecycle</span></div>
-    <div class="cb"><span class="label">Execution</span><h3>Briefing and hands-on work</h3><p>Briefed PR, paid media, agencies, KOLs and influencers, and did the hands-on work myself: copy, email, newsletters and design.</p><span class="for">Speed, without waiting on others</span></div>
-  </div>
-  <div class="btns">
-    <a class="btn solid" href="#layers">Explore the approach</a>
-    <a class="btn" href="mailto:me@ricardojcastro.pt?subject=Senior%20Events%20Growth%20Manager">Get in touch</a>
-  </div>
 </header>
 
 <section id="layers">
   <div class="lhead">
-    <h2>Five layers. <span>Open the one you need.</span></h2>
+    <h2>Eight sections. <span>Open the one you need.</span></h2>
     <button class="toggle-all" type="button" aria-pressed="false">Expand all</button>
   </div>
 
-  <details class="L" id="l1">
-    <summary><span class="ln">Layer 1</span><span><span class="lt">Every event brief</span><span class="ls">The exact workflow I'd follow each time a new brief lands</span></span><span class="pl" aria-hidden="true">+</span></summary>
+  <details class="L" id="s1" open>
+    <summary><span class="ln">01</span><span><span class="lt">What I bring</span><span class="ls">Six areas, and the events and campaigns behind them</span></span><span class="pl" aria-hidden="true">+</span></summary>
     <div class="lb">
-      <p class="intro">From audience to event page to campaigns to attendance. <b>One core workflow</b>, with versions for PlatformCon (reactivating a known audience) and AgenticCon (a launch with new positioning).</p>
-      <ol class="wf">
-        <li><b>Brief intake</b><span>Capacity, date, target attendance rate, ICP mix and budget, agreed upfront.</span></li>
-        <li><b>Audience pull</b><span>City lists in HubSpot, the city's Luma calendar subscribers, partners and community leaders.</span></li>
-        <li><b>Event page</b><span>A Luma page with design and content, plus registration questions that qualify each attendee.</span></li>
-        <li><b>Campaigns</b><span>Briefs for performance and lifecycle, social, partners, speakers and community channels.</span></li>
-        <li><b>Attendance engine</b><span>Approval rules, reconfirm-or-release, reminders and waitlist backfill.</span></li>
-        <li><b>Post-event</b><span>Separate follow-ups for attendees and no-shows. Data goes back to HubSpot and the audience profile goes to sponsorship.</span></li>
-        <li><b>Retro</b><span>Score channels, partners and tests, then update the playbook.</span></li>
-      </ol>
-      <h3 class="sub">ICP score: who's in the room before they arrive</h3>
-  <div class="icp">
-    <div class="box">
-      <h3>Score (0–100)</h3>
-      <div class="wt"><span>Fit</span><div class="bar"><i style="width:50%"></i></div><b>50</b><small>Role and seniority, company size, engineering team size, cloud-native stack</small></div>
-      <div class="wt"><span>Engagement</span><div class="bar"><i style="width:30%"></i></div><b>30</b><small>Past events, Slack, newsletter, courses and certifications</small></div>
-      <div class="wt"><span>Intent</span><div class="bar"><i style="width:20%"></i></div><b>20</b><small>Evaluating tools in the next 12 months, on a sponsor's target account list</small></div>
+      <div class="g6">
+        <div class="c6"><span class="label">ABM</span><h3>ABM &amp; institutional</h3><p>Target accounts, 1:1 outreach and curated rooms for senior audiences.</p><ul><li>VIP dinners and institutional side events with Mercado Bitcoin, Tyr Capital and Midas</li><li>Institutional newsletter and webinars ("Bitcoin as collateral")</li><li>Paid media: LinkedIn Ads and newsletter banners</li><li>Co-marketing with institutional partners</li><li>Lead magnets: Bitcoin Intelligence Tool, Lead Capture Tool</li></ul><span class="for">The decision makers sponsors want to meet</span></div>
+        <div class="c6"><span class="label">Events</span><h3>Global events &amp; sponsorships</h3><p>Choosing the right events with BD, then making them pay off.</p><ul><li>Sponsorships at ETHGlobal, Devcon and Encode Club</li><li>Side events next to Consensus Hong Kong, Paris Blockchain Week, BTC Prague, Permissionless and Devconnect</li><li>Team on site, merch and sales enablement</li></ul><span class="for">Rooms that fill, and a portfolio chosen with intent</span></div>
+        <div class="c6"><span class="label">Partners</span><h3>Communities &amp; co-marketing partners</h3><p>Partners who bring their audiences to every event.</p><ul><li>LABITCONF 2024 partnership in Buenos Aires</li><li>Co-hosts: Mercado Bitcoin, Hypernative, Tyr Capital, Midas, Metaschool</li><li>Community formats: Bitcoin &amp; Brews and the Devconnect Buenos Aires week</li><li>Co-marketing campaigns like Golden Sats</li></ul><span class="for">A registration pipeline in every city</span></div>
+        <div class="c6"><span class="label">Developers</span><h3>Developer acquisition</h3><p>Bringing developers in, and giving them reasons to keep building.</p><ul><li>ETHGlobal sponsorships and hackathons</li><li>Metaschool Dev Summit (1,341 registered) and the Bangkok Bitcoin Hackathon (1,082)</li><li>Chain Reaction dev meetups in Prague and Taipei, Hacker House at ETH Lisbon, Builders Workshop in London</li><li>RIF Me Up, grants and Hacktivator, with DevRel and DevEx</li></ul><span class="for">600+ developers brought into the ecosystem</span></div>
+        <div class="c6"><span class="label">Growth</span><h3>Acquisition &amp; retention</h3><p>Multi-channel campaigns, and loops that bring people back.</p><ul><li>Marketing automation and multi-channel campaigns at E-goi</li><li>Golden Sats: partner-led co-marketing, $100M+ in volume</li><li>Briefed PR, paid media, agencies, KOLs and influencers</li><li>Cultivators retention program</li><li>40% on-chain retention, the highest Rootstock had reached</li></ul><span class="for">Audiences that return event after event</span></div>
+        <div class="c6"><span class="label">Ops</span><h3>HubSpot &amp; marketing ops</h3><p>The system behind every campaign.</p><ul><li>Lists by role, seniority, company and city</li><li>Lead scoring and tags by profile, interest and interactions</li><li>Workflows from event lead capture to nurturing to sales</li><li>Qualified contacts passed to the commercial team</li></ul><span class="for">A playbook that repeats without firefighting</span></div>
+      </div>
+      <div class="wk-head">
+        <h3 class="sub">The work <span>· 26 events, 6,500+ registered guests on Luma</span></h3>
+        <div class="flt" role="group" aria-label="Filter the work">
+          <button type="button" aria-pressed="true" data-f="all">All</button>
+          <button type="button" aria-pressed="false" data-f="inst">Institutional &amp; VIP</button>
+          <button type="button" aria-pressed="false" data-f="comm">Community &amp; side events</button>
+          <button type="button" aria-pressed="false" data-f="dev">Developer</button>
+          <button type="button" aria-pressed="false" data-f="camp">Campaigns</button>
+        </div>
+      </div>
+      <div class="eg">
+        <a class="ec" data-g="inst" href="https://luma.com/ehnk8je9" target="_blank" rel="noopener"><span class="im"><img loading="lazy" src="https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=2,quality=75,width=800,height=420/event-social/dv/1e544542-ea51-4254-8f57-040691043789.png" alt="Bitcoin &amp; Business Breakfast @ The Still Early Cafe cover" width="800" height="420"></span><span class="eb"><span class="tg">Institutional &amp; VIP</span><b>Bitcoin &amp; Business Breakfast @ The Still Early Cafe</b><span class="mt">Buenos Aires · Jun 2026</span><span class="rg">66 registered</span></span></a>
+        <a class="ec" data-g="inst" href="https://luma.com/1ts8ldgs" target="_blank" rel="noopener"><span class="im"><img loading="lazy" src="https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=2,quality=75,width=800,height=420/event-social/9x/c5e04967-5918-4757-96be-eee716797963.png" alt="Institutional Bitcoin Breakfast with Tyr Capital cover" width="800" height="420"></span><span class="eb"><span class="tg">Institutional &amp; VIP</span><b>Institutional Bitcoin Breakfast with Tyr Capital</b><span class="mt">Cannes · Mar 2026</span><span class="rg">Private guest list</span></span></a>
+        <a class="ec" data-g="inst" href="https://luma.com/q11v1rk6" target="_blank" rel="noopener"><span class="im"><img loading="lazy" src="https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=2,quality=75,width=800,height=420/event-social/fb/94312c6e-1184-41f4-a75b-8b1353b6d2ee.png" alt="Institutional Roundtable &amp; Dinner with Mercado Bitcoin and Hypernative cover" width="800" height="420"></span><span class="eb"><span class="tg">Institutional &amp; VIP</span><b>Institutional Roundtable &amp; Dinner with Mercado Bitcoin and Hypernative</b><span class="mt">São Paulo · Mar 2026</span><span class="rg">45 registered</span></span></a>
+        <a class="ec" data-g="inst" href="https://luma.com/n9e9p7jp" target="_blank" rel="noopener"><span class="im"><img loading="lazy" src="https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=2,quality=75,width=800,height=420/event-social/ia/a0ba0098-1592-4e5f-b565-5e3b0a99ddc6.png" alt="Institutional Happy Hour: Rootstock &amp; Friends cover" width="800" height="420"></span><span class="eb"><span class="tg">Institutional &amp; VIP</span><b>Institutional Happy Hour: Rootstock &amp; Friends</b><span class="mt">Devconnect Buenos Aires · Nov 2025</span><span class="rg">114 registered</span></span></a>
+        <a class="ec" data-g="inst" href="https://luma.com/4o0vros7" target="_blank" rel="noopener"><span class="im"><img loading="lazy" src="https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=2,quality=75,width=800,height=420/event-social/kd/ade76e7a-bab5-44e5-8a78-217f3d08549b.png" alt="Rootstock &amp; Midas Institutional Skyhigh Brunch cover" width="800" height="420"></span><span class="eb"><span class="tg">Institutional &amp; VIP</span><b>Rootstock &amp; Midas Institutional Skyhigh Brunch</b><span class="mt">London · Oct 2025</span><span class="rg">86 registered</span></span></a>
+        <a class="ec" data-g="inst" href="https://luma.com/gv7c10bl" target="_blank" rel="noopener"><span class="im"><img loading="lazy" src="https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=2,quality=75,width=800,height=420/event-covers/dt/2590a618-b8b1-4da9-b3eb-c8c3f8ea0373.png" alt="Rootstock Rooftop: VIP Mixer cover" width="800" height="420"></span><span class="eb"><span class="tg">Institutional &amp; VIP</span><b>Rootstock Rooftop: VIP Mixer</b><span class="mt">New York · Mar 2025</span><span class="rg">464 registered</span></span></a>
+        <a class="ec" data-g="comm" href="https://luma.com/ou3pz8l1" target="_blank" rel="noopener"><span class="im"><img loading="lazy" src="https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=2,quality=75,width=800,height=420/event-social/eh/e29a71f5-7388-4cd1-81d8-c4cfc97471ed.png" alt="Bitcoin and Brews at Bar No. 7 cover" width="800" height="420"></span><span class="eb"><span class="tg">Community &amp; side events</span><b>Bitcoin and Brews at Bar No. 7</b><span class="mt">Prague · Jun 2026</span><span class="rg">Private guest list</span></span></a>
+        <a class="ec" data-g="comm" href="https://luma.com/adlrxvj9" target="_blank" rel="noopener"><span class="im"><img loading="lazy" src="https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=2,quality=75,width=800,height=420/event-social/q0/0a18e9e5-b5a8-4964-a20f-a8d449991f52.png" alt="Rootstock Still Early Café cover" width="800" height="420"></span><span class="eb"><span class="tg">Community &amp; side events</span><b>Rootstock Still Early Café</b><span class="mt">Devconnect Buenos Aires · Nov 2025</span><span class="rg">535 registered</span></span></a>
+        <a class="ec" data-g="comm" href="https://luma.com/2t6eqg6s" target="_blank" rel="noopener"><span class="im"><img loading="lazy" src="https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=2,quality=75,width=800,height=420/event-social/bx/03aafb7e-b20e-486f-8269-fd9aaef502a3.png" alt="Morning Rave cover" width="800" height="420"></span><span class="eb"><span class="tg">Community &amp; side events</span><b>Morning Rave</b><span class="mt">Devconnect Buenos Aires · Nov 2025</span><span class="rg">328 registered</span></span></a>
+        <a class="ec" data-g="comm" href="https://luma.com/8ard84a8" target="_blank" rel="noopener"><span class="im"><img loading="lazy" src="https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=2,quality=75,width=800,height=420/event-social/9p/accb1869-eca3-4f18-9e31-eda89657b119.png" alt="Rootstock BTCfi Day cover" width="800" height="420"></span><span class="eb"><span class="tg">Community &amp; side events</span><b>Rootstock BTCfi Day</b><span class="mt">Devconnect Buenos Aires · Nov 2025</span><span class="rg">321 registered</span></span></a>
+        <a class="ec" data-g="comm" href="https://luma.com/zdafjkql" target="_blank" rel="noopener"><span class="im"><img loading="lazy" src="https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=2,quality=75,width=800,height=420/event-social/gv/3b231d7f-0db9-403d-980b-af5eb83a5dab.png" alt="A.M Run Club cover" width="800" height="420"></span><span class="eb"><span class="tg">Community &amp; side events</span><b>A.M Run Club</b><span class="mt">Devconnect Buenos Aires · Nov 2025</span><span class="rg">216 registered</span></span></a>
+        <a class="ec" data-g="comm" href="https://luma.com/tuv4k8q7" target="_blank" rel="noopener"><span class="im"><img loading="lazy" src="https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=2,quality=75,width=800,height=420/event-social/0m/0b82366d-7ef4-4d3d-9c4a-9a2cc21e5c1c.png" alt="Crypto Mate Circle cover" width="800" height="420"></span><span class="eb"><span class="tg">Community &amp; side events</span><b>Crypto Mate Circle</b><span class="mt">Devconnect Buenos Aires · Nov 2025</span><span class="rg">202 registered</span></span></a>
+        <a class="ec" data-g="comm" href="https://luma.com/spr13gyd" target="_blank" rel="noopener"><span class="im"><img loading="lazy" src="https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=2,quality=75,width=800,height=420/event-covers/aq/8301f7e3-75d7-4002-8d2d-8db3c3048722.png" alt="Bitcoin &amp; Brews NY: Permissionless IV cover" width="800" height="420"></span><span class="eb"><span class="tg">Community &amp; side events</span><b>Bitcoin &amp; Brews NY: Permissionless IV</b><span class="mt">New York · Jun 2025</span><span class="rg">Private guest list</span></span></a>
+        <a class="ec" data-g="comm" href="https://luma.com/7jfboarp" target="_blank" rel="noopener"><span class="im"><img loading="lazy" src="https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=2,quality=75,width=800,height=420/event-covers/qa/2437d367-2735-4c07-bc80-5c1224da949e.png" alt="Bitcoin &amp; Brews at BTC Prague cover" width="800" height="420"></span><span class="eb"><span class="tg">Community &amp; side events</span><b>Bitcoin &amp; Brews at BTC Prague</b><span class="mt">Prague · Jun 2025</span><span class="rg">Private guest list</span></span></a>
+        <a class="ec" data-g="comm" href="https://luma.com/fr853mfw" target="_blank" rel="noopener"><span class="im"><img loading="lazy" src="https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=2,quality=75,width=800,height=420/event-covers/xt/65358891-8e3e-4bf0-bb6c-05085412f383.png" alt="Bitcoin &amp; Brews at Paris Blockchain Week cover" width="800" height="420"></span><span class="eb"><span class="tg">Community &amp; side events</span><b>Bitcoin &amp; Brews at Paris Blockchain Week</b><span class="mt">Paris · Apr 2025</span><span class="rg">327 registered</span></span></a>
+        <a class="ec" data-g="comm" href="https://luma.com/ld9q44bb" target="_blank" rel="noopener"><span class="im"><img loading="lazy" src="https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=2,quality=75,width=800,height=420/event-covers/he/25956cca-ae16-4c33-a5ce-456b3d772bf0.png" alt="Bitcoin &amp; Brews at Consensus Hong Kong cover" width="800" height="420"></span><span class="eb"><span class="tg">Community &amp; side events</span><b>Bitcoin &amp; Brews at Consensus Hong Kong</b><span class="mt">Hong Kong · Feb 2025</span><span class="rg">398 registered</span></span></a>
+        <a class="ec" data-g="dev" href="https://luma.com/3nc04yjk" target="_blank" rel="noopener"><span class="im"><img loading="lazy" src="https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=2,quality=75,width=800,height=420/event-social/5v/bf11f382-2d5a-4be5-9437-55c3f39125b7.png" alt="Rootstock Builder Day cover" width="800" height="420"></span><span class="eb"><span class="tg">Developer</span><b>Rootstock Builder Day</b><span class="mt">Devconnect Buenos Aires · Nov 2025</span><span class="rg">220 registered</span></span></a>
+        <a class="ec" data-g="dev" href="https://luma.com/ag2zihf0" target="_blank" rel="noopener"><span class="im"><img loading="lazy" src="https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=2,quality=75,width=800,height=420/event-social/as/da782b4e-c97c-40b0-95fb-6c94046b3084.png" alt="Whitepaper Reading Club: Rootstock and BitVMX cover" width="800" height="420"></span><span class="eb"><span class="tg">Developer</span><b>Whitepaper Reading Club: Rootstock and BitVMX</b><span class="mt">Devconnect Buenos Aires · Nov 2025</span><span class="rg">182 registered</span></span></a>
+        <a class="ec" data-g="dev" href="https://luma.com/t04gp74v" target="_blank" rel="noopener"><span class="im"><img loading="lazy" src="https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=2,quality=75,width=800,height=420/event-covers/co/4caf4553-57bc-45b2-a83a-e7848e9bf282.png" alt="Chain Reaction: Pre-ETHGlobal Dev Meetup cover" width="800" height="420"></span><span class="eb"><span class="tg">Developer</span><b>Chain Reaction: Pre-ETHGlobal Dev Meetup</b><span class="mt">Prague · May 2025</span><span class="rg">141 registered</span></span></a>
+        <a class="ec" data-g="dev" href="https://luma.com/oeg78q19" target="_blank" rel="noopener"><span class="im"><img loading="lazy" src="https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=2,quality=75,width=800,height=420/event-covers/yr/4cd3ee29-f237-4cdc-ad40-c8b04d59d0ef.png" alt="Bitcoin Hacker House at ETH Lisbon cover" width="800" height="420"></span><span class="eb"><span class="tg">Developer</span><b>Bitcoin Hacker House at ETH Lisbon</b><span class="mt">Lisbon · May 2025</span><span class="rg">66 registered</span></span></a>
+        <a class="ec" data-g="dev" href="https://luma.com/6bkk09vq" target="_blank" rel="noopener"><span class="im"><img loading="lazy" src="https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=2,quality=75,width=800,height=420/event-covers/wh/a09a24ec-b159-4d6c-b1e0-7bf64f6ef908.png" alt="Chain Reaction: Pre-ETHGlobal Dev Meetup cover" width="800" height="420"></span><span class="eb"><span class="tg">Developer</span><b>Chain Reaction: Pre-ETHGlobal Dev Meetup</b><span class="mt">Taipei · Apr 2025</span><span class="rg">151 registered</span></span></a>
+        <a class="ec" data-g="dev" href="https://luma.com/7ble46q7" target="_blank" rel="noopener"><span class="im"><img loading="lazy" src="https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=2,quality=75,width=800,height=420/event-covers/7v/6fca8d12-e4eb-488f-936d-25de784e3791.png" alt="Bitcoin Builders: Rootstock Developer Workshop cover" width="800" height="420"></span><span class="eb"><span class="tg">Developer</span><b>Bitcoin Builders: Rootstock Developer Workshop</b><span class="mt">London · Feb 2025</span><span class="rg">Private guest list</span></span></a>
+        <a class="ec" data-g="dev" href="https://luma.com/d0m1lqqr" target="_blank" rel="noopener"><span class="im"><img loading="lazy" src="https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=2,quality=75,width=800,height=420/event-covers/f1/792f6083-3f3c-4b63-989b-7882aa878723" alt="Rootstock Ecosystem Summit cover" width="800" height="420"></span><span class="eb"><span class="tg">Developer</span><b>Rootstock Ecosystem Summit</b><span class="mt">Virtual · Feb 2025</span><span class="rg">132 registered</span></span></a>
+        <a class="ec" data-g="dev" href="https://luma.com/metadevsummit" target="_blank" rel="noopener"><span class="im"><img loading="lazy" src="https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=2,quality=75,width=800,height=420/event-covers/db/1144ddb1-6a36-40c4-9ed4-6cfc3bc239a4" alt="Metaschool Dev Summit cover" width="800" height="420"></span><span class="eb"><span class="tg">Developer</span><b>Metaschool Dev Summit</b><span class="mt">Bangkok · Nov 2024</span><span class="rg">1,341 registered</span></span></a>
+        <a class="ec" data-g="dev" href="https://luma.com/bangkok-bitcoin-hack" target="_blank" rel="noopener"><span class="im"><img loading="lazy" src="https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=2,quality=75,width=800,height=420/event-covers/om/33eb08ac-299a-48a2-9afc-fa8136027d6d" alt="Bangkok Bitcoin Hackathon cover" width="800" height="420"></span><span class="eb"><span class="tg">Developer</span><b>Bangkok Bitcoin Hackathon</b><span class="mt">Bangkok · Nov 2024</span><span class="rg">1,082 registered</span></span></a>
+        <a class="ec" data-g="dev" href="https://luma.com/2hnsj691" target="_blank" rel="noopener"><span class="im"><img loading="lazy" src="https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=2,quality=75,width=800,height=420/event-covers/rn/458a2113-7380-48eb-9dd8-8280daf7655e" alt="Quarterly Rootstock Ecosystem Summit cover" width="800" height="420"></span><span class="eb"><span class="tg">Developer</span><b>Quarterly Rootstock Ecosystem Summit</b><span class="mt">Virtual · Aug 2024</span><span class="rg">130 registered</span></span></a>
+        <a class="ec" data-g="camp" href="https://rootstock.io/golden-sats/" target="_blank" rel="noopener"><span class="im cover"><img loading="lazy" src="https://rootstock.io/static/golden-sats-e840de5babb80bff9ed222164f7ffd33.png" alt="Golden Sats Challenge" width="800" height="420"></span><span class="eb"><span class="tg">Campaign</span><b>Golden Sats Challenge</b><span class="mt">Partner-led, multi-channel · Jul–Dec 2025</span><span class="rg">10,000+ transactions · $100M+ volume</span></span></a>
+        <a class="ec" data-g="camp" href="https://rootstock.io/rifmeup/" target="_blank" rel="noopener"><span class="im contain"><img loading="lazy" src="https://rootstock.io/assets/btc-rif.svg" alt="RIF Me Up" width="800" height="420"></span><span class="eb"><span class="tg">Campaign</span><b>RIF Me Up</b><span class="mt">Hackathon campaign for token adoption</span><span class="rg">With Golden Sats: 7,500+ wallets · 35K+ transactions</span></span></a>
+        <a class="ec" data-g="camp" href="https://rootstock.io/hacktivator/" target="_blank" rel="noopener"><span class="im contain"><img loading="lazy" src="https://rootstock.io/assets/contribute-green.svg" alt="Hacktivator" width="800" height="420"></span><span class="eb"><span class="tg">Campaign</span><b>Hacktivator</b><span class="mt">Contribution program for developers</span><span class="rg">Tasks that kept developers building</span></span></a>
+        <a class="ec" data-g="camp" href="https://webinar.rootstocklabs.com/" target="_blank" rel="noopener"><span class="im cover"><img loading="lazy" src="https://www.rootstocklabs.com/og.png" alt="Bitcoin as Collateral" width="800" height="420"></span><span class="eb"><span class="tg">Campaign</span><b>Bitcoin as Collateral</b><span class="mt">Institutional webinar · on demand</span><span class="rg">Bitcoin-backed lending for institutions</span></span></a>
+      </div>
+      <p class="note">Registered = guests on the Luma page, not check-ins.</p>
     </div>
-    <div class="tiers">
-      <div class="tier a"><b>A</b><p><b>Decision makers.</b> CTOs, VPs Engineering, Heads of Platform and AI infra. 1:1 invites, Leaders Track, VIP dinners.</p></div>
-      <div class="tier"><b>B</b><p><b>Technical influencers.</b> Staff and principal engineers, platform leads, architects. Segmented campaigns and speaker invites.</p></div>
-      <div class="tier"><b>C</b><p><b>Practitioners.</b> The heart of the community. Content, meetups, the virtual flagship and a path towards A and B.</p></div>
-    </div>
-  </div>
+  </details>
 
-      <div class="sides" style="margin-top:1rem">
-        <div class="side"><span class="label">I own</span><h3>Registrations and attendance</h3><p>Segments, Luma pages, campaigns, the attendance engine, city audiences and the playbook.</p></div>
-        <div class="side"><span class="label">I brief and work with</span><h3>Design, content, performance, lifecycle</h3><p>Clear briefs, shared goals in attendees (not registrations), weekly syncs.</p></div>
-        <div class="side"><span class="label">I hand over</span><h3>Audience data to sponsorship and events</h3><p>Who's coming and who came, so sponsors meet the right people.</p></div>
+  <details class="L" id="s2">
+    <summary><span class="ln">02</span><span><span class="lt">Every event brief</span><span class="ls">The exact workflow, from brief to retro</span></span><span class="pl" aria-hidden="true">+</span></summary>
+    <div class="lb">
+      <p class="intro">Seven steps, the same for every in-person event. <b>T = event day.</b></p>
+      <div class="scroll">
+        <table class="brief">
+          <thead><tr><th>Step</th><th>When</th><th>What happens</th></tr></thead>
+          <tbody>
+            <tr><td>1 · Brief</td><td class="t">T-14 wks</td><td><span>City, date, capacity, target attendance rate, decision-maker target and budget.</span></td></tr>
+            <tr><td>2 · Audience</td><td class="t">T-14 wks</td><td><span>Pull past attendees and city lists from HubSpot, plus the partner, speaker and leader lists.</span></td></tr>
+            <tr><td>3 · Event page</td><td class="t">T-12 wks</td><td><span>A Luma page with design and content, qualifying questions and the team offer.</span></td></tr>
+            <tr><td>4 · Campaigns</td><td class="t">T-12 → T-1 wk</td><td><span>Database invites, partners, paid and sponsored media, speaker and agenda drops.</span></td></tr>
+            <tr><td>5 · Attendance</td><td class="t">T-7 days → T</td><td><span>Reconfirm or release, reminders, logistics and the waitlist.</span></td></tr>
+            <tr><td>6 · Follow-up</td><td class="t">T+1 → T+14</td><td><span>Separate tracks for attendees and no-shows; new vendor accounts go to sales.</span></td></tr>
+            <tr><td>7 · Retro</td><td class="t">T+14</td><td><span>Scorecard per channel and partner, then update the playbook.</span></td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </details>
 
-  <details class="L" id="l2">
-    <summary><span class="ln">Layer 2</span><span><span class="lt">Growth &amp; retention flywheel</span><span class="ls">Every event increases the value and the reach of the next one</span></span><span class="pl" aria-hidden="true">+</span></summary>
+  <details class="L" id="s3">
+    <summary><span class="ln">03</span><span><span class="lt">Registration growth</span><span class="ls">The must-haves, then what I'd test</span></span><span class="pl" aria-hidden="true">+</span></summary>
     <div class="lb">
+      <p class="intro">Attendance conversion is already strong, so the biggest lever is <b>more qualified registrations</b>.</p>
+      <h3 class="sub" style="margin-top:0">Must-haves for every event</h3>
+      <div class="must">
+        <div><b>Invites to the internal database</b><span>Past attendees and city lists, segmented by role and seniority.</span></div>
+        <div><b>Co-marketing partnerships</b><span>Partners promote the event to their audiences, with tracked codes.</span></div>
+        <div><b>Success stories</b><span>Use cases from past attendees and speakers, published and shared before each event.</span></div>
+        <div><b>Paid and sponsored media</b><span>LinkedIn by title and target accounts, plus banners and newsletter sponsorships.</span></div>
+        <div><b>Weekly speaker and agenda drops</b><span>A steady rhythm of reasons to register, with clear price deadlines.</span></div>
+      </div>
+      <h3 class="sub">What I'd test: effort vs reward</h3>
+      <div class="scroll">
+        <table class="mx">
+          <thead><tr><th>Type</th><th>Idea</th><th>Effort</th><th>Reward</th><th>KPI</th></tr></thead>
+          <tbody>
+            <tr><td><span class="q qw">Quick win</span></td><td><b>"Convince your manager" team offer</b><span>Group discounts already exist on request. Make them visible: 20% for 3+ seats by email, with a ready-made note for the manager. Bigger orders, fuller rooms, and the budget holder in HubSpot.</span></td><td class="lvl">Low</td><td class="lvl">High</td><td><span>Seats per order · managers captured</span></td></tr>
+            <tr><td><span class="q qw">Quick win</span></td><td><b>Sponsor invite codes</b><span>Sponsors invite their own customers and prospects, who are often decision makers.</span></td><td class="lvl">Low</td><td class="lvl">High</td><td><span>Registrations per sponsor code</span></td></tr>
+            <tr><td><span class="q qw">Quick win</span></td><td><b>Alumni ticket</b><span>Early access and an alumni price for past attendees, starting with leaders.</span></td><td class="lvl">Low</td><td class="lvl">High</td><td><span>Share of returning attendees</span></td></tr>
+            <tr><td><span class="q qw">Quick win</span></td><td><b>"I'm attending" social proof</b><span>Share cards for attendees and a speaker kit with personal codes.</span></td><td class="lvl">Low</td><td class="lvl">Medium</td><td><span>Referral share · registrations per speaker</span></td></tr>
+            <tr><td><span class="q bb">Big bet</span></td><td><b>"New to PlatformCon" ABM</b><span>Companies that match the profile but aren't in HubSpot yet, reached 1:1, by industry and through ads, with lookalikes of the accounts that already bring leaders.</span></td><td class="lvl">Medium</td><td class="lvl">High</td><td><span>Net-new accounts · leaders from new accounts</span></td></tr>
+            <tr><td><span class="q bb">Big bet</span></td><td><b>Charm campaign for other events' sponsors</b><span>Companies sponsoring KubeCon and major AI and crypto events have budgets and platform teams. ABM to their leaders, plus a handoff to sales.</span></td><td class="lvl">Medium</td><td class="lvl">High</td><td><span>Leaders registered · accounts to sales</span></td></tr>
+            <tr><td><span class="q bb">Big bet</span></td><td><b>Leaders track &amp; VIP dinners per city</b><span>Invite-only peer roundtables curated with sponsors, which give CTOs a reason to come.</span></td><td class="lvl">Med–High</td><td class="lvl">High</td><td><span>Decision makers registered and present</span></td></tr>
+            <tr><td><span class="q ts">Test</span></td><td><b>Web3 decision makers (section 06)</b><span>Crypto companies with budgets and platform teams, as attendees and as sponsor prospects.</span></td><td class="lvl">Medium</td><td class="lvl">High if it converts</td><td><span>Qualified share · accounts to sales</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </details>
+
+  <details class="L" id="s4">
+    <summary><span class="ln">04</span><span><span class="lt">Growth &amp; retention flywheel</span><span class="ls">Every event increases the value and the reach of the next one</span></span><span class="pl" aria-hidden="true">+</span></summary>
+<div class="lb">
       <p class="intro">Six stages around one goal: <b>community and audience growth</b>, city by city. Select a stage to see what happens in it, who owns it and what we measure.</p>
       <div class="fw">
         <div class="wheel w6" role="tablist" aria-label="Flywheel stages">
@@ -384,13 +545,13 @@ details.L .lb{padding:0 0 2.5rem}
             <p>Build each city's audience from the data we already have, then add partners and new channels.</p>
             <ul>
               <li><b>HubSpot research and segmentation.</b> <span>Events attended, attended vs no-show, city, role and company.</span></li>
-              <li><b>ICP score and tiers.</b> <span>Fit, engagement and intent give tiers A, B and C.</span></li>
-              <li><b>Sync with performance and lifecycle.</b> <span>Goals set in qualified attendees. Lookalikes from tier A, LinkedIn targeting by title, email per tier.</span></li>
+              <li><b>Segments that matter.</b> <span>Role, seniority, city, company and past attendance.</span></li>
+              <li><b>Sync with performance and lifecycle.</b> <span>Goals set in qualified attendees. Lookalikes from past leaders, LinkedIn targeting by title, email per segment.</span></li>
               <li><b>City partners and leaders.</b> <span>Meetups, communities, newsletters and local leaders, with tracked codes.</span></li>
               <li><b>New markets as tests.</b> <span>AI engineering communities for AgenticCon, and Web3 infrastructure teams (Layer 5).</span></li>
             </ul>
             <div class="who"><span class="me">Me: owner</span><span>Performance</span><span>Lifecycle</span><span>Partners</span></div>
-            <p class="kpi"><b>Measure:</b> city audience size · share of tiers A and B by source</p>
+            <p class="kpi"><b>Measure:</b> city audience size · decision makers by source</p>
           </div>
           <div data-stage="2">
             <span class="label">Stage 2</span><h3>Register</h3>
@@ -398,11 +559,11 @@ details.L .lb{padding:0 0 2.5rem}
             <ul>
               <li><b>Event page with design and content.</b> <span>Strong visuals and copy for every event.</span></li>
               <li><b>Registration questions.</b> <span>Role, company, team size and whether they're evaluating tools.</span></li>
-              <li><b>Approval rules by tier.</b> <span>A: instant approval and a leaders invite. B: approved. C: waitlist or virtual when space is tight.</span></li>
+              <li><b>Approval rules.</b> <span>Leaders approved instantly and invited to the leaders track; a waitlist when space is tight.</span></li>
               <li><b>A message per segment.</b> <span>What an engineer gets is not what a CTO gets.</span></li>
             </ul>
             <div class="who"><span class="me">Me: owner</span><span>Design</span><span>Content</span></div>
-            <p class="kpi"><b>Measure:</b> page conversion · tier mix</p>
+            <p class="kpi"><b>Measure:</b> page conversion · qualified share</p>
           </div>
           <div data-stage="3">
             <span class="label">Stage 3</span><h3>Attend</h3>
@@ -413,7 +574,7 @@ details.L .lb{padding:0 0 2.5rem}
               <li><b>Check-in synced to HubSpot.</b> <span>Reliable attendance data for every person.</span></li>
             </ul>
             <div class="who"><span class="me">Me: owner</span><span>Lifecycle</span><span>Events team</span></div>
-            <p class="kpi"><b>Measure:</b> attendance rate by tier</p>
+            <p class="kpi"><b>Measure:</b> attendance rate by segment</p>
           </div>
           <div data-stage="4">
             <span class="label">Stage 4</span><h3>Engage</h3>
@@ -453,68 +614,62 @@ details.L .lb{padding:0 0 2.5rem}
     </div>
   </details>
 
-  <details class="L" id="l3">
-    <summary><span class="ln">Layer 3</span><span><span class="lt">San Francisco playbook</span><span class="ls">v0.1 for PlatformCon SF (24 Feb) and AgenticCon (25 Feb 2027)</span></span><span class="pl" aria-hidden="true">+</span></summary>
+  <details class="L" id="s5">
+    <summary><span class="ln">05</span><span><span class="lt">City playbook loop</span><span class="ls">Starting with San Francisco, then repeated in every city</span></span><span class="pl" aria-hidden="true">+</span></summary>
     <div class="lb">
-      <p class="intro">A first draft built from public information. It would be validated against the real data, budget and calendar in the first weeks.</p>
-
-  <div class="event">
-    <div class="ev"><time>Wed 24 Feb 2027</time><h3>PlatformCon SF Live Day</h3><p>Platform engineers and platform leaders. Reactivating a known audience.</p></div>
-    <div class="ev dark"><time>Wed 24 Feb · evening</time><h3>Leaders VIP Dinner</h3><p>Tier A from both events, curated with sponsors. It links the two days.</p></div>
-    <div class="ev"><time>Thu 25 Feb 2027</time><h3>AgenticCon</h3><p>AI platform teams, heads of AI infra and security leaders. A launch, so new audience and new positioning.</p></div>
-  </div>
-  <ul class="goals">
-    <li><b>Qualified, not just full</b>Set a target share of tiers A and B per event</li>
-    <li><b>Show-up rate</b>Beat the baseline from past editions</li>
-    <li><b>Decision makers present</b>A named list of tier A accounts, tracked weekly</li>
-    <li><b>Reusable SF audience</b>A larger, more engaged city audience after the event</li>
-  </ul>
-
-  <h3 class="sub">Segments</h3>
-  <div class="scroll" style="margin-top:1rem">
+      <ul class="cities">
+        <li class="now"><b>San Francisco</b><span>24–25 Feb 2027</span></li><li class="arrow">→</li>
+        <li><b>London</b><span>22 Jun</span></li><li class="arrow">→</li>
+        <li><b>New York</b><span>24 Jun</span></li><li class="arrow">→</li>
+        <li><b>Sydney</b><span>27 Oct</span></li>
+      </ul>
+      <h3 class="sub">San Francisco on the calendar</h3>
+      <p class="intro" style="margin-bottom:1rem"><b>T = event day</b> (PlatformCon SF, 24 Feb 2027; AgenticCon follows on the 25th). Each row is a phase of the event brief workflow, with its real date.</p>
+      <div class="scroll">
+        <table class="brief">
+          <thead><tr><th>T</th><th>Date</th><th>Phase</th><th>Key actions</th></tr></thead>
+          <tbody>
+            <tr><td class="t">T-14 wks</td><td>18 Nov</td><td>Foundation</td><td><span>HubSpot audit for the Bay Area and US West, SF partner map, briefs for performance and lifecycle, Luma pages live.</span></td></tr>
+            <tr><td class="t">T-12 wks</td><td>2 Dec</td><td>Community first</td><td><span>Early access for past attendees, Slack and Platform Weekly; partner, speaker and sponsor codes live; two-day pass.</span></td></tr>
+            <tr><td class="t">T-10 → T-7</td><td>Mid Dec–early Jan</td><td>Warm, not loud</td><td><span>Holiday mode: light content and retargeting; leader lists built with sponsors; warm-up co-hosts recruited.</span></td></tr>
+            <tr><td class="t">T-6 wks</td><td>13 Jan</td><td>Acquisition push</td><td><span>Warm-up meetup with an SF partner, LinkedIn campaigns by title and account, Web3 and AI community tests.</span></td></tr>
+            <tr><td class="t">T-4 wks</td><td>27 Jan</td><td>Leaders &amp; social proof</td><td><span>1:1 invites to the leaders track and VIP dinner, "who's in the room" emails, team offer push.</span></td></tr>
+            <tr><td class="t">T-2 wks</td><td>10 Feb</td><td>Convert &amp; calibrate</td><td><span>Last push per segment, waitlist management, capacity calibrated to past no-shows.</span></td></tr>
+            <tr><td class="t">T-48h</td><td>22 Feb</td><td>Reconfirm</td><td><span>Reconfirm or release, calendar holds, day-of message.</span></td></tr>
+            <tr><td class="t">T</td><td>24–25 Feb</td><td>Event days</td><td><span>Check-in synced to HubSpot; VIP dinner on the evening of the 24th, linking both events.</span></td></tr>
+            <tr><td class="t">T+14</td><td>10 Mar</td><td>Prove &amp; loop</td><td><span>Follow-ups for attendees and no-shows, audience data to sponsorship, retro and playbook update.</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h3 class="sub">SF segments</h3>
+<div class="scroll" style="margin-top:1rem">
     <table class="seg">
       <thead><tr><th>Segment</th><th>Who</th><th>Message</th><th>Main channels</th></tr></thead>
       <tbody>
         <tr><td>SF returning</td><td><span>Past PlatformCon attendees in the Bay Area and US West</span></td><td><span>"Your people are back in SF"</span></td><td><span>Lifecycle email, Slack, early access</span></td></tr>
-        <tr><td>Platform leaders (A)</td><td><span>CTOs, VPs and Heads of Platform, plus sponsor target accounts</span></td><td><span>Peers, Leaders Track, dinner</span></td><td><span>1:1 invites, LinkedIn, sponsors</span></td></tr>
+        <tr><td>Platform leaders</td><td><span>CTOs, VPs and Heads of Platform, plus sponsor target accounts</span></td><td><span>Peers, Leaders Track, dinner</span></td><td><span>1:1 invites, LinkedIn, sponsors</span></td></tr>
         <tr><td>AI platform teams</td><td><span>Heads of AI infra, ML platform, agent security</span></td><td><span>"Own the agentic shift"</span></td><td><span>AI communities, speakers, paid</span></td></tr>
-        <tr><td>Practitioners (C)</td><td><span>Engineers in the community and local meetups</span></td><td><span>Learn, network, career</span></td><td><span>Newsletter, meetups, partners</span></td></tr>
+        <tr><td>Practitioners</td><td><span>Engineers in the community and local meetups</span></td><td><span>Learn, network, career</span></td><td><span>Newsletter, meetups, partners</span></td></tr>
         <tr><td>Test: Web3 infra</td><td><span>Infra teams at exchanges, custodians, node and RPC providers</span></td><td><span>Platform engineering for blockchain infra</span></td><td><span>Roundtable, ecosystem partners</span></td></tr>
       </tbody>
     </table>
   </div>
-
-  <h3 class="sub">Timeline</h3>
-  <ol class="tl">
-    <li><time><b>T-14 weeks</b>from 18 Nov</time><div><h4>Foundation</h4><ul><li>HubSpot audit for Bay Area and US West; first ICP scoring and tier lists</li><li>SF partner map: local platform and cloud-native meetups, AI engineering groups, newsletters, local leaders</li><li>One brief per event for performance and lifecycle; Luma pages with registration questions</li></ul><div class="chips"><span>Me</span><span>Ops</span><span>Performance</span><span>Lifecycle</span></div></div></li>
-    <li><time><b>T-12 weeks</b>from 2 Dec</time><div><h4>Community first</h4><ul><li>Early access for the community: Slack, Platform Weekly, past attendees</li><li>Ambassador, speaker and sponsor codes go live</li><li>Two-day pass for people interested in both events</li></ul><div class="chips"><span>Me</span><span>Community</span><span>Content</span></div></div></li>
-    <li><time><b>T-10 to T-7</b>mid Dec to early Jan</time><div><h4>Holiday mode: warm, not loud</h4><ul><li>Light content and retargeting; no hard pushes</li><li>Build tier A target lists with sponsors (ABM)</li><li>Recruit SF speakers and co-hosts for warm-up meetups</li></ul><div class="chips"><span>Me</span><span>Sponsorship</span><span>Partners</span></div></div></li>
-    <li class="hot"><time><b>T-6 weeks</b>from 13 Jan</time><div><h4>Acquisition push</h4><ul><li>Warm-up meetup co-hosted with an SF partner</li><li>LinkedIn campaigns by title and target accounts; lookalikes from tier A</li><li>Market test: Web3 infra roundtable · AI community partnerships for AgenticCon</li></ul><div class="chips"><span>Me</span><span>Performance</span><span>Partners</span></div></div></li>
-    <li><time><b>T-4 weeks</b>from 27 Jan</time><div><h4>Leaders and social proof</h4><ul><li>1:1 Leaders Track and VIP dinner invites to tier A</li><li>"Who's in the room" emails: companies, roles, speakers</li><li>Convince-your-manager kit and team tickets</li></ul><div class="chips"><span>Me</span><span>Lifecycle</span><span>Sponsorship</span></div></div></li>
-    <li><time><b>T-2 weeks</b>from 10 Feb</time><div><h4>Convert and calibrate</h4><ul><li>Last conversion push per segment; manage the waitlist</li><li>Calibrate overbooking by tier from historical no-shows</li><li>Share the opt-in tier A list with sponsorship</li></ul><div class="chips"><span>Me</span><span>Events</span><span>Sponsorship</span></div></div></li>
-    <li class="hot"><time><b>T-48h</b>22 Feb</time><div><h4>Reconfirm or release</h4><ul><li>"Still coming?" Released spots go to the waitlist</li><li>Calendar holds plus a day-of message (test SMS against email)</li></ul><div class="chips"><span>Lifecycle</span><span>Me</span></div></div></li>
-    <li class="hot"><time><b>24–25 Feb</b>event days</time><div><h4>Connect</h4><ul><li>Check-in synced to HubSpot, so attendance data is reliable</li><li>VIP dinner on the evening of the 24th, between both events</li></ul><div class="chips"><span>Events</span><span>Me</span><span>Sponsors</span></div></div></li>
-    <li><time><b>T+1 to T+14</b>until 10 Mar</time><div><h4>Prove and loop</h4><ul><li>Separate follow-ups for attendees and no-shows; invite to the next city</li><li>Audience data to the sponsorship team within 10 days</li><li>Re-score, rank channels and partners, and update the playbook</li></ul><div class="chips"><span>Me</span><span>Sponsorship</span><span>Ops</span></div></div></li>
-  </ol>
-
-  <h3 class="sub">Tests for SF</h3>
-  <div class="tests" style="margin-top:1rem">
-    <div class="test"><span class="label">Show-up</span><h4>Approval vs open RSVP</h4><p>Does curation raise commitment?</p><span class="m">Show-up rate per variant</span></div>
-    <div class="test"><span class="label">Show-up</span><h4>Reconfirm or release</h4><p>48h nudge with the waitlist backfilled.</p><span class="m">Spots recovered · show-up rate</span></div>
-    <div class="test"><span class="label">Quality</span><h4>1:1 leader invites</h4><p>Personal invites to tier A, including target accounts shared by sponsorship.</p><span class="m">Tier A registered and present</span></div>
-    <div class="test"><span class="label">Acquisition</span><h4>Web3 infra roundtable</h4><p>Do blockchain infra teams match the ICP?</p><span class="m">Share of tiers A and B · show-up</span></div>
-    <div class="test"><span class="label">Acquisition</span><h4>Speaker codes</h4><p>Speakers invite their own networks.</p><span class="m">Qualified registrations per speaker</span></div>
-    <div class="test"><span class="label">Cross-event</span><h4>Two-day pass</h4><p>Bundle vs separate tickets.</p><span class="m">Attendees at both days · cannibalization</span></div>
-  </div>
-
-  <h3 class="sub">Weekly dashboard</h3>
-  <div class="dash" style="margin-top:1rem">
+      <h3 class="sub">Repeating it in every city</h3>
+      <div class="loopc">
+        <div><span class="label">Reuse</span><b>The same toolkit</b><span class="d">Brief template, Luma page template, email sequences, partner map format and scorecard, so no city starts from scratch.</span></div>
+        <div><span class="label">Localise</span><b>What changes per city</b><span class="d">Local partners, speakers and leaders, holidays and timing, language and the city's own audience list.</span></div>
+        <div><span class="label">Benchmark</span><b>Start from the last city</b><span class="d">Attendance rate, cost per attendee and the best channels from SF become the targets for London and New York.</span></div>
+        <div><span class="label">Compound</span><b>Keep each city warm</b><span class="d">City Luma calendars, local meetups and community content between events, so the next edition starts with an audience.</span></div>
+      </div>
+      <p class="intro" style="margin-top:1rem">London and New York are two days apart in June, so they can share campaign assets and run on one combined calendar, with local partners and leaders in each city.</p>
+      <h3 class="sub">Weekly dashboard</h3>
+<div class="dash" style="margin-top:1rem">
     <div class="dash-top"><b>PlatformCon SF · week T-4</b><span class="mock">Mockup · illustrative data</span></div>
     <div class="tiles">
       <div class="tile"><small>Registrations</small><strong>612</strong><em>+18% WoW</em></div>
-      <div class="tile"><small>Tier A + B share</small><strong>54%</strong><em>target 50%</em></div>
-      <div class="tile"><small>Tier A confirmed</small><strong>71</strong><em>of 120 target accounts</em></div>
-      <div class="tile"><small>Expected show-up</small><strong>63%</strong><em>model, by tier</em></div>
+      <div class="tile"><small>Qualified share</small><strong>54%</strong><em>target 50%</em></div>
+      <div class="tile"><small>Leaders confirmed</small><strong>71</strong><em>of 120 target accounts</em></div>
+      <div class="tile"><small>Expected show-up</small><strong>63%</strong><em>model, by segment</em></div>
       <div class="tile"><small>SF city audience</small><strong>3.4k</strong><em>+420 new this cycle</em></div>
     </div>
     <div class="dgrid">
@@ -527,7 +682,7 @@ details.L .lb{padding:0 0 2.5rem}
         <div class="row"><span>Tests (Web3, AI)</span><div class="bar"><i style="width:30%"></i></div><b>13%</b></div>
       </div>
       <div class="tile funnel">
-        <h5>Funnel (tier A + B)</h5>
+        <h5>Funnel (qualified)</h5>
         <div class="row"><span>Reached</span><div class="bar"><i style="width:100%"></i></div><b>4.1k</b></div>
         <div class="row"><span>Registered</span><div class="bar"><i style="width:48%"></i></div><b>330</b></div>
         <div class="row"><span>Reconfirmed</span><div class="bar"><i style="width:36%"></i></div><b>245</b></div>
@@ -535,21 +690,72 @@ details.L .lb{padding:0 0 2.5rem}
       </div>
     </div>
   </div>
-  <p class="note">All numbers in the dashboard are illustrative, to show the format. Real targets come from the baselines in the first 30 days.</p>
-
+  
+      <p class="note">The dashboard numbers are illustrative, to show the format. Real targets come from the baselines in the first 30 days.</p>
     </div>
   </details>
 
-  <details class="L" id="l4">
-    <summary><span class="ln">Layer 4</span><span><span class="lt">Outcomes</span><span class="ls">How I measure success, and the first 180 days</span></span><span class="pl" aria-hidden="true">+</span></summary>
+  <details class="L" id="s6">
+    <summary><span class="ln">06</span><span><span class="lt">Web3: decision makers &amp; sponsor pipeline</span><span class="ls">Companies with budgets and platform teams that I already know</span></span><span class="pl" aria-hidden="true">+</span></summary>
     <div class="lb">
-      <p class="intro">One headline number: <b>attendance rate</b>, because that's how the role defines success. Everything else explains it.</p>
+      <p class="intro">The crypto companies that sponsor major events have marketing budgets, large infrastructure and platform teams, and a growing focus on agentic engineering. <b>The target is their platform and AI leaders, not smart contract developers.</b> They're potential attendees and potential sponsors.</p>
+      <div class="logos3">
+        <div class="co"><div class="wm">Coinbase</div>
+          <ul>
+            <li><b>Hiring:</b> Senior Software Engineer, Infra – Compute Platform, the shared infrastructure Coinbase's services run on</li>
+            <li><b>Platform team:</b> documented its move to Kubernetes to scale containers across the organisation</li>
+          </ul>
+          <p class="src">Sources: <a href="https://weworkremotely.com/remote-jobs/coinbase-senior-software-engineer-infrastructure-compute-platform" target="_blank" rel="noopener">job post</a> · <a href="https://www.cncf.io/blog/2022/06/24/scaling-container-technologies-at-coinbase-with-kubernetes/" target="_blank" rel="noopener">CNCF blog</a></p>
+        </div>
+        <div class="co"><div class="wm">Consensys</div>
+          <ul>
+            <li><b>Hiring:</b> Senior Platform Engineer, posted on the Platform Engineering jobs board</li>
+            <li><b>Platform team:</b> already in your ecosystem, so the relationship exists today</li>
+          </ul>
+          <p class="src">Source: <a href="https://platformengineering.org/jobs/senior-platform-engineer-0bc7f" target="_blank" rel="noopener">Platform Engineering jobs board</a></p>
+        </div>
+        <div class="co"><div class="wm">Chainlink Labs</div>
+          <ul>
+            <li><b>Hiring:</b> Engineering Manager, Infrastructure, and Senior Site Reliability Engineers for DevEx</li>
+            <li><b>Platform team:</b> dedicated infrastructure and developer experience teams</li>
+          </ul>
+          <p class="src">Sources: <a href="https://cryptojobslist.com/jobs/engineering-manager-infrastructure-at-chainlink-labs" target="_blank" rel="noopener">EM, Infrastructure</a> · <a href="https://jobs.framework.ventures/companies/chainlink/jobs/86711462-senior-site-reliability-engineer-devex" target="_blank" rel="noopener">Senior SRE, DevEx</a></p>
+        </div>
+      </div>
+      <div class="reach">
+        <div>
+          <span class="label">Potential reach</span>
+          <p style="margin-top:.4rem">If these three validate the fit, the same play extends to the <b>exchanges, custodians, infrastructure providers and fintechs</b> that sponsor and exhibit at crypto events.</p>
+          <small>One event alone, TOKEN2049 Singapore 2025, as announced before the event. Source: <a href="https://www.theblock.co/post/368435/token2049-singapore-breaks-records-25000-attendees-at-the-worlds-largest-web3-event" target="_blank" rel="noopener">The Block</a></small>
+        </div>
+        <div class="nums">
+          <div><strong>500+</strong><span>exhibiting companies</span></div>
+          <div><strong>~1,000</strong><span>side events in one week</span></div>
+          <div><strong>25,000</strong><span>attendees from 160+ countries</span></div>
+        </div>
+      </div>
+      <h3 class="sub">The play</h3>
+      <ol class="wf">
+        <li><b>Build the list</b><span>Crypto and fintech companies sponsoring major events, with confirmed platform or AI teams, starting from my own contacts.</span></li>
+        <li><b>Invite their leaders 1:1</b><span>Heads of Platform, Infrastructure and AI to PlatformCon and AgenticCon, with the team offer for their engineers.</span></li>
+        <li><b>One curated roundtable</b><span>"Platform engineering for Web3 infrastructure", inside an existing KubeCon satellite, or as a VIP dinner at Devcon 9 in Lisbon (11–13 Oct 2027).</span></li>
+        <li><b>Hand accounts to sales</b><span>Every vendor account goes to the sponsorship team as a sponsor prospect.</span></li>
+      </ol>
+      <div class="evid"><p><b>Decision rule:</b> scale only if 40%+ of registrants match the target profile, show-up is at or above average, and sales sees real sponsor interest. Otherwise stop. I couldn't find any Web3-focused content in the Platform Engineering ecosystem, so this is white space worth one small test.</p></div>
+    </div>
+  </details>
+
+  <details class="L" id="s7">
+    <summary><span class="ln">07</span><span><span class="lt">Outcomes</span><span class="ls">Where I'll focus, and the numbers I'll report on</span></span><span class="pl" aria-hidden="true">+</span></summary>
+    <div class="lb">
+      <p class="intro">One headline number: <b>attendance rate</b>, because that's how the role defines success. Right next to it: <b>the decision makers in the room</b>.</p>
+      <div class="cad" style="margin:0 0 1.25rem"><div><b>Decision makers registered &amp; present</b><span>CTOs, VPs and Heads of Platform and AI, per event</span></div><div><b>Net-new accounts</b><span>Companies attending for the first time</span></div><div><b>Accounts to sales</b><span>Vendor accounts passed on as sponsor prospects</span></div><div><b>Cost per attendee</b><span>Counted on people who showed up</span></div></div>
   <div class="kpis">
     <div class="kg">
       <span class="label">Outcomes</span><h3>What the role is judged on</h3>
       <ul>
         <li><b>Attendance rate</b><span>Attended ÷ registered, per event and city, trending up</span></li>
-        <li><b>Qualified attendance</b><span>Share of attendees in tiers A and B</span></li>
+        <li><b>Qualified attendance</b><span>Share of attendees who match the target profile, starting with decision makers</span></li>
         <li><b>Reusable city audience</b><span>Size and engagement of each city's audience; share of registrations from it</span></li>
       </ul>
     </div>
@@ -584,42 +790,24 @@ details.L .lb{padding:0 0 2.5rem}
     <div><time>DAYS 1–30</time><h3>Understand</h3><p>Audience, data, past results and processes. Set baselines and the first version of the ICP score.</p></div>
     <div><time>DAYS 31–60</time><h3>Test</h3><p>Run the SF playbook live: segments, partners and attendance tests.</p></div>
     <div><time>DAYS 61–90</time><h3>Playbook</h3><p>Document what worked: one core workflow with versions for PlatformCon and AgenticCon.</p></div>
-    <div><time>DAYS 91–180</time><h3>Prove</h3><p>Apply it to the next cities: higher show-up, a better tier mix and sponsors who renew.</p></div>
+    <div><time>DAYS 91–180</time><h3>Prove</h3><p>Apply it to the next cities: higher show-up, more decision makers in the room and sponsors who renew.</p></div>
   </div>
   <p class="note">I won't promise percentages before seeing the baselines.</p>
 
     </div>
   </details>
 
-  <details class="L" id="l5">
-    <summary><span class="ln">Layer 5</span><span><span class="lt">Web3 testing</span><span class="ls">An untapped audience I already know, and one small test to validate it</span></span><span class="pl" aria-hidden="true">+</span></summary>
+  <details class="L" id="s8">
+    <summary><span class="ln">08</span><span><span class="lt">Questions for you</span><span class="ls">What I'd love to understand first</span></span><span class="pl" aria-hidden="true">+</span></summary>
     <div class="lb">
-      <p class="intro">Exchanges, custodians, payment companies and node, RPC and L2 infrastructure providers run large platform teams with the same problems: scale, reliability, security and developer experience. <b>The focus is their infrastructure and platform teams, not smart contract developers.</b></p>
-  <div class="tests t4">
-    <div class="test"><span class="label">Hypothesis</span><h4>Same problems, untapped audience</h4><p>A share of Web3 infra and platform leaders fit the PlatformCon and AgenticCon ICP but aren't in the community yet.</p></div>
-    <div class="test"><span class="label">Test</span><h4>One roundtable, one side event</h4><p>"Platform engineering for blockchain infrastructure", next to a major Web3 conference (ETHGlobal, DevCon), plus a Web3 infra segment on an existing PlatformCon page.</p></div>
-    <div class="test"><span class="label">Partners</span><h4>Ecosystem distribution</h4><p>Infra companies and ecosystem partners I've worked with as co-hosts, plus their engineering teams as speakers.</p></div>
-    <div class="test"><span class="label">Decision</span><h4>Scale only if it qualifies</h4><p>Continue if 40%+ of registrants are tier A or B, the show-up rate is at or above average, and sponsors show interest. Otherwise stop.</p></div>
-  </div>
-
-      <div class="evid"><p><b>Signal:</b> I couldn't find any Web3-focused content or events in the Platform Engineering ecosystem. Yet Web3 companies like Consensys already hire platform engineers through your jobs board, and infrastructure providers like Blockdaemon talk about platform engineering. It looks like an untapped segment, worth one small test.</p></div>
-    </div>
-  </details>
-</section>
-
-<section id="questions">
-  <div class="sh">
-    <h2>Questions for you</h2>
-    <div>
-      <p class="big">What I'd love to <span>understand first.</span></p>
-      <ol class="qs">
+      <ol class="qs" style="margin-top:0">
         <li>What's currently the biggest bottleneck in your events growth engine: registrations, attendance rates, or reaching the right audience?</li>
         <li>How much of your current event attendance comes from your existing community versus new audience acquisition?</li>
         <li>How mature is the data today? Is HubSpot already the source of truth for attendees, or would part of the job be building that foundation?</li>
         <li>AgenticCon and AgentCon (Global AI Community) are both San Francisco AI events with very similar names. How are you thinking about positioning and search to avoid confusion?</li>
       </ol>
     </div>
-  </div>
+  </details>
 </section>
 
 <section id="contact">
@@ -639,7 +827,6 @@ details.L .lb{padding:0 0 2.5rem}
 
 <footer><span><b>ricardo<span class="j">j</span>castro</b></span><span><b>Growth Marketing</b> &amp; RevOps</span></footer>
 </div>
-
 <script>
 (function(){
   var names=["Attract","Register","Attend","Engage","Advocate","Refer"];
@@ -667,14 +854,15 @@ details.L .lb{padding:0 0 2.5rem}
     };
     show(0);
   }
-  var all=[].slice.call(document.querySelectorAll('details.L'));
+  var all=[].slice.call(document.querySelectorAll('#layers details.L'));
   var t=document.querySelector('.toggle-all');
   function sync(){var open=all.every(function(d){return d.open});t.textContent=open?'Collapse all':'Expand all';t.setAttribute('aria-pressed',open?'true':'false')}
   t.addEventListener('click',function(){var open=all.every(function(d){return d.open});all.forEach(function(d){d.open=!open});sync()});
   all.forEach(function(d){d.addEventListener('toggle',sync)});
-  if(location.hash){var d=document.querySelector(location.hash);if(d&&d.tagName==='DETAILS')d.open=true}
+  if(location.hash){var d=document.querySelector(location.hash);while(d){if(d.tagName==='DETAILS')d.open=true;d=d.parentElement}}
   document.querySelectorAll('a[href="#layers"]').forEach(function(a){a.addEventListener('click',function(){var f=document.getElementById('l1');if(f)f.open=true})});
 })();
 </script>
+<script>(function(){var bs=[].slice.call(document.querySelectorAll('.flt button')),cs=[].slice.call(document.querySelectorAll('.eg .ec'));bs.forEach(function(b){b.addEventListener('click',function(){var f=b.getAttribute('data-f');bs.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});cs.forEach(function(c){c.hidden=!(f==='all'||c.getAttribute('data-g')===f)})})})})();</script>
 </body>
 </html>
