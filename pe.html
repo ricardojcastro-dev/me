@@ -381,6 +381,27 @@ details.L details.L .lb{padding:0 0 1.5rem}
 .ec b{font-weight:500;font-size:.98rem;line-height:1.3}
 .ec .mt{font-size:.85rem;color:var(--mute)}
 .ec .rg{margin-top:auto;padding-top:.45rem;font-size:.82rem;color:var(--ink)}
+details.c6{background:var(--card);border-radius:18px;padding:0;display:block}
+details.c6>summary{list-style:none;cursor:pointer;position:relative;padding:1.35rem 3.2rem 1.35rem 1.4rem;display:block}
+details.c6>summary::-webkit-details-marker{display:none}
+details.c6>summary .label{display:block}
+details.c6>summary h3{margin:.45rem 0 .35rem}
+details.c6>summary p{margin:0}
+details.c6 .pm{position:absolute;top:1.2rem;right:1.2rem;width:1.9rem;height:1.9rem;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--mute);font-size:1.1rem;font-weight:300;transition:transform .25s,background .2s,color .2s,border-color .2s}
+details.c6>summary:hover .pm{border-color:var(--accent)}
+details.c6[open] .pm{transform:rotate(45deg);background:var(--accent);border-color:var(--accent);color:#15171B}
+details.c6>ul{margin:0;padding:0 1.4rem 1.25rem}
+.g6{align-items:start}
+.wkd{margin-top:1.5rem;border-top:1px solid var(--line)}
+.reach .nums.one{grid-template-columns:1fr}
+.reach .nums.one strong{font-size:clamp(2.2rem,5vw,3.2rem)}
+.more{padding-top:1.5rem}
+.more details.L.sm>summary{padding:.9rem 0;grid-template-columns:5.5rem minmax(0,1fr) 2rem}
+.more details.L.sm>summary .lt{font-size:1rem;color:var(--mute)}
+.more details.L.sm>summary .ls{font-size:.85rem}
+.more details.L.sm>summary .ln{color:var(--mute)}
+.more details.L.sm>summary .pl{width:1.8rem;height:1.8rem;font-size:1rem}
+.panel .kpi.res{margin-top:.9rem;color:var(--ink)}
 </style>
 </head>
 <body>
@@ -408,7 +429,7 @@ details.L details.L .lb{padding:0 0 1.5rem}
 
 <section id="layers">
   <div class="lhead">
-    <h2>Eight sections. <span>Open the one you need.</span></h2>
+    <h2>Six sections. <span>Open the one you need.</span></h2>
     <button class="toggle-all" type="button" aria-pressed="false">Expand all</button>
   </div>
 
@@ -416,15 +437,17 @@ details.L details.L .lb{padding:0 0 1.5rem}
     <summary><span class="ln">01</span><span><span class="lt">What I bring</span><span class="ls">Six areas, and the events and campaigns behind them</span></span><span class="pl" aria-hidden="true">+</span></summary>
     <div class="lb">
       <div class="g6">
-        <div class="c6"><span class="label">ABM</span><h3>ABM &amp; institutional</h3><p>Target accounts, 1:1 outreach and curated rooms for senior audiences.</p><ul><li>VIP dinners and institutional side events with Mercado Bitcoin, Tyr Capital and Midas</li><li>Institutional newsletter and webinars ("Bitcoin as collateral")</li><li>Paid media: LinkedIn Ads and newsletter banners</li><li>Co-marketing with institutional partners</li><li>Lead magnets: Bitcoin Intelligence Tool, Lead Capture Tool</li></ul><span class="for">The decision makers sponsors want to meet</span></div>
-        <div class="c6"><span class="label">Events</span><h3>Global events &amp; sponsorships</h3><p>Choosing the right events with BD, then making them pay off.</p><ul><li>Sponsorships at ETHGlobal, Devcon and Encode Club</li><li>Side events next to Consensus Hong Kong, Paris Blockchain Week, BTC Prague, Permissionless and Devconnect</li><li>Team on site, merch and sales enablement</li></ul><span class="for">Rooms that fill, and a portfolio chosen with intent</span></div>
-        <div class="c6"><span class="label">Partners</span><h3>Communities &amp; co-marketing partners</h3><p>Partners who bring their audiences to every event.</p><ul><li>LABITCONF 2024 partnership in Buenos Aires</li><li>Co-hosts: Mercado Bitcoin, Hypernative, Tyr Capital, Midas, Metaschool</li><li>Community formats: Bitcoin &amp; Brews and the Devconnect Buenos Aires week</li><li>Co-marketing campaigns like Golden Sats</li></ul><span class="for">A registration pipeline in every city</span></div>
-        <div class="c6"><span class="label">Developers</span><h3>Developer acquisition</h3><p>Bringing developers in, and giving them reasons to keep building.</p><ul><li>ETHGlobal sponsorships and hackathons</li><li>Metaschool Dev Summit (1,341 registered) and the Bangkok Bitcoin Hackathon (1,082)</li><li>Chain Reaction dev meetups in Prague and Taipei, Hacker House at ETH Lisbon, Builders Workshop in London</li><li>RIF Me Up, grants and Hacktivator, with DevRel and DevEx</li></ul><span class="for">600+ developers brought into the ecosystem</span></div>
-        <div class="c6"><span class="label">Growth</span><h3>Acquisition &amp; retention</h3><p>Multi-channel campaigns, and loops that bring people back.</p><ul><li>Marketing automation and multi-channel campaigns at E-goi</li><li>Golden Sats: partner-led co-marketing, $100M+ in volume</li><li>Briefed PR, paid media, agencies, KOLs and influencers</li><li>Cultivators retention program</li><li>40% on-chain retention, the highest Rootstock had reached</li></ul><span class="for">Audiences that return event after event</span></div>
-        <div class="c6"><span class="label">Ops</span><h3>HubSpot &amp; marketing ops</h3><p>The system behind every campaign.</p><ul><li>Lists by role, seniority, company and city</li><li>Lead scoring and tags by profile, interest and interactions</li><li>Workflows from event lead capture to nurturing to sales</li><li>Qualified contacts passed to the commercial team</li></ul><span class="for">A playbook that repeats without firefighting</span></div>
+        <details class="c6"><summary><span class="label">ABM</span><h3>ABM &amp; institutional</h3><p>Target accounts, 1:1 outreach and curated rooms for senior audiences.</p><span class="pm" aria-hidden="true">+</span></summary><ul><li>VIP dinners and institutional side events with Mercado Bitcoin, Tyr Capital and Midas</li><li>Institutional newsletter and webinars ("Bitcoin as collateral")</li><li>Paid media: LinkedIn Ads and newsletter banners</li><li>Co-marketing with institutional partners</li><li>Lead magnets: Bitcoin Intelligence Tool, Lead Capture Tool</li></ul></details>
+        <details class="c6"><summary><span class="label">Events</span><h3>Global events &amp; sponsorships</h3><p>Choosing the right events with BD, then making them pay off.</p><span class="pm" aria-hidden="true">+</span></summary><ul><li>Sponsorships at ETHGlobal, Devcon and Encode Club</li><li>Side events next to Consensus Hong Kong, Paris Blockchain Week, BTC Prague, Permissionless and Devconnect</li><li>Team on site, merch and sales enablement</li></ul></details>
+        <details class="c6"><summary><span class="label">Partners</span><h3>Communities &amp; co-marketing partners</h3><p>Partners who bring their audiences to every event.</p><span class="pm" aria-hidden="true">+</span></summary><ul><li>LABITCONF 2024 partnership in Buenos Aires</li><li>Co-hosts: Mercado Bitcoin, Hypernative, Tyr Capital, Midas, Metaschool</li><li>Community formats: Bitcoin &amp; Brews and the Devconnect Buenos Aires week</li><li>Co-marketing campaigns like Golden Sats</li></ul></details>
+        <details class="c6"><summary><span class="label">Developers</span><h3>Developer acquisition</h3><p>Bringing developers in, and giving them reasons to keep building.</p><span class="pm" aria-hidden="true">+</span></summary><ul><li>ETHGlobal sponsorships and hackathons</li><li>Metaschool Dev Summit (1,341 registered) and the Bangkok Bitcoin Hackathon (1,082)</li><li>Chain Reaction dev meetups in Prague and Taipei, Hacker House at ETH Lisbon, Builders Workshop in London</li><li>RIF Me Up, grants and Hacktivator, with DevRel and DevEx</li></ul></details>
+        <details class="c6"><summary><span class="label">Growth</span><h3>Acquisition &amp; retention</h3><p>Multi-channel campaigns, and loops that bring people back.</p><span class="pm" aria-hidden="true">+</span></summary><ul><li>Marketing automation and multi-channel campaigns at E-goi</li><li>Golden Sats: partner-led co-marketing, $100M+ in volume</li><li>Briefed PR, paid media, agencies, KOLs and influencers</li><li>Cultivators retention program</li><li>40% on-chain retention, the highest Rootstock had reached</li></ul></details>
+        <details class="c6"><summary><span class="label">Ops</span><h3>HubSpot &amp; marketing ops</h3><p>The system behind every campaign.</p><span class="pm" aria-hidden="true">+</span></summary><ul><li>Lists by role, seniority, company and city</li><li>Lead scoring and tags by profile, interest and interactions</li><li>Workflows from event lead capture to nurturing to sales</li><li>Qualified contacts passed to the commercial team</li></ul></details>
       </div>
-      <div class="wk-head">
-        <h3 class="sub">The work <span>· 26 events, 6,500+ registered guests on Luma</span></h3>
+      <details class="L wkd" id="work">
+        <summary><span class="ln">Work</span><span><span class="lt">The work</span><span class="ls">26 events, 6,500+ registered guests on Luma</span></span><span class="pl" aria-hidden="true">+</span></summary>
+        <div class="lb">
+      <div class="wk-head" style="margin-top:0">
         <div class="flt" role="group" aria-label="Filter the work">
           <button type="button" aria-pressed="true" data-f="all">All</button>
           <button type="button" aria-pressed="false" data-f="inst">Institutional &amp; VIP</button>
@@ -466,6 +489,8 @@ details.L details.L .lb{padding:0 0 1.5rem}
         <a class="ec" data-g="camp" href="https://webinar.rootstocklabs.com/" target="_blank" rel="noopener"><span class="im cover"><img loading="lazy" src="https://www.rootstocklabs.com/og.png" alt="Bitcoin as Collateral" width="800" height="420"></span><span class="eb"><span class="tg">Campaign</span><b>Bitcoin as Collateral</b><span class="mt">Institutional webinar · on demand</span><span class="rg">Bitcoin-backed lending for institutions</span></span></a>
       </div>
       <p class="note">Registered = guests on the Luma page, not check-ins.</p>
+        </div>
+      </details>
     </div>
   </details>
 
@@ -524,7 +549,7 @@ details.L details.L .lb{padding:0 0 1.5rem}
   <details class="L" id="s4">
     <summary><span class="ln">04</span><span><span class="lt">Growth &amp; retention flywheel</span><span class="ls">Every event increases the value and the reach of the next one</span></span><span class="pl" aria-hidden="true">+</span></summary>
 <div class="lb">
-      <p class="intro">Six stages around one goal: <b>community and audience growth</b>, city by city. Select a stage to see what happens in it, who owns it and what we measure.</p>
+      <p class="intro">Select a stage to see what I'd do and what happens.</p>
       <div class="fw">
         <div class="wheel w6" role="tablist" aria-label="Flywheel stages">
           <svg viewBox="0 0 100 100" aria-hidden="true">
@@ -537,77 +562,50 @@ details.L details.L .lb{padding:0 0 1.5rem}
             <path class="seg6" d="M16 55 A34 34 0 0 1 18 38" marker-end="url(#ah6)"/>
             <path class="seg6" d="M24 27 A34 34 0 0 1 40 17.5" marker-end="url(#ah6)"/>
           </svg>
-          <div class="core"><b>Community<br>&amp; audience</b><span>growth</span></div>
+          <div class="core"><b>Qualified<br>audience</b><span>growth</span></div>
         </div>
         <div class="panel" id="fw-panel">
           <div data-stage="1">
             <span class="label">Stage 1</span><h3>Attract</h3>
-            <p>Build each city's audience from the data we already have, then add partners and new channels.</p>
-            <ul>
-              <li><b>HubSpot research and segmentation.</b> <span>Events attended, attended vs no-show, city, role and company.</span></li>
-              <li><b>Segments that matter.</b> <span>Role, seniority, city, company and past attendance.</span></li>
-              <li><b>Sync with performance and lifecycle.</b> <span>Goals set in qualified attendees. Lookalikes from past leaders, LinkedIn targeting by title, email per segment.</span></li>
-              <li><b>City partners and leaders.</b> <span>Meetups, communities, newsletters and local leaders, with tracked codes.</span></li>
-              <li><b>New markets as tests.</b> <span>AI engineering communities for AgenticCon, and Web3 infrastructure teams (Layer 5).</span></li>
-            </ul>
+            <ul><li><b>New to PlatformCon ABM</b> <span>companies that match the profile but aren't in HubSpot yet</span></li><li><b>Sponsors' target accounts</b> <span>decision makers invited 1:1</span></li><li><b>Charm campaign</b> <span>leaders at companies sponsoring KubeCon and major AI and crypto events</span></li><li><b>Co-marketing</b> <span>partners and communities in each city</span></li><li><b>Database invites</b> <span>by role, seniority and city</span></li><li><b>Paid and sponsored media</b> <span>LinkedIn, banners and newsletter sponsorships</span></li></ul>
+            <p class="kpi res"><b>What happens:</b> New qualified contacts and accounts enter HubSpot.</p>
             <div class="who"><span class="me">Me: owner</span><span>Performance</span><span>Lifecycle</span><span>Partners</span></div>
-            <p class="kpi"><b>Measure:</b> city audience size · decision makers by source</p>
+            <p class="kpi"><b>Measure:</b> net-new accounts · decision makers by source</p>
           </div>
           <div data-stage="2">
             <span class="label">Stage 2</span><h3>Register</h3>
-            <p>A Luma page that converts, and registrations that tell us who's coming.</p>
-            <ul>
-              <li><b>Event page with design and content.</b> <span>Strong visuals and copy for every event.</span></li>
-              <li><b>Registration questions.</b> <span>Role, company, team size and whether they're evaluating tools.</span></li>
-              <li><b>Approval rules.</b> <span>Leaders approved instantly and invited to the leaders track; a waitlist when space is tight.</span></li>
-              <li><b>A message per segment.</b> <span>What an engineer gets is not what a CTO gets.</span></li>
-            </ul>
+            <ul><li><b>Luma page</b> <span>design, content and qualifying questions</span></li><li><b>"Convince your manager"</b> <span>20% team offer by email, with a note for the manager</span></li><li><b>Alumni ticket</b> <span>early access for past attendees</span></li><li><b>Weekly drops</b> <span>speakers and agenda</span></li></ul>
+            <p class="kpi res"><b>What happens:</b> Teams register together, and we capture the budget holder.</p>
             <div class="who"><span class="me">Me: owner</span><span>Design</span><span>Content</span></div>
-            <p class="kpi"><b>Measure:</b> page conversion · qualified share</p>
+            <p class="kpi"><b>Measure:</b> page conversion · seats per order · qualified share</p>
           </div>
           <div data-stage="3">
             <span class="label">Stage 3</span><h3>Attend</h3>
-            <p>Registration is a promise. Attendance is the result.</p>
-            <ul>
-              <li><b>Attendance engine.</b> <span>Who's-in-the-room emails, reconfirm or release 48h before, calendar holds and a day-of message.</span></li>
-              <li><b>Attendance tests.</b> <span>Speaker invites, team tickets, a convince-your-manager kit and perks that only exist in person.</span></li>
-              <li><b>Check-in synced to HubSpot.</b> <span>Reliable attendance data for every person.</span></li>
-            </ul>
+            <ul><li><b>Leaders track and VIP dinners</b> <span>a reason for decision makers to come</span></li><li><b>Reconfirm or release</b> <span>48h before, plus reminders, calendar holds and a waitlist</span></li><li><b>Check-in synced to HubSpot</b> <span>for every attendee</span></li></ul>
+            <p class="kpi res"><b>What happens:</b> Decision makers in the room, and reliable attendance data.</p>
             <div class="who"><span class="me">Me: owner</span><span>Lifecycle</span><span>Events team</span></div>
-            <p class="kpi"><b>Measure:</b> attendance rate by segment</p>
+            <p class="kpi"><b>Measure:</b> attendance rate · decision makers present</p>
           </div>
           <div data-stage="4">
             <span class="label">Stage 4</span><h3>Engage</h3>
-            <p>Keep the audience warm between events, the way we kept Golden Sats participants active across four seasons.</p>
-            <ul>
-              <li><b>Follow-ups.</b> <span>Recordings and resources for attendees; a second chance for no-shows.</span></li>
-              <li><b>City rhythm.</b> <span>City Luma calendars, local meetups, newsletter blocks and community content.</span></li>
-              <li><b>Audience profile to sponsorship.</b> <span>Who came and what they cared about, so sponsors meet the right people.</span></li>
-            </ul>
-            <div class="who"><span class="me">Me: owner</span><span>Lifecycle</span><span>Community</span><span>Sponsorship</span></div>
+            <ul><li><b>Follow-ups</b> <span>one track for attendees, another for no-shows</span></li><li><b>Success stories</b> <span>use cases from attendees and speakers</span></li><li><b>City rhythm</b> <span>Luma city calendars, meetups and newsletter blocks</span></li><li><b>Audience profile</b> <span>handed to sponsorship</span></li></ul>
+            <p class="kpi res"><b>What happens:</b> The audience stays warm, and its stories feed the next Attract.</p>
+            <div class="who"><span class="me">Me: owner</span><span>Lifecycle</span><span>Content</span><span>Sponsorship</span></div>
             <p class="kpi"><b>Measure:</b> engaged share of each city's audience</p>
           </div>
           <div data-stage="5">
             <span class="label">Stage 5</span><h3>Advocate</h3>
-            <p>Turn your best attendees into the voice of the next event.</p>
-            <ul>
-              <li><b>Ambassadors as city hosts.</b> <span>Ambassador Program members and meetup organisers co-host warm-up meetups and get their own codes.</span></li>
-              <li><b>PlatformCon Alumni.</b> <span>Early access, an alumni price and a returning-attendee badge.</span></li>
-              <li><b>Speakers and certified engineers.</b> <span>A speaker kit with "I'm speaking" cards, plus an in-person moment for certified engineers.</span></li>
-            </ul>
+            <ul><li><b>Speaker kit</b> <span>"I'm speaking" cards and personal codes</span></li><li><b>"I'm attending" cards</b> <span>for every registrant</span></li><li><b>City hosts</b> <span>ambassadors and meetup organisers co-host warm-up meetups</span></li></ul>
+            <p class="kpi res"><b>What happens:</b> Attendees and speakers promote the next event.</p>
             <div class="who"><span class="me">Me: owner</span><span>Community</span><span>Content</span></div>
-            <p class="kpi"><b>Measure:</b> repeat attendance · active advocates per city</p>
+            <p class="kpi"><b>Measure:</b> active advocates per city · repeat attendance</p>
           </div>
           <div data-stage="6">
             <span class="label">Stage 6</span><h3>Refer</h3>
-            <p>Every attendee brings the next one, and the data makes the wheel faster.</p>
-            <ul>
-              <li><b>Referrals and team invites.</b> <span>"Bring your platform lead" right after registering, plus "I'm attending" cards.</span></li>
-              <li><b>Partners back.</b> <span>The best-performing partners return for the next event.</span></li>
-              <li><b>Learn and re-segment.</b> <span>Update scores with real attendance and rank channels by cost per attendee. This feeds straight back into Attract.</span></li>
-            </ul>
-            <div class="who"><span class="me">Me: owner</span><span>Partners</span><span>Ops</span></div>
-            <p class="kpi"><b>Measure:</b> share of registrations from referrals, ambassadors and partners</p>
+            <ul><li><b>Referrals and team invites</b> <span>"bring your platform lead"</span></li><li><b>Best partners back</b> <span>for the next event</span></li><li><b>Accounts to sales</b> <span>vendor accounts passed on as sponsor prospects</span></li><li><b>Learn and re-segment</b> <span>update scores and rank channels by cost per attendee</span></li></ul>
+            <p class="kpi res"><b>What happens:</b> Cheaper, more qualified acquisition, and a sponsor pipeline. Back to Attract.</p>
+            <div class="who"><span class="me">Me: owner</span><span>Partners</span><span>Sales</span><span>Ops</span></div>
+            <p class="kpi"><b>Measure:</b> referral and partner share · accounts to sales</p>
           </div>
         </div>
       </div>
@@ -662,36 +660,7 @@ details.L details.L .lb{padding:0 0 1.5rem}
         <div><span class="label">Compound</span><b>Keep each city warm</b><span class="d">City Luma calendars, local meetups and community content between events, so the next edition starts with an audience.</span></div>
       </div>
       <p class="intro" style="margin-top:1rem">London and New York are two days apart in June, so they can share campaign assets and run on one combined calendar, with local partners and leaders in each city.</p>
-      <h3 class="sub">Weekly dashboard</h3>
-<div class="dash" style="margin-top:1rem">
-    <div class="dash-top"><b>PlatformCon SF · week T-4</b><span class="mock">Mockup · illustrative data</span></div>
-    <div class="tiles">
-      <div class="tile"><small>Registrations</small><strong>612</strong><em>+18% WoW</em></div>
-      <div class="tile"><small>Qualified share</small><strong>54%</strong><em>target 50%</em></div>
-      <div class="tile"><small>Leaders confirmed</small><strong>71</strong><em>of 120 target accounts</em></div>
-      <div class="tile"><small>Expected show-up</small><strong>63%</strong><em>model, by segment</em></div>
-      <div class="tile"><small>SF city audience</small><strong>3.4k</strong><em>+420 new this cycle</em></div>
-    </div>
-    <div class="dgrid">
-      <div class="tile">
-        <h5>Qualified registrations by source</h5>
-        <div class="row"><span>Community &amp; returning</span><div class="bar"><i style="width:82%"></i></div><b>34%</b></div>
-        <div class="row"><span>Partners &amp; meetups</span><div class="bar"><i style="width:52%"></i></div><b>21%</b></div>
-        <div class="row"><span>Paid (LinkedIn)</span><div class="bar"><i style="width:40%"></i></div><b>17%</b></div>
-        <div class="row"><span>Speakers &amp; sponsors</span><div class="bar"><i style="width:36%"></i></div><b>15%</b></div>
-        <div class="row"><span>Tests (Web3, AI)</span><div class="bar"><i style="width:30%"></i></div><b>13%</b></div>
-      </div>
-      <div class="tile funnel">
-        <h5>Funnel (qualified)</h5>
-        <div class="row"><span>Reached</span><div class="bar"><i style="width:100%"></i></div><b>4.1k</b></div>
-        <div class="row"><span>Registered</span><div class="bar"><i style="width:48%"></i></div><b>330</b></div>
-        <div class="row"><span>Reconfirmed</span><div class="bar"><i style="width:36%"></i></div><b>245</b></div>
-        <div class="row"><span>Expected present</span><div class="bar"><i style="width:30%"></i></div><b>208</b></div>
-      </div>
-    </div>
-  </div>
-  
-      <p class="note">The dashboard numbers are illustrative, to show the format. Real targets come from the baselines in the first 30 days.</p>
+
     </div>
   </details>
 
@@ -725,14 +694,10 @@ details.L details.L .lb{padding:0 0 1.5rem}
       <div class="reach">
         <div>
           <span class="label">Potential reach</span>
-          <p style="margin-top:.4rem">If these three validate the fit, the same play extends to the <b>exchanges, custodians, infrastructure providers and fintechs</b> that sponsor and exhibit at crypto events.</p>
-          <small>One event alone, TOKEN2049 Singapore 2025, as announced before the event. Source: <a href="https://www.theblock.co/post/368435/token2049-singapore-breaks-records-25000-attendees-at-the-worlds-largest-web3-event" target="_blank" rel="noopener">The Block</a></small>
+          <p style="margin-top:.4rem">If Coinbase, Consensys and Chainlink validate the fit, the same play extends to <b>Web3 companies with the same profile</b>: exchanges, custodians, infrastructure providers and fintechs that sponsor and exhibit at crypto events.</p>
+          <small>Exhibitors at TOKEN2049 Singapore 2025, as announced before the event. Source: <a href="https://www.theblock.co/post/368435/token2049-singapore-breaks-records-25000-attendees-at-the-worlds-largest-web3-event" target="_blank" rel="noopener">The Block</a></small>
         </div>
-        <div class="nums">
-          <div><strong>500+</strong><span>exhibiting companies</span></div>
-          <div><strong>~1,000</strong><span>side events in one week</span></div>
-          <div><strong>25,000</strong><span>attendees from 160+ countries</span></div>
-        </div>
+        <div class="nums one"><div><strong>500+</strong><span>Web3 companies exhibiting at a single event, the pool to qualify against the same profile</span></div></div>
       </div>
       <h3 class="sub">The play</h3>
       <ol class="wf">
@@ -745,8 +710,11 @@ details.L details.L .lb{padding:0 0 1.5rem}
     </div>
   </details>
 
-  <details class="L" id="s7">
-    <summary><span class="ln">07</span><span><span class="lt">Outcomes</span><span class="ls">Where I'll focus, and the numbers I'll report on</span></span><span class="pl" aria-hidden="true">+</span></summary>
+</section>
+
+<section id="more" class="more">
+  <details class="L sm" id="outcomes">
+    <summary><span class="ln">More</span><span><span class="lt">Outcomes</span><span class="ls">Where I'll focus, and the numbers I'll report on</span></span><span class="pl" aria-hidden="true">+</span></summary>
     <div class="lb">
       <p class="intro">One headline number: <b>attendance rate</b>, because that's how the role defines success. Right next to it: <b>the decision makers in the room</b>.</p>
       <div class="cad" style="margin:0 0 1.25rem"><div><b>Decision makers registered &amp; present</b><span>CTOs, VPs and Heads of Platform and AI, per event</span></div><div><b>Net-new accounts</b><span>Companies attending for the first time</span></div><div><b>Accounts to sales</b><span>Vendor accounts passed on as sponsor prospects</span></div><div><b>Cost per attendee</b><span>Counted on people who showed up</span></div></div>
@@ -797,8 +765,8 @@ details.L details.L .lb{padding:0 0 1.5rem}
     </div>
   </details>
 
-  <details class="L" id="s8">
-    <summary><span class="ln">08</span><span><span class="lt">Questions for you</span><span class="ls">What I'd love to understand first</span></span><span class="pl" aria-hidden="true">+</span></summary>
+  <details class="L sm" id="questions">
+    <summary><span class="ln">More</span><span><span class="lt">Questions for you</span><span class="ls">What I'd love to understand first</span></span><span class="pl" aria-hidden="true">+</span></summary>
     <div class="lb">
       <ol class="qs" style="margin-top:0">
         <li>What's currently the biggest bottleneck in your events growth engine: registrations, attendance rates, or reaching the right audience?</li>
