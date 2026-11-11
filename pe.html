@@ -402,6 +402,32 @@ details.c6>ul{margin:0;padding:0 1.4rem 1.25rem}
 .more details.L.sm>summary .ln{color:var(--mute)}
 .more details.L.sm>summary .pl{width:1.8rem;height:1.8rem;font-size:1rem}
 .panel .kpi.res{margin-top:.9rem;color:var(--ink)}
+.mut{color:var(--mute);font-weight:400;font-size:.9rem}
+.cal{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:1.6rem;counter-reset:c}
+.cal li{position:relative;background:var(--card);border-radius:14px;padding:.9rem .85rem 1rem;display:flex;flex-direction:column;gap:.3rem}
+.cal li:not(:last-child)::after{content:"→";position:absolute;right:-1.3rem;top:50%;transform:translateY(-50%);color:var(--accent);font-size:1.05rem;font-weight:600}
+.cal time{font-size:.75rem;font-weight:600;color:var(--accent);letter-spacing:.02em}
+.cal b{font-weight:500;font-size:.95rem}
+.cal span{font-size:.82rem;color:var(--mute);line-height:1.4}
+@media (max-width:1100px){.cal{grid-template-columns:repeat(4,minmax(0,1fr))}.cal li:nth-child(4)::after{content:"↓";right:auto;left:50%;top:auto;bottom:-1.35rem;transform:translateX(-50%)}}
+@media (max-width:640px){.cal{grid-template-columns:1fr;gap:1.5rem}.cal li:not(:last-child)::after{content:"↓";right:auto;left:50%;top:auto;bottom:-1.35rem;transform:translateX(-50%)}}
+.mh{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.mh li{display:grid;grid-template-columns:minmax(0,13rem) minmax(0,1fr);gap:.25rem 1.5rem;padding:.7rem 0;border-bottom:1px solid var(--line);font-size:.95rem}
+.mh li b{font-weight:500;position:relative;padding-left:1rem}
+.mh li b::before{content:"";position:absolute;left:0;top:.55rem;width:.4rem;height:.4rem;border-radius:50%;background:var(--accent)}
+.mh li span{color:var(--mute)}
+@media (max-width:560px){.mh li{grid-template-columns:1fr}}
+.lv{display:inline-block;font-size:.75rem;font-weight:600;padding:.2rem .55rem;border-radius:999px;white-space:nowrap}
+.lv.lo{background:#DDF3E5;color:#1E7A43}.lv.md{background:#FBF0C9;color:#8A6A00}.lv.mh{background:#FDE3C4;color:#A85A00}.lv.hi{background:#FADADA;color:#B42828}
+@media (prefers-color-scheme:dark){.lv.lo{background:#173A26;color:#7FD6A0}.lv.md{background:#3A3215;color:#F0D36B}.lv.mh{background:#3D2A12;color:#F7B26A}.lv.hi{background:#3D1A1A;color:#F28C8C}}
+.legend{display:flex;gap:.4rem;flex-wrap:wrap;margin:0 0 .9rem}
+.q.bt{background:var(--ink);color:var(--bg)}
+.q.bb{background:var(--accent);color:#15171B;box-shadow:inset 0 0 0 2px var(--ink)}
+.q.bx{border:1px dashed var(--accent);color:var(--accent)}
+.scroll .mx{min-width:56rem}
+.mx td:nth-child(2){min-width:11rem}
+h1.wide{max-width:none;font-size:clamp(2rem,5.2vw,4.6rem);line-height:1.04}
+.mx td b a{color:inherit;text-underline-offset:3px}.mx td b a:hover{color:var(--accent)}
 </style>
 </head>
 <body>
@@ -416,9 +442,7 @@ details.c6>ul{margin:0;padding:0 1.4rem 1.25rem}
 </nav>
 
 <header class="hero">
-  <h1>Events growth for <span>PlatformCon</span> and AgenticCon.</h1>
-  <p class="lede">My experience, the work behind it, and how I'd approach growing registrations and attendance, from the first event brief to a playbook that repeats in every city.</p>
-  <p class="lede" style="margin-top:.6rem;font-size:1rem">Day-to-day work with Product, DevRel, Tech, Marketing and BD.</p>
+  <h1 class="wide">Day-to-day work with <span>Product, DevRel, Tech, Marketing and BD.</span></h1>
   <ul class="facts">
     <li><strong>10+</strong>years in marketing, the last 5 in Web3, DeFi and fintech</li>
     <li><strong>20+</strong>global events and hackathons</li>
@@ -430,7 +454,7 @@ details.c6>ul{margin:0;padding:0 1.4rem 1.25rem}
 <section id="layers">
   <div class="lhead">
     <h2>Six sections. <span>Open the one you need.</span></h2>
-    <button class="toggle-all" type="button" aria-pressed="false">Expand all</button>
+    
   </div>
 
   <details class="L" id="s1" open>
@@ -497,21 +521,16 @@ details.c6>ul{margin:0;padding:0 1.4rem 1.25rem}
   <details class="L" id="s2">
     <summary><span class="ln">02</span><span><span class="lt">Every event brief</span><span class="ls">The exact workflow, from brief to retro</span></span><span class="pl" aria-hidden="true">+</span></summary>
     <div class="lb">
-      <p class="intro">Seven steps, the same for every in-person event. <b>T = event day.</b></p>
-      <div class="scroll">
-        <table class="brief">
-          <thead><tr><th>Step</th><th>When</th><th>What happens</th></tr></thead>
-          <tbody>
-            <tr><td>1 · Brief</td><td class="t">T-14 wks</td><td><span>City, date, capacity, target attendance rate, decision-maker target and budget.</span></td></tr>
-            <tr><td>2 · Audience</td><td class="t">T-14 wks</td><td><span>Pull past attendees and city lists from HubSpot, plus the partner, speaker and leader lists.</span></td></tr>
-            <tr><td>3 · Event page</td><td class="t">T-12 wks</td><td><span>A Luma page with design and content, qualifying questions and the team offer.</span></td></tr>
-            <tr><td>4 · Campaigns</td><td class="t">T-12 → T-1 wk</td><td><span>Database invites, partners, paid and sponsored media, speaker and agenda drops.</span></td></tr>
-            <tr><td>5 · Attendance</td><td class="t">T-7 days → T</td><td><span>Reconfirm or release, reminders, logistics and the waitlist.</span></td></tr>
-            <tr><td>6 · Follow-up</td><td class="t">T+1 → T+14</td><td><span>Separate tracks for attendees and no-shows; new vendor accounts go to sales.</span></td></tr>
-            <tr><td>7 · Retro</td><td class="t">T+14</td><td><span>Scorecard per channel and partner, then update the playbook.</span></td></tr>
-          </tbody>
-        </table>
+            <h3 class="sub" style="margin-top:0">Repeating it in every city</h3>
+      <div class="loopc">
+        <div><span class="label">Reuse</span><b>The same toolkit</b><span class="d">Brief template, Luma page template, email sequences, partner map format and scorecard, so no city starts from scratch.</span></div>
+        <div><span class="label">Localise</span><b>What changes per city</b><span class="d">Local partners, speakers and leaders, holidays and timing, language and the city's own audience list.</span></div>
+        <div><span class="label">Benchmark</span><b>Start from the last city</b><span class="d">Attendance rate, cost per attendee and the best channels from SF become the targets for London and New York.</span></div>
+        <div><span class="label">Compound</span><b>Keep each city warm</b><span class="d">City Luma calendars, local meetups and community content between events, so the next edition starts with an audience.</span></div>
       </div>
+
+      <h3 class="sub">The workflow <span class="mut">· T = event day</span></h3>
+      <ol class="cal"><li><time>T-14 wks</time><b>1. Brief</b><span>City, date, capacity, attendance and decision-maker targets, budget.</span></li><li><time>T-14 wks</time><b>2. Audience</b><span>Past attendees and city lists from HubSpot; partner, speaker and leader lists.</span></li><li><time>T-12 wks</time><b>3. Event page</b><span>Luma page with design, content, qualifying questions and the team offer.</span></li><li><time>T-12 → T-1 wk</time><b>4. Campaigns</b><span>Database invites, partners, paid and sponsored media, speaker and agenda drops.</span></li><li><time>T-7 days → T</time><b>5. Attendance</b><span>Reconfirm or release, reminders, logistics, waitlist.</span></li><li><time>T+1 → T+14</time><b>6. Follow-up</b><span>Attendees and no-shows on separate tracks; vendor accounts to sales.</span></li><li><time>T+14</time><b>7. Retro</b><span>Scorecard per channel and partner; update the playbook.</span></li></ol>
     </div>
   </details>
 
@@ -520,26 +539,26 @@ details.c6>ul{margin:0;padding:0 1.4rem 1.25rem}
     <div class="lb">
       <p class="intro">Attendance conversion is already strong, so the biggest lever is <b>more qualified registrations</b>.</p>
       <h3 class="sub" style="margin-top:0">Must-haves for every event</h3>
-      <div class="must">
-        <div><b>Invites to the internal database</b><span>Past attendees and city lists, segmented by role and seniority.</span></div>
-        <div><b>Co-marketing partnerships</b><span>Partners promote the event to their audiences, with tracked codes.</span></div>
-        <div><b>Success stories</b><span>Use cases from past attendees and speakers, published and shared before each event.</span></div>
-        <div><b>Paid and sponsored media</b><span>LinkedIn by title and target accounts, plus banners and newsletter sponsorships.</span></div>
-        <div><b>Weekly speaker and agenda drops</b><span>A steady rhythm of reasons to register, with clear price deadlines.</span></div>
-      </div>
-      <h3 class="sub">What I'd test: effort vs reward</h3>
+      <ul class="mh"><li><b>Database invites</b><span>past attendees and city lists, by role and seniority</span></li><li><b>Partner co-marketing</b><span>partners promote to their audiences with tracked codes</span></li><li><b>Success stories</b><span>attendee and speaker use cases before each event</span></li><li><b>Paid &amp; sponsored media</b><span>LinkedIn by title and account, newsletter sponsorships</span></li><li><b>Weekly drops</b><span>speakers and agenda, with price deadlines</span></li></ul>
+      <h3 class="sub">Growth initiatives: Action Priority Matrix</h3>
+      <p class="legend"><span class="lv lo">Low</span><span class="lv md">Medium</span><span class="lv mh">Med–High</span><span class="lv hi">High</span></p>
       <div class="scroll">
         <table class="mx">
-          <thead><tr><th>Type</th><th>Idea</th><th>Effort</th><th>Reward</th><th>KPI</th></tr></thead>
+          <thead><tr><th>Type</th><th>Test</th><th>What I'd do</th><th>Effort</th><th>Reward</th><th>KPI</th></tr></thead>
           <tbody>
-            <tr><td><span class="q qw">Quick win</span></td><td><b>"Convince your manager" team offer</b><span>Group discounts already exist on request. Make them visible: 20% for 3+ seats by email, with a ready-made note for the manager. Bigger orders, fuller rooms, and the budget holder in HubSpot.</span></td><td class="lvl">Low</td><td class="lvl">High</td><td><span>Seats per order · managers captured</span></td></tr>
-            <tr><td><span class="q qw">Quick win</span></td><td><b>Sponsor invite codes</b><span>Sponsors invite their own customers and prospects, who are often decision makers.</span></td><td class="lvl">Low</td><td class="lvl">High</td><td><span>Registrations per sponsor code</span></td></tr>
-            <tr><td><span class="q qw">Quick win</span></td><td><b>Alumni ticket</b><span>Early access and an alumni price for past attendees, starting with leaders.</span></td><td class="lvl">Low</td><td class="lvl">High</td><td><span>Share of returning attendees</span></td></tr>
-            <tr><td><span class="q qw">Quick win</span></td><td><b>"I'm attending" social proof</b><span>Share cards for attendees and a speaker kit with personal codes.</span></td><td class="lvl">Low</td><td class="lvl">Medium</td><td><span>Referral share · registrations per speaker</span></td></tr>
-            <tr><td><span class="q bb">Big bet</span></td><td><b>"New to PlatformCon" ABM</b><span>Companies that match the profile but aren't in HubSpot yet, reached 1:1, by industry and through ads, with lookalikes of the accounts that already bring leaders.</span></td><td class="lvl">Medium</td><td class="lvl">High</td><td><span>Net-new accounts · leaders from new accounts</span></td></tr>
-            <tr><td><span class="q bb">Big bet</span></td><td><b>Charm campaign for other events' sponsors</b><span>Companies sponsoring KubeCon and major AI and crypto events have budgets and platform teams. ABM to their leaders, plus a handoff to sales.</span></td><td class="lvl">Medium</td><td class="lvl">High</td><td><span>Leaders registered · accounts to sales</span></td></tr>
-            <tr><td><span class="q bb">Big bet</span></td><td><b>Leaders track &amp; VIP dinners per city</b><span>Invite-only peer roundtables curated with sponsors, which give CTOs a reason to come.</span></td><td class="lvl">Med–High</td><td class="lvl">High</td><td><span>Decision makers registered and present</span></td></tr>
-            <tr><td><span class="q ts">Test</span></td><td><b>Web3 decision makers (section 06)</b><span>Crypto companies with budgets and platform teams, as attendees and as sponsor prospects.</span></td><td class="lvl">Medium</td><td class="lvl">High if it converts</td><td><span>Qualified share · accounts to sales</span></td></tr>
+            <tr><td><span class="q qw">Quick win</span></td><td><b>"Convince your manager" team offer</b></td><td><span>20% for 3+ seats, requested by email, with a ready-made note for the manager. Captures the budget holder in HubSpot.</span></td><td><span class="lv lo">Low</span></td><td><span class="lv hi">High</span></td><td><span>Seats per order · managers captured</span></td></tr>
+            <tr><td><span class="q qw">Quick win</span></td><td><b>Alumni ticket</b></td><td><span>Early access and an alumni price for past attendees, leaders first.</span></td><td><span class="lv lo">Low</span></td><td><span class="lv hi">High</span></td><td><span>Share of returning attendees</span></td></tr>
+            <tr><td><span class="q qw">Quick win</span></td><td><b>Sponsor invite codes</b></td><td><span>A code and a copy kit for every sponsor to invite their customers and prospects.</span></td><td><span class="lv lo">Low</span></td><td><span class="lv hi">High</span></td><td><span>Registrations per sponsor code</span></td></tr>
+            <tr><td><span class="q qw">Quick win</span></td><td><b>"I'm attending" social proof</b></td><td><span>Share cards after registration, plus a speaker kit with personal codes.</span></td><td><span class="lv lo">Low</span></td><td><span class="lv md">Medium</span></td><td><span>Referral share</span></td></tr>
+            <tr><td><span class="q bt">Bet</span></td><td><b>"New to PlatformCon" ABM campaign</b></td><td><span>Companies that match the profile but aren't in HubSpot: 1:1 for top accounts, industry sequences, LinkedIn matched audiences and lookalikes.</span></td><td><span class="lv md">Medium</span></td><td><span class="lv hi">High</span></td><td><span>Net-new accounts · leaders from new accounts</span></td></tr>
+            <tr><td><span class="q bt">Bet</span></td><td><b>KubeCon sponsors charm campaign</b></td><td><span>ABM to leaders at KubeCon sponsor companies, inviting them to bring their own attendee and customer lists with invite codes. Vendor accounts go to sales.</span></td><td><span class="lv md">Medium</span></td><td><span class="lv hi">High</span></td><td><span>Leaders registered · accounts to sales</span></td></tr>
+            <tr><td><span class="q bt">Bet</span></td><td><b>Side events &amp; roundtables at major dev events</b></td><td><span>Small, invite-only sessions for platform and AI leaders next to KubeCon, AWS re:Invent or Devcon, converting them to PlatformCon and AgenticCon.</span></td><td><span class="lv mh">Med–High</span></td><td><span class="lv hi">High</span></td><td><span>Decision makers met · registrations after</span></td></tr>
+            <tr><td><span class="q bt">Bet</span></td><td><b>"Platform engineering for Web3 infrastructure"</b></td><td><span>A side event for infrastructure and platform leaders during a dev-focused Web3 event, such as Devcon 9 in Lisbon.</span></td><td><span class="lv md">Medium</span></td><td><span class="lv hi">High</span></td><td><span>Qualified share · accounts to sales</span></td></tr>
+            <tr><td><span class="q bt">Bet</span></td><td><b><a href="https://ricardojcastro.pt/investmentplanner" target="_blank" rel="noopener">Platform Investment Planner</a></b></td><td><span>An interactive planner for platform leaders, used as a lead magnet: it captures role and company and invites qualified users to the next event.</span></td><td><span class="lv md">Medium</span></td><td><span class="lv md">Medium</span></td><td><span>Qualified leads · registrations from planner users</span></td></tr>
+            <tr><td><span class="q bt">Bet</span></td><td><b>Ambassador tasks with <a href="https://brandchamp.io/" target="_blank" rel="noopener">BrandChamp</a></b></td><td><span>If it isn't in place yet: give ambassadors and city hosts tasks (share the event, invite their team, post "I'm attending"), with points and rewards tracked in one place.</span></td><td><span class="lv md">Medium</span></td><td><span class="lv md">Medium</span></td><td><span>Tasks completed · registrations per ambassador</span></td></tr>
+            <tr><td><span class="q bb">Big bet</span></td><td><b>Growth &amp; retention flywheel</b></td><td><span>The six stages in section 04, run in every city so each event fills the next.</span></td><td><span class="lv mh">Med–High</span></td><td><span class="lv hi">High</span></td><td><span>Repeat attendance · organic share</span></td></tr>
+            <tr><td><span class="q bb">Big bet</span></td><td><b>Leaders track &amp; VIP dinners</b></td><td><span>Invite-only roundtables and dinners in every city, curated with sponsors.</span></td><td><span class="lv mh">Med–High</span></td><td><span class="lv hi">High</span></td><td><span>Decision makers registered and present</span></td></tr>
+            <tr><td><span class="q bx">Big test</span></td><td><b>Top 20 Web3 &amp; blockchain infrastructure companies</b></td><td><span>Coinbase, Consensys, Chainlink Labs and similar: map their platform and AI leaders, invite them 1:1 with the team offer, and track them as sponsor prospects.</span></td><td><span class="lv md">Medium</span></td><td><span class="lv hi">High</span></td><td><span>Accounts engaged · leaders registered · sponsor conversations</span></td></tr>
           </tbody>
         </table>
       </div>
@@ -652,14 +671,7 @@ details.c6>ul{margin:0;padding:0 1.4rem 1.25rem}
       </tbody>
     </table>
   </div>
-      <h3 class="sub">Repeating it in every city</h3>
-      <div class="loopc">
-        <div><span class="label">Reuse</span><b>The same toolkit</b><span class="d">Brief template, Luma page template, email sequences, partner map format and scorecard, so no city starts from scratch.</span></div>
-        <div><span class="label">Localise</span><b>What changes per city</b><span class="d">Local partners, speakers and leaders, holidays and timing, language and the city's own audience list.</span></div>
-        <div><span class="label">Benchmark</span><b>Start from the last city</b><span class="d">Attendance rate, cost per attendee and the best channels from SF become the targets for London and New York.</span></div>
-        <div><span class="label">Compound</span><b>Keep each city warm</b><span class="d">City Luma calendars, local meetups and community content between events, so the next edition starts with an audience.</span></div>
-      </div>
-      <p class="intro" style="margin-top:1rem">London and New York are two days apart in June, so they can share campaign assets and run on one combined calendar, with local partners and leaders in each city.</p>
+
 
     </div>
   </details>
@@ -699,14 +711,7 @@ details.c6>ul{margin:0;padding:0 1.4rem 1.25rem}
         </div>
         <div class="nums one"><div><strong>500+</strong><span>Web3 companies exhibiting at a single event, the pool to qualify against the same profile</span></div></div>
       </div>
-      <h3 class="sub">The play</h3>
-      <ol class="wf">
-        <li><b>Build the list</b><span>Crypto and fintech companies sponsoring major events, with confirmed platform or AI teams, starting from my own contacts.</span></li>
-        <li><b>Invite their leaders 1:1</b><span>Heads of Platform, Infrastructure and AI to PlatformCon and AgenticCon, with the team offer for their engineers.</span></li>
-        <li><b>One curated roundtable</b><span>"Platform engineering for Web3 infrastructure", inside an existing KubeCon satellite, or as a VIP dinner at Devcon 9 in Lisbon (11–13 Oct 2027).</span></li>
-        <li><b>Hand accounts to sales</b><span>Every vendor account goes to the sponsorship team as a sponsor prospect.</span></li>
-      </ol>
-      <div class="evid"><p><b>Decision rule:</b> scale only if 40%+ of registrants match the target profile, show-up is at or above average, and sales sees real sponsor interest. Otherwise stop. I couldn't find any Web3-focused content in the Platform Engineering ecosystem, so this is white space worth one small test.</p></div>
+
     </div>
   </details>
 
@@ -822,13 +827,7 @@ details.c6>ul{margin:0;padding:0 1.4rem 1.25rem}
     };
     show(0);
   }
-  var all=[].slice.call(document.querySelectorAll('#layers details.L'));
-  var t=document.querySelector('.toggle-all');
-  function sync(){var open=all.every(function(d){return d.open});t.textContent=open?'Collapse all':'Expand all';t.setAttribute('aria-pressed',open?'true':'false')}
-  t.addEventListener('click',function(){var open=all.every(function(d){return d.open});all.forEach(function(d){d.open=!open});sync()});
-  all.forEach(function(d){d.addEventListener('toggle',sync)});
   if(location.hash){var d=document.querySelector(location.hash);while(d){if(d.tagName==='DETAILS')d.open=true;d=d.parentElement}}
-  document.querySelectorAll('a[href="#layers"]').forEach(function(a){a.addEventListener('click',function(){var f=document.getElementById('l1');if(f)f.open=true})});
 })();
 </script>
 <script>(function(){var bs=[].slice.call(document.querySelectorAll('.flt button')),cs=[].slice.call(document.querySelectorAll('.eg .ec'));bs.forEach(function(b){b.addEventListener('click',function(){var f=b.getAttribute('data-f');bs.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});cs.forEach(function(c){c.hidden=!(f==='all'||c.getAttribute('data-g')===f)})})})})();</script>
