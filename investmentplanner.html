@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Platform Investment Planner · ricardojcastro</title>
+<meta name="description" content="A 3-minute tool for engineering leaders: three platform investment priorities with the reasoning behind each, a 90-day starting plan and a personalised PlatformCon agenda.">
+<meta name="author" content="Ricardo Castro">
+<link rel="canonical" href="https://ricardojcastro.pt/investplanner/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Crect width='30' height='30' rx='6' fill='%230a031d'/%3E%3Crect x='4' y='19' width='22' height='6' rx='1.5' fill='%237f51ff'/%3E%3Crect x='7' y='11.5' width='16' height='5.5' rx='1.5' fill='%23baa3f9'/%3E%3Crect x='10' y='5' width='10' height='4.5' rx='1.5' fill='%230cd474'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#0a031d">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Platform Investment Planner">
+<meta property="og:description" content="A 3-minute tool for engineering leaders: three platform investment priorities with the reasoning behind each, a 90-day starting plan and a personalised PlatformCon agenda.">
+<meta property="og:url" content="https://ricardojcastro.pt/investplanner/">
+<meta property="og:image" content="https://ricardojcastro.pt/investplanner/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Platform Investment Planner">
+<meta name="twitter:description" content="A 3-minute tool for engineering leaders: three platform investment priorities with the reasoning behind each, a 90-day starting plan and a personalised PlatformCon agenda.">
+<meta name="twitter:image" content="https://ricardojcastro.pt/investplanner/og-image.png">
+<style>
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0} img{max-width:100%} [hidden]{display:none!important}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Inconsolata:wght@500;600&display=swap">
+<style>
+/* Layout: dark community band with the promise, then one light working card that walks
+   through 4 question steps and turns into the report (priorities, 90-day plan, agenda, next step). */
+:root{
+  --bg:#ffffff; --surface:#f8f6fe; --surface-2:#f1edfe; --line:#e3dafd; --line-2:#d6c8fc;
+  --fg:#281b4b; --muted:#564682; --faint:#7c6fa0;
+  --accent:#7f51ff; --accent-hover:#5a35ee; --accent-ink:#ffffff; --accent-soft:#f1edfe;
+  --green:#08965a; --green-soft:#e6f8ef; --magenta:#b8179f; --blue:#2f6fd6;
+  --band:#0a031d; --band-fg:#ffffff; --band-muted:rgba(255,255,255,.68); --band-line:#353555; --band-card:#150b33;
+  --font-display:"Figtree","Aeonik",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-mono:"Inconsolata",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --r:3px; --r-card:8px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0a031d; --surface:#130a2c; --surface-2:#1c1140; --line:#2d1f54; --line-2:#473281;
+  --fg:#f4f3f7; --muted:#beb7d1; --faint:#9387b2;
+  --accent:#8f66ff; --accent-hover:#ab96ff; --accent-ink:#ffffff; --accent-soft:#2d1f54;
+  --green:#0cd474; --green-soft:#0d2a22; --magenta:#f45fe4; --blue:#6aa6ff;
+  --band:#060211; --band-line:#2d1f54; --band-card:#130a2c; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0a031d; --surface:#130a2c; --surface-2:#1c1140; --line:#2d1f54; --line-2:#473281;
+  --fg:#f4f3f7; --muted:#beb7d1; --faint:#9387b2;
+  --accent:#8f66ff; --accent-hover:#ab96ff; --accent-ink:#ffffff; --accent-soft:#2d1f54;
+  --green:#0cd474; --green-soft:#0d2a22; --magenta:#f45fe4; --blue:#6aa6ff;
+  --band:#060211; --band-line:#2d1f54; --band-card:#130a2c; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:500;margin:0;text-wrap:balance;letter-spacing:-.01em}
+p{margin:0}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.mono{font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.08em;font-size:.8rem;font-weight:600}
+
+/* Buttons — PE style: 3px radius, purple fill / outline */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5em;border-radius:var(--r);padding:.7em 1.15em;font-weight:500;font-size:.95rem;border:1px solid var(--accent);background:var(--accent);color:var(--accent-ink);cursor:pointer;text-decoration:none;transition:background .15s,border-color .15s,color .15s}
+.btn:hover{background:var(--accent-hover);border-color:var(--accent-hover)}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+.btn.ghost{background:transparent;color:var(--accent)}
+.btn.ghost:hover{background:var(--accent-soft)}
+.btn.on-dark{background:transparent;color:var(--band-fg);border-color:rgba(255,255,255,.64)}
+.btn.on-dark:hover{background:rgba(255,255,255,.08)}
+.btn.small{padding:.45em .8em;font-size:.85rem}
+.link{background:none;border:0;padding:0;color:var(--accent);cursor:pointer;font-weight:500;text-decoration:underline;text-underline-offset:3px}
+
+/* Band */
+.band{background:var(--band);color:var(--band-fg);position:relative;overflow:hidden}
+.band::before,.band::after{content:"";position:absolute;border-radius:50%;filter:blur(70px);pointer-events:none}
+.band::before{width:520px;height:520px;right:-140px;top:-220px;background:rgba(127,81,255,.38)}
+.band::after{width:380px;height:380px;left:-160px;bottom:-240px;background:rgba(12,212,116,.18)}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:18px;position:relative;z-index:1;border-bottom:1px solid var(--band-line)}
+.brand{display:flex;align-items:center;gap:10px;font-weight:500}
+.brand svg{flex:none}
+.brand small{display:block;color:var(--band-muted);font-family:var(--font-mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase}
+.pill{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--band-line);border-radius:999px;padding:4px 10px;font-family:var(--font-mono);font-size:.78rem;color:var(--band-muted)}
+.pill i{width:7px;height:7px;border-radius:50%;background:#0cd474;display:inline-block}
+.hero{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:48px;padding-block:56px 64px;position:relative;z-index:1;align-items:center}
+.hero .eyebrow{color:#baa3f9}
+.hero h1{font-size:clamp(2rem,4.4vw,3.25rem);line-height:1.08;margin-top:14px}
+.hero h1 em{font-style:normal;color:#baa3f9}
+.hero p.lede{color:var(--band-muted);font-size:1.08rem;max-width:56ch;margin-top:18px}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.route{background:var(--band-card);border:1px solid var(--band-line);border-radius:var(--r-card);padding:22px}
+.route h2{font-size:.8rem}
+.route ol{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:2px}
+.route li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:10px;padding:9px 0;border-top:1px solid var(--band-line)}
+.route li:first-child{border-top:0}
+.route li b{font-family:var(--font-mono);color:#baa3f9;font-weight:600}
+.route li span{color:var(--band-muted);font-size:.92rem}
+.route li strong{color:var(--band-fg);font-weight:500;display:block}
+
+/* Work area */
+main{padding-block:40px 72px}
+.stepper{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px;margin-bottom:28px}
+.stepper div{display:flex;flex-direction:column;gap:8px;font-size:.82rem;color:var(--faint);min-width:0}
+.stepper div::before{content:"";height:4px;border-radius:2px;background:var(--line)}
+.stepper div.done{color:var(--muted)}
+.stepper div.done::before{background:var(--accent)}
+.stepper div.now{color:var(--fg);font-weight:600}
+.stepper div.now::before{background:linear-gradient(90deg,var(--accent) 50%,var(--line) 50%)}
+.stepper span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+.card{background:var(--bg);border:1px solid var(--line);border-radius:var(--r-card);padding:clamp(20px,3.5vw,36px)}
+.q-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+.q-head h2{font-size:clamp(1.4rem,2.6vw,1.9rem)}
+.q-head .mono{color:var(--accent)}
+.q-intro{color:var(--muted);margin-top:8px;max-width:62ch}
+.q{margin-top:28px}
+.q label.ql,.q .ql{display:block;font-weight:600;margin-bottom:4px}
+.q .qh{color:var(--faint);font-size:.88rem;margin-bottom:12px}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{border:1px solid var(--line-2);background:var(--bg);border-radius:var(--r);padding:.55em .95em;cursor:pointer;font-size:.93rem;color:var(--fg);transition:border-color .12s,background .12s;text-align:left}
+.opt:hover{border-color:var(--accent)}
+.opt[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent);color:var(--fg);box-shadow:inset 0 0 0 1px var(--accent)}
+.opts.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.opts.cards .opt{padding:14px 16px;display:flex;flex-direction:column;gap:4px;min-height:96px}
+.opts.cards .opt b{font-weight:600}
+.opts.cards .opt small{color:var(--muted);font-size:.85rem;line-height:1.4}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:36px;padding-top:20px;border-top:1px solid var(--line);flex-wrap:wrap}
+.nav .hint{color:var(--faint);font-size:.88rem}
+
+/* Results */
+.r-head{display:flex;justify-content:space-between;gap:20px;align-items:flex-end;flex-wrap:wrap}
+.r-head h2{font-size:clamp(1.6rem,3vw,2.3rem)}
+.r-head p{color:var(--muted);margin-top:8px;max-width:70ch}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.chip{font-size:.8rem;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:3px 10px;color:var(--muted)}
+.prios{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:28px}
+.prio{border:1px solid var(--line);border-radius:var(--r-card);padding:22px;background:var(--surface);display:flex;flex-direction:column;gap:12px;min-width:0}
+.prio:first-child{border-color:var(--accent);background:var(--accent-soft)}
+.prio .rank{display:flex;justify-content:space-between;align-items:center}
+.prio .rank .mono{color:var(--accent)}
+.prio .fit{font-family:var(--font-mono);font-size:.78rem;color:var(--faint)}
+.prio h3{font-size:1.22rem;line-height:1.25}
+.prio p{color:var(--muted);font-size:.94rem}
+.why{border-top:1px solid var(--line-2);padding-top:12px}
+.why .mono{font-size:.72rem;color:var(--faint)}
+.why ul{margin:8px 0 0;padding:0;list-style:none;display:grid;gap:7px}
+.why li{font-size:.9rem;padding-left:16px;position:relative}
+.why li::before{content:"";position:absolute;left:0;top:.6em;width:7px;height:7px;border-radius:1px;background:var(--accent)}
+
+section.block{margin-top:44px}
+section.block > h3{font-size:1.35rem}
+section.block > p.sub{color:var(--muted);margin-top:6px;max-width:70ch}
+.plan{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-top:18px;border:1px solid var(--line);border-radius:var(--r-card);overflow:hidden}
+.phase{padding:20px;border-left:1px solid var(--line);min-width:0}
+.phase:first-child{border-left:0}
+.phase header{display:flex;flex-direction:column;gap:2px;margin-bottom:14px}
+.phase header .mono{color:var(--accent)}
+.phase header b{font-weight:600}
+.phase ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.phase li{display:grid;grid-template-columns:24px minmax(0,1fr);gap:8px;font-size:.92rem}
+.tag-n{font-family:var(--font-mono);font-weight:600;font-size:.75rem;width:22px;height:22px;border-radius:var(--r);display:grid;place-items:center;background:var(--surface-2);color:var(--accent);border:1px solid var(--line-2)}
+
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;margin-top:44px}
+.two h3{font-size:1.35rem}
+.kpis{width:100%;border-collapse:collapse;margin-top:14px;font-size:.92rem}
+.kpis th{text-align:left;font-family:var(--font-mono);font-weight:600;text-transform:uppercase;letter-spacing:.06em;font-size:.72rem;color:var(--faint);padding:0 0 8px;border-bottom:1px solid var(--line)}
+.kpis td{padding:10px 8px 10px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.kpis td:first-child{width:34px}
+.kpis td.when{color:var(--faint);white-space:nowrap;font-size:.85rem}
+.assume{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:10px}
+.assume li{font-size:.92rem;color:var(--muted);padding:10px 12px;border:1px dashed var(--line-2);border-radius:var(--r)}
+.assume li.note{border-style:solid;background:var(--surface)}
+
+/* Agenda */
+.agenda-band{margin-top:48px;border-radius:var(--r-card);background:var(--band);color:var(--band-fg);padding:clamp(20px,3.5vw,36px);position:relative;overflow:hidden}
+.agenda-band::before{content:"";position:absolute;width:420px;height:420px;right:-160px;top:-200px;border-radius:50%;background:rgba(127,81,255,.35);filter:blur(70px);pointer-events:none}
+.agenda-band > *{position:relative}
+.agenda-band .mono{color:#0cd474}
+.agenda-band h3{font-size:clamp(1.35rem,2.6vw,1.8rem);margin-top:10px}
+.agenda-band p.invite{color:var(--band-muted);margin-top:10px;max-width:68ch}
+.sessions{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:0}
+.session{display:grid;grid-template-columns:96px minmax(0,1fr) auto;gap:16px;align-items:start;padding:16px 0;border-top:1px solid var(--band-line)}
+.session .fmt{font-family:var(--font-mono);font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:#baa3f9;padding-top:2px}
+.session h4{font-size:1.02rem;font-weight:500}
+.session p{color:var(--band-muted);font-size:.88rem;margin-top:3px}
+.session .sp{font-family:var(--font-mono);font-size:.75rem;border:1px solid var(--band-line);border-radius:var(--r);padding:3px 7px;color:var(--band-muted);white-space:nowrap}
+.agenda-band .foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center;margin-top:18px;padding-top:16px;border-top:1px solid var(--band-line)}
+.agenda-band .foot small{color:var(--band-muted);font-size:.82rem;max-width:60ch}
+
+/* Next step */
+.actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:18px}
+.action{border:1px solid var(--line);border-radius:var(--r-card);padding:20px;display:flex;flex-direction:column;gap:10px;min-width:0;background:var(--bg)}
+.action[aria-current="true"]{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.action h4{font-size:1.08rem}
+.action p{color:var(--muted);font-size:.9rem}
+.action .btn{margin-top:auto;align-self:flex-start}
+.panel{margin-top:14px;border:1px solid var(--line);border-radius:var(--r-card);padding:22px;background:var(--surface)}
+.form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.form .full{grid-column:1 / -1}
+.field label{display:block;font-size:.85rem;font-weight:600;margin-bottom:5px}
+.field input,.field select,.field textarea{width:100%;font:inherit;font-size:.95rem;padding:.6em .7em;border:1px solid var(--line-2);border-radius:var(--r);background:var(--bg);color:var(--fg)}
+.field textarea{min-height:84px;resize:vertical}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:.88rem;color:var(--muted)}
+.check input{margin-top:4px;accent-color:var(--accent)}
+.err{color:var(--magenta);font-size:.85rem;min-height:1.2em}
+.ok{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border-radius:var(--r);background:var(--green-soft);border:1px solid var(--green);font-size:.92rem}
+.ok b{color:var(--green)}
+textarea.copybox{width:100%;min-height:220px;font-family:var(--font-mono);font-size:.82rem;margin-top:10px;padding:10px;border:1px solid var(--line-2);border-radius:var(--r);background:var(--bg);color:var(--fg)}
+
+details.crm{margin-top:44px;border:1px solid var(--line);border-radius:var(--r-card);background:var(--surface)}
+details.crm summary{cursor:pointer;padding:16px 20px;font-weight:600;display:flex;justify-content:space-between;gap:12px;align-items:center;list-style:none}
+details.crm summary::-webkit-details-marker{display:none}
+details.crm summary .mono{color:var(--faint);font-size:.72rem}
+details.crm summary::after{content:"+";font-family:var(--font-mono);color:var(--accent);font-size:1.2rem}
+details.crm[open] summary::after{content:"–"}
+.crm-body{padding:0 20px 20px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:24px}
+.score{display:flex;align-items:baseline;gap:8px}
+.score b{font-family:var(--font-display);font-size:2.6rem;font-weight:500;font-variant-numeric:tabular-nums}
+.meter{height:8px;border-radius:4px;background:var(--line);overflow:hidden;margin:8px 0 14px}
+.meter i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),#0cd474)}
+.seg{display:inline-block;font-size:.82rem;font-weight:600;padding:3px 9px;border-radius:var(--r);background:var(--accent-soft);color:var(--accent);border:1px solid var(--line-2)}
+.crm dl{margin:14px 0 0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 14px;font-size:.88rem}
+.crm dt{color:var(--faint)}
+.crm dd{margin:0}
+.crm pre{margin:0;overflow-x:auto;font-family:var(--font-mono);font-size:.8rem;background:var(--bg);border:1px solid var(--line);border-radius:var(--r);padding:12px;line-height:1.5;max-height:340px}
+.tagrow{display:flex;flex-wrap:wrap;gap:6px}
+.tagrow code{font-family:var(--font-mono);font-size:.78rem;background:var(--bg);border:1px solid var(--line);border-radius:var(--r);padding:2px 7px;color:var(--muted)}
+
+footer{border-top:1px solid var(--line);padding-block:24px;color:var(--faint);font-size:.85rem}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+footer b{color:var(--fg);font-weight:600}
+footer b i{font-style:normal;color:#f7931a}
+
+.fade{animation:fade .35s ease both}
+@keyframes fade{from{opacity:.001;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){.fade{animation:none}*{transition:none!important}}
+
+@media (max-width:900px){
+  .hero{grid-template-columns:1fr;gap:32px;padding-block:40px 48px}
+  .prios,.actions{grid-template-columns:1fr}
+  .opts.cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .two,.crm-body{grid-template-columns:1fr}
+  .plan{grid-template-columns:1fr}
+  .phase{border-left:0;border-top:1px solid var(--line)}
+  .phase:first-child{border-top:0}
+}
+@media (max-width:560px){
+  .opts.cards{grid-template-columns:1fr}
+  .stepper span{display:none}
+  .stepper div.now span{display:block;position:absolute}
+  .stepper{position:relative;padding-bottom:22px}
+  .session{grid-template-columns:minmax(0,1fr)}
+  .form{grid-template-columns:1fr}
+  .topbar .pill{display:none}
+}
+</style>
+</head>
+<body>
+<div class="band">
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><rect x="3" y="18" width="24" height="7" rx="1.5" fill="#7f51ff"/><rect x="6" y="10" width="18" height="6" rx="1.5" fill="#baa3f9"/><rect x="9" y="3" width="12" height="5" rx="1.5" fill="#0cd474"/></svg>
+        <div>Platform Investment Planner<small>PlatformCon · planning tool</small></div>
+      </div>
+      <div style="display:flex;gap:14px;align-items:center"><span class="pill"><i></i>Takes about 3 minutes</span><a href="https://ricardojcastro.pt/" style="color:rgba(255,255,255,.68);font-size:.85rem;text-decoration:none">ricardojcastro.pt ↗</a></div>
+    </div>
+    <div class="hero">
+      <div>
+        <div class="mono eyebrow">For engineering leaders</div>
+        <h1>Identify the three platform decisions that <em>deserve priority</em> in your team.</h1>
+        <p class="lede">Answer four short steps about your team, your main problem and what you are weighing up. You get three priorities with the reasoning behind each one, a 90-day starting plan, and the PlatformCon sessions that help you carry it out.</p>
+        <div class="ctas">
+          <button class="btn" id="startBtn" type="button">Start the planner</button>
+          <button class="btn on-dark" id="exampleBtn" type="button">See an example result</button>
+        </div>
+      </div>
+      <aside class="route" aria-label="How it works">
+        <h2 class="mono" style="color:#0cd474">How it works</h2>
+        <ol>
+          <li><b>1</b><div><strong>Context</strong><span>Team size, platform team, your role</span></div></li>
+          <li><b>2</b><div><strong>Main problem</strong><span>Delivery, cost, reliability, DevEx, compliance or AI</span></div></li>
+          <li><b>3</b><div><strong>Current state</strong><span>Where work waits, what is manual, what you measure</span></div></li>
+          <li><b>4</b><div><strong>Priority</strong><span>The initiative you are weighing and its timeframe</span></div></li>
+          <li><b>5</b><div><strong>Result</strong><span>3 priorities, assumptions, 90-day plan, indicators</span></div></li>
+          <li><b>6</b><div><strong>Next step</strong><span>Save the report, build your agenda, get team options</span></div></li>
+        </ol>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<main class="wrap" id="planner">
+  <div class="stepper" id="stepper" aria-label="Progress"></div>
+  <div id="stage"></div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Concept prototype by <a href="https://ricardojcastro.pt/" style="color:inherit;text-decoration:none"><b>ricardo<i>j</i>castro</b></a> for PlatformCon. Not an official PlatformCon tool.</span>
+    <span>A structured self-assessment based on your answers. It does not compare you with other companies.</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+"use strict";
+
+/* ---------- Questions ---------- */
+const OPT = {
+  size:[{v:"lt50",l:"Under 50"},{v:"50-200",l:"50–200"},{v:"200-1000",l:"200–1,000"},{v:"1000+",l:"1,000+"}],
+  team:[{v:"none",l:"No platform team"},{v:"informal",l:"Informal: a few people, part-time"},{v:"dedicated",l:"One dedicated platform team"},{v:"multiple",l:"Several platform teams"}],
+  role:[{v:"exec",l:"CTO / VP Engineering"},{v:"director",l:"Director / Head of Engineering"},{v:"platform-lead",l:"Platform lead or manager"},{v:"ic",l:"Staff / principal engineer"},{v:"other",l:"Other"}],
+  problem:[
+    {v:"delivery",l:"Slow delivery",d:"Changes take too long to reach production."},
+    {v:"cost",l:"Cloud costs",d:"Spend grows faster than usage, and nobody owns it."},
+    {v:"reliability",l:"Reliability",d:"Incidents, failed changes or slow recovery."},
+    {v:"devex",l:"Developer experience",d:"Too much friction, tooling sprawl, slow onboarding."},
+    {v:"compliance",l:"Security & compliance",d:"Audits, access control and policy take too much effort."},
+    {v:"ai",l:"Running AI in production",d:"Models, agents and GPUs without a clear path."}
+  ],
+  waits:[{v:"provisioning",l:"Environment provisioning"},{v:"access",l:"Access & permission requests"},{v:"cicd",l:"CI/CD pipelines"},{v:"reviews",l:"Reviews & change approvals"},{v:"incidents",l:"Incident handoffs"},{v:"tickets",l:"Infra tickets to ops"},{v:"none",l:"No major waits"}],
+  manual:[{v:"infra",l:"Infrastructure provisioning"},{v:"secrets",l:"Secrets & access management"},{v:"onboarding",l:"Creating new services"},{v:"deploy",l:"Deployments & rollbacks"},{v:"compliance",l:"Compliance evidence"},{v:"cost",l:"Cost reporting"},{v:"gpu",l:"Model, GPU or agent setup"},{v:"none",l:"Nothing significant"}],
+  measure:[{v:"none",l:"We don't measure it yet"},{v:"adhoc",l:"Ad hoc: surveys or anecdotes"},{v:"dora",l:"Delivery metrics (e.g. DORA)"},{v:"full",l:"Delivery + adoption + developer satisfaction"}],
+  initiative:[{v:"idp",l:"Developer portal / IDP"},{v:"goldenpaths",l:"Golden paths & templates"},{v:"selfservice",l:"Self-service infrastructure"},{v:"observability",l:"Observability"},{v:"finops",l:"Cost governance / FinOps"},{v:"security",l:"Policy as code & guardrails"},{v:"ai",l:"AI platform / agent infrastructure"},{v:"exploring",l:"We're still exploring"}],
+  horizon:[{v:"q",l:"This quarter"},{v:"6m",l:"Next 6 months"},{v:"12m",l:"Within 12 months"},{v:"none",l:"No timeline yet"}]
+};
+const lbl = (k,v)=>{const o=(OPT[k==="problem2"?"problem":k]||[]).find(x=>x.v===v);return o?o.l:v};
+
+const STEPS = [
+  {name:"Context",title:"Tell us about your engineering organisation",intro:"This sets the scale of the plan and who needs to sign it off.",
+   qs:[{id:"size",label:"How many engineers do you have?",type:"single"},
+       {id:"team",label:"Is there a platform team?",type:"single"},
+       {id:"role",label:"What is your responsibility?",type:"single"}]},
+  {name:"Main problem",title:"What is hurting most right now?",intro:"Pick the one problem you would fix first. Add others if they also matter.",
+   qs:[{id:"problem",label:"Main problem",type:"single",cards:true},
+       {id:"problem2",label:"Anything else that matters?",hint:"Optional",type:"multi",optional:true}]},
+  {name:"Current state",title:"Where does work get stuck today?",intro:"Waiting and manual work are usually where platform investment pays back first.",
+   qs:[{id:"waits",label:"Where do developers wait?",hint:"Pick all that apply",type:"multi"},
+       {id:"manual",label:"Which processes are still manual?",hint:"Pick all that apply",type:"multi"},
+       {id:"measure",label:"How do you measure platform adoption and results?",type:"single"}]},
+  {name:"Priority",title:"What are you weighing up?",intro:"“Still exploring” is a perfectly good answer. The plan adapts to it.",
+   qs:[{id:"initiative",label:"Which initiative are you evaluating?",type:"single"},
+       {id:"horizon",label:"In what timeframe?",type:"single"}]}
+];
+const STEP_NAMES = ["Context","Main problem","Current state","Priority","Result","Next step"];
+
+/* ---------- Priority rules ---------- */
+const big = a => a.size==="200-1000"||a.size==="1000+";
+const has = (a,k,v) => (a[k]||[]).includes(v);
+const sec = (a,v) => has(a,"problem2",v);
+const weakMeasure = a => a.measure==="none"||a.measure==="adhoc";
+
+const PRIORITIES = [
+ {id:"selfservice",title:"Remove the top self-service blockers",
+  summary:"Find the two or three requests developers wait on most, and turn them into self-service with guardrails.",
+  rules:[
+   a=>has(a,"waits","provisioning")&&[3,"Developers wait on environment provisioning."],
+   a=>has(a,"waits","tickets")&&[3,"Infrastructure work still goes through tickets to ops."],
+   a=>has(a,"manual","infra")&&[3,"Infrastructure provisioning is still manual."],
+   a=>a.problem==="delivery"&&[2,"Slow delivery is your main problem, and waiting is usually where that time goes."],
+   a=>a.problem==="devex"&&[2,"Developer experience is your main problem; waiting for infrastructure is one of its biggest causes."],
+   a=>a.initiative==="selfservice"&&[2,"You are already evaluating self-service infrastructure."]
+  ],
+  plan:["Map the ten most common requests to ops by volume and wait time. Pick the three worst.",
+        "Make the first request self-service, with templates and policy checks, for one or two pilot teams.",
+        "Extend to the other two requests and compare wait times with your day-30 baseline."],
+  kpis:["Median wait time per request type","Share of requests completed without a ticket"],
+  tags:["selfservice","idp"]},
+ {id:"access",title:"Define access controls and guardrails",
+  summary:"Decide who can do what, and automate it, before you open up more self-service or AI tooling.",
+  rules:[
+   a=>has(a,"waits","access")&&[3,"Access and permission requests create waits."],
+   a=>has(a,"manual","secrets")&&[3,"Secrets and access management are handled by hand."],
+   a=>a.problem==="compliance"&&[3,"Security and compliance is your main problem."],
+   a=>sec(a,"compliance")&&[1,"Security and compliance also matters to you."],
+   a=>a.initiative==="ai"&&[2,"An AI initiative needs clear rules on data and model access before it scales."],
+   a=>a.initiative==="security"&&[3,"You are already evaluating policy as code."],
+   a=>(a.initiative==="selfservice"||a.initiative==="idp")&&[1,"More self-service means more people acting on infrastructure, so access rules need to come first."]
+  ],
+  plan:["List access paths for the systems in scope and the requests that take longest to approve.",
+        "Define roles and policy-as-code checks. Auto-approve low-risk requests.",
+        "Roll out to the pilot teams, with audit logs that security and compliance can read."],
+  kpis:["Time to grant standard access","Share of access requests auto-approved"],
+  tags:["security","ai"]},
+ {id:"metrics",title:"Set a baseline before you scale the platform",
+  summary:"Agree on four to six measures and capture a baseline, so every later investment can be judged on evidence.",
+  rules:[
+   a=>a.measure==="none"&&[5,"You don't measure platform outcomes yet, so you can't show what the next investment changes."],
+   a=>a.measure==="adhoc"&&[3,"Measurement is ad hoc, which makes impact hard to prove to budget holders."],
+   a=>weakMeasure(a)&&a.initiative&&a.initiative!=="exploring"&&[2,`You're evaluating “${lbl("initiative",a.initiative)}”; without a baseline its impact can't be shown.`],
+   a=>a.initiative==="exploring"&&[2,"You're still exploring, so evidence should come before tools."],
+   a=>weakMeasure(a)&&(a.role==="exec"||a.role==="director")&&[1,"As the budget owner you will need numbers to defend the investment."]
+  ],
+  plan:["Choose four to six measures (lead time, change failure rate, wait time, developer satisfaction) and name an owner for each.",
+        "Collect them automatically from CI/CD and ticketing, plus a short developer survey.",
+        "Publish a first platform scorecard and use it to approve or stop the next investment."],
+  kpis:["Lead time for changes","Developer satisfaction (quarterly pulse)"],
+  tags:["metrics","product"]},
+ {id:"goldenpaths",title:"Standardise golden paths for common services",
+  summary:"Give teams a supported default way to create, build and ship the service types they create most.",
+  rules:[
+   a=>has(a,"manual","onboarding")&&[3,"Creating and onboarding new services is manual."],
+   a=>has(a,"waits","cicd")&&[2,"CI/CD pipelines are a source of waiting."],
+   a=>has(a,"manual","deploy")&&[2,"Deployments and rollbacks are manual."],
+   a=>a.problem==="devex"&&[2,"Developer experience is your main problem, and a supported default removes most daily friction."],
+   a=>a.initiative==="goldenpaths"&&[3,"You are already evaluating golden paths."],
+   a=>a.initiative==="idp"&&[1,"A portal is only as useful as the paths behind it."],
+   a=>big(a)&&has(a,"manual","onboarding")&&[1,`With ${lbl("size",a.size)} engineers, inconsistent setups multiply quickly.`]
+  ],
+  plan:["Pick the two most common service types and document today's path from repository to production.",
+        "Build one golden path (template, pipeline, sensible defaults) with a pilot team; time the first deploy.",
+        "Release the second path and make the paved road the default for new services."],
+  kpis:["Time to first deploy for a new service","Share of new services on a golden path"],
+  tags:["goldenpaths","devex","idp"]},
+ {id:"cost",title:"Make cloud cost visible per team and service",
+  summary:"Give every team its own cost view and owner, then build cost-aware defaults into the platform.",
+  rules:[
+   a=>a.problem==="cost"&&[4,"Cloud cost is your main problem."],
+   a=>sec(a,"cost")&&[1,"Cloud cost also matters to you."],
+   a=>has(a,"manual","cost")&&[3,"Cost reporting is manual, so teams see spend too late to act on it."],
+   a=>a.initiative==="finops"&&[3,"You are already evaluating cost governance."],
+   a=>(a.problem==="ai"||has(a,"manual","gpu"))&&(a.problem==="cost"||sec(a,"cost"))&&[1,"AI workloads make spend harder to predict."]
+  ],
+  plan:["Tag resources by team and service, and agree a cost allocation model with finance.",
+        "Give each team a cost view, with budgets and alerts for the five biggest cost drivers.",
+        "Add cost defaults to the platform: right-sizing and auto-shutdown for non-production."],
+  kpis:["Share of cloud spend allocated to a team","Idle non-production spend"],
+  tags:["cost"]},
+ {id:"reliability",title:"Standardise observability and incident paths",
+  summary:"Give every critical service the same SLOs, telemetry and rollback path, so failures are caught and fixed faster.",
+  rules:[
+   a=>a.problem==="reliability"&&[4,"Reliability is your main problem."],
+   a=>sec(a,"reliability")&&[1,"Reliability also matters to you."],
+   a=>has(a,"waits","incidents")&&[3,"Incident handoffs create waits."],
+   a=>has(a,"manual","deploy")&&[1,"Manual deployments and rollbacks raise the risk of failed changes."],
+   a=>a.initiative==="observability"&&[3,"You are already evaluating observability."]
+  ],
+  plan:["Define SLOs for the five most critical services and review last quarter's incidents.",
+        "Ship a standard observability setup (logs, metrics, traces, alerts) as part of the platform.",
+        "Automate rollback and on-call routing for the pilot services; run one game day."],
+  kpis:["Mean time to restore","Change failure rate"],
+  tags:["reliability"]},
+ {id:"ai",title:"Give AI workloads a governed paved road",
+  summary:"Offer one approved way to run models and agents, with access, logging and cost limits built in.",
+  rules:[
+   a=>a.problem==="ai"&&[4,"Running AI in production is your main problem."],
+   a=>sec(a,"ai")&&[1,"AI in production also matters to you."],
+   a=>a.initiative==="ai"&&[3,"You're evaluating an AI platform initiative."],
+   a=>has(a,"manual","gpu")&&[3,"Model, GPU or agent infrastructure is set up by hand."]
+  ],
+  plan:["List current AI use cases, the data each one touches and who owns it.",
+        "Offer one approved path for model access and agent tooling, with access, logging and cost limits.",
+        "Move two use cases onto that path and review usage, cost and incidents before widening it."],
+  kpis:["AI use cases on the approved path","Time from idea to an approved AI environment"],
+  tags:["ai","security"]},
+ {id:"product",title:"Run the platform as a product with a clear owner",
+  summary:"Name an owner, a roadmap and a single front door, so the platform is built around what developers need.",
+  rules:[
+   a=>a.team==="none"&&a.size!=="lt50"&&[3,`There's no platform team yet for ${lbl("size",a.size)} engineers.`],
+   a=>a.team==="informal"&&[2,"Platform work is done part-time, so it competes with feature work."],
+   a=>a.team==="multiple"&&[2,"Several platform teams need one roadmap and one front door."],
+   a=>a.initiative==="idp"&&[1,"A portal needs a product owner to stay useful."],
+   a=>a.horizon==="none"&&[1,"Without a timeline, an owner and a roadmap create the momentum."]
+  ],
+  plan:["Name a platform owner and interview eight to ten developers about their biggest friction.",
+        "Publish a one-page platform roadmap and a single intake channel.",
+        "Review adoption and satisfaction with the teams and adjust the roadmap for next quarter."],
+  kpis:["Platform adoption by team","Roadmap items shipped vs. planned"],
+  tags:["product"]},
+ {id:"evidence",title:"Automate compliance evidence",
+  summary:"Generate audit evidence from pipelines and policy checks instead of screenshots and spreadsheets.",
+  rules:[
+   a=>has(a,"manual","compliance")&&[4,"Compliance evidence is collected by hand."],
+   a=>a.problem==="compliance"&&[2,"Security and compliance is your main problem."]
+  ],
+  plan:["List the controls auditors ask for and where the evidence lives today.",
+        "Generate evidence from pipelines and policy checks.",
+        "Run a mock audit on the pilot services and record the hours saved."],
+  kpis:["Hours spent preparing for audits","Share of controls with automated evidence"],
+  tags:["security"]},
+ {id:"portal",title:"Pilot a developer portal with one or two teams",
+  summary:"Test a portal with a small group on three jobs (find, create, request) before committing to a rollout.",
+  rules:[
+   a=>a.initiative==="idp"&&[3,"You're evaluating a developer portal."],
+   a=>a.problem==="devex"&&[1,"Developer experience is your main problem."],
+   a=>big(a)&&a.initiative==="idp"&&[1,`At ${lbl("size",a.size)} engineers, finding services and owners is a real cost.`],
+   a=>(a.measure==="dora"||a.measure==="full")&&a.initiative==="idp"&&[1,"You already measure outcomes, so a pilot can be judged quickly."]
+  ],
+  plan:["Pick the pilot teams and the three jobs the portal must do.",
+        "Launch with a service catalog and one golden path; collect feedback every week.",
+        "Decide on rollout using adoption and wait-time data from the pilot."],
+  kpis:["Weekly active portal users","Tasks done in the portal instead of via tickets"],
+  tags:["idp","devex"]}
+];
+
+/* ---------- Sessions (illustrative) ---------- */
+const SESSIONS = [
+ {t:"Measuring platform success: from DORA to developer satisfaction",f:"Talk",tags:["metrics","product"],d:"Which measures convince budget holders, and how to collect them without a data team."},
+ {t:"Platform as a product: roadmaps, intake and adoption",f:"Talk",tags:["product"],d:"How platform teams decide what to build next and get teams to use it."},
+ {t:"Designing self-service infrastructure with guardrails",f:"Workshop",tags:["selfservice","security"],d:"Turn ticket-driven requests into self-service without losing control."},
+ {t:"Golden paths that teams actually adopt",f:"Talk",tags:["goldenpaths","devex"],d:"Choosing defaults, templates and the right amount of flexibility."},
+ {t:"Your first 90 days with an internal developer portal",f:"Panel",tags:["idp"],d:"What pilot teams learned about catalogs, ownership and adoption."},
+ {t:"Policy as code for platform teams",f:"Workshop",tags:["security"],d:"Access rules, approvals and audit evidence written as code."},
+ {t:"Cost visibility by default: FinOps for platform engineers",f:"Talk",tags:["cost"],d:"Allocation, budgets and cost-aware defaults built into the platform."},
+ {t:"SLOs, observability and incident paths on the platform",f:"Talk",tags:["reliability"],d:"Standard telemetry and rollback for every critical service."},
+ {t:"Platform engineering for AI workloads",f:"Talk",tags:["ai"],d:"Giving models and agents a governed path to production."},
+ {t:"Agent infrastructure in production: access, logging and cost limits",f:"Workshop",tags:["ai","security"],d:"Practical guardrails for teams putting agents to work."},
+ {t:"Making the business case for platform investment",f:"Panel",tags:["metrics","product","exec"],d:"Engineering leaders on how they secured and defended platform budgets."}
+];
+
+const INVITE = {
+ delivery:"Your bottleneck is waiting, not coding. These sessions show how teams remove provisioning and approval waits, in the order your plan needs them.",
+ cost:"Your plan starts with making spend visible. These sessions cover allocation, budgets and the defaults that keep cost down without slowing teams.",
+ reliability:"Your plan starts with consistent SLOs and incident paths. These sessions cover how platform teams standardise them across services.",
+ devex:"Your plan focuses on removing daily friction. These sessions cover the defaults, paths and portals that developers actually adopt.",
+ compliance:"Your plan puts access and evidence first. These sessions show how teams automate guardrails and audits without adding approvals.",
+ ai:"Your plan gives AI a governed path before it scales. These sessions cover access, logging and cost limits for models and agents."
+};
+
+/* ---------- State ---------- */
+const EMPTY = ()=>({size:"",team:"",role:"",problem:"",problem2:[],waits:[],manual:[],measure:"",initiative:"",horizon:""});
+const EXAMPLE = {size:"200-1000",team:"informal",role:"director",problem:"delivery",problem2:["ai"],waits:["provisioning","access"],manual:["infra","secrets"],measure:"adhoc",initiative:"ai",horizon:"6m"};
+let A = EMPTY();
+let step = 0;           // 0..3 questions, 4 = result
+let isExample = false;
+let openAction = null;  // "save" | "team" | null
+let saved = null, teamReq = null;
+
+const $ = s=>document.querySelector(s);
+const stage = $("#stage");
+
+/* ---------- Engine ---------- */
+function rank(a){
+  const out = PRIORITIES.map((p,i)=>{
+    let s=0; const why=[];
+    p.rules.forEach(r=>{const h=r(a); if(h){s+=h[0]; why.push({w:h[0],t:h[1]});}});
+    why.sort((x,y)=>y.w-x.w);
+    return {p,i,s,why:why.map(x=>x.t)};
+  }).sort((x,y)=>y.s-x.s||x.i-y.i);
+  const top = out.filter(x=>x.s>0).slice(0,3);
+  ["metrics","product","selfservice"].forEach(id=>{
+    if(top.length<3 && !top.find(x=>x.p.id===id)){
+      const f=out.find(x=>x.p.id===id); top.push({...f,why:f.why.length?f.why:["A sound starting point when other signals are weak."]});
+    }
+  });
+  return top.slice(0,3);
+}
+
+function assumptions(a){
+  const L=[];
+  if(a.role==="exec"||a.role==="director") L.push("You can move a small group of people onto this for 90 days without a new budget line.");
+  else if(a.role==="platform-lead") L.push("You'll need sponsorship from an engineering leader. The day-30 scorecard is meant to win it.");
+  else L.push("You'll take this to a decision maker. The reasons under each priority are written to be shared.");
+  if(a.team==="none"||a.team==="informal") L.push("Two or three engineers can work on the plan at least half of their time.");
+  else L.push("Your platform team can reserve about a third of its capacity for these three priorities.");
+  L.push({q:"This quarter means visible results within the quarter, so the plan relies on pilots, not a full rollout.",
+          "6m":"Day 90 is a checkpoint on the way to a decision at six months.",
+          "12m":"These 90 days produce the evidence for a 12-month investment case.",
+          none:"With no timeline yet, day 90 ends with a recommendation and a budget request."}[a.horizon]);
+  if(a.initiative==="exploring") L.push("You haven't chosen a tool or vendor. The plan avoids committing to one in the first 60 days.");
+  else L.push(`The “${lbl("initiative",a.initiative)}” decision is easier to make once the day-30 baseline exists.`);
+  return L;
+}
+
+function agenda(a,top){
+  const used=new Set(), list=[];
+  top.forEach((x,pi)=>{
+    const n = pi===0?2:1;
+    SESSIONS.map((s,i)=>({s,i,m:s.tags.filter(t=>x.p.tags.includes(t)).length}))
+      .filter(o=>o.m>0&&!used.has(o.i)).sort((p,q)=>q.m-p.m||p.i-q.i).slice(0,n)
+      .forEach(o=>{used.add(o.i); list.push({...o.s,pr:pi+1});});
+  });
+  if(["exec","director","platform-lead"].includes(a.role)){
+    const i=SESSIONS.length-1; if(!used.has(i)) list.push({...SESSIONS[i],pr:0});
+  }
+  return list.slice(0,5);
+}
+
+function lead(a){
+  const role={exec:30,director:25,"platform-lead":20,ic:10,other:5}[a.role]||0;
+  const size={lt50:5,"50-200":10,"200-1000":20,"1000+":25}[a.size]||0;
+  const hz={q:25,"6m":20,"12m":10,none:5}[a.horizon]||0;
+  const init=a.initiative==="exploring"?4:10;
+  const team=(a.team==="dedicated"||a.team==="multiple")?10:4;
+  const score=Math.min(100,role+size+hz+init+team);
+  const seg = score>=75?"Priority: decision maker with an active initiative":score>=50?"Engaged: nurture with the recommended sessions":"Early: educational content";
+  const decider = a.role==="exec"||a.role==="director";
+  let next;
+  if(score>=75&&decider) next="Invite to a platform leaders' dinner; sales follow-up on team passes within 48h.";
+  else if(score>=50) next="Send the agenda reminder sequence; offer a team-pass quote if they request options.";
+  else next="Add to the content nurture track (newsletter, free courses).";
+  const tags=[`role:${a.role}`,`eng-size:${a.size}`,`platform-team:${a.team}`,`problem:${a.problem}`,`initiative:${a.initiative}`,`horizon:${a.horizon}`,`measure:${a.measure}`];
+  return {score,seg,next,tags};
+}
+
+/* ---------- Render: stepper ---------- */
+function renderStepper(){
+  const cur = step<4?step:(openAction?5:4);
+  $("#stepper").innerHTML = STEP_NAMES.map((n,i)=>{
+    const c = i<cur?"done":(i===cur?"now":"");
+    return `<div class="${c}" ${i===cur?'aria-current="step"':''}><span>${i+1}. ${n}</span></div>`;
+  }).join("");
+}
+
+/* ---------- Render: questions ---------- */
+function optList(q){
+  if(q.id==="problem2") return OPT.problem.filter(o=>o.v!==A.problem);
+  return OPT[q.id];
+}
+function isOn(q,v){ return q.type==="multi" ? A[q.id].includes(v) : A[q.id]===v; }
+function complete(i){
+  return STEPS[i].qs.every(q=>q.optional || (q.type==="multi"?A[q.id].length>0:!!A[q.id]));
+}
+function renderQuestions(){
+  const S = STEPS[step];
+  const html = S.qs.map(q=>{
+    const cards = !!q.cards;
+    const opts = optList(q).map(o=>`<button type="button" class="opt" data-q="${q.id}" data-v="${o.v}" aria-pressed="${isOn(q,o.v)}">${cards?`<b>${o.l}</b><small>${o.d}</small>`:o.l}</button>`).join("");
+    return `<div class="q" role="group" aria-labelledby="ql-${q.id}">
+      <span class="ql" id="ql-${q.id}">${q.label}</span>
+      ${q.hint?`<div class="qh">${q.hint}</div>`:`<div class="qh"></div>`}
+      <div class="opts ${cards?"cards":""}">${opts}</div></div>`;
+  }).join("");
+  const ok = complete(step);
+  stage.innerHTML = `<div class="card fade">
+    <div class="q-head"><div><div class="mono">Step ${step+1} of 6 · ${S.name}</div><h2 style="margin-top:6px">${S.title}</h2><p class="q-intro">${S.intro}</p></div></div>
+    ${html}
+    <div class="nav">
+      ${step>0?`<button type="button" class="btn ghost" id="back">Back</button>`:`<span class="hint">Your answers stay in this page.</span>`}
+      <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+        ${ok?"":`<span class="hint">Answer the questions above to continue</span>`}
+        <button type="button" class="btn" id="next" ${ok?"":"disabled"}>${step===3?"See my priorities":"Continue"}</button>
+      </div>
+    </div></div>`;
+}
+
+/* ---------- Render: results ---------- */
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
+
+function renderResult(){
+  const top = rank(A), asm = assumptions(A), ag = agenda(A,top), L = lead(A);
+  const maxS = Math.max(...top.map(x=>x.s),1);
+  const summary = [lbl("role",A.role),`${lbl("size",A.size)} engineers`,lbl("team",A.team),`Main problem: ${lbl("problem",A.problem)}`,`Evaluating: ${lbl("initiative",A.initiative)}`,lbl("horizon",A.horizon)];
+
+  const prios = top.map((x,i)=>`<article class="prio">
+      <div class="rank"><span class="mono">Priority ${i+1}</span><span class="fit">${x.why.length} signal${x.why.length===1?"":"s"}</span></div>
+      <h3>${x.p.title}</h3>
+      <p>${x.p.summary}</p>
+      <div class="why"><span class="mono">Why this, for you</span><ul>${x.why.slice(0,3).map(w=>`<li>${esc(w)}</li>`).join("")}</ul></div>
+    </article>`).join("");
+
+  const phases=[["Days 1–30","Understand & baseline"],["Days 31–60","Pilot"],["Days 61–90","Extend & decide"]];
+  const plan = phases.map((ph,pi)=>`<div class="phase"><header><span class="mono">${ph[0]}</span><b>${ph[1]}</b></header>
+    <ul>${top.map((x,i)=>`<li><span class="tag-n" title="Priority ${i+1}">${i+1}</span><span>${x.p.plan[pi]}</span></li>`).join("")}</ul></div>`).join("");
+
+  const kpis = top.flatMap((x,i)=>x.p.kpis.map((k,j)=>`<tr><td><span class="tag-n">${i+1}</span></td><td>${k}</td><td class="when">${j===0?"Baseline by day 30":"Review at day 90"}</td></tr>`)).join("");
+
+  const sessions = ag.map(s=>`<li class="session"><span class="fmt">${s.f}</span><div><h4>${s.t}</h4><p>${s.d}</p></div><span class="sp">${s.pr?`Priority ${s.pr}`:"For budget owners"}</span></li>`).join("");
+
+  const crmPayload = {
+    source:"platform-investment-planner",
+    contact: saved?{name:saved.name,email:saved.email,company:saved.company}:null,
+    lead_score:L.score, segment:L.seg.split(":")[0],
+    tags:L.tags,
+    priorities: top.map(x=>x.p.id),
+    agenda: ag.map(s=>s.t),
+    team_request: teamReq
+  };
+
+  stage.innerHTML = `<div class="card fade" id="report">
+    <div class="r-head">
+      <div>
+        <div class="mono" style="color:var(--accent)">Step 5 of 6 · Your result${isExample?" · Example answers":""}</div>
+        <h2 style="margin-top:6px">Your three platform priorities</h2>
+        <p>${isExample?"This example is a Director of Engineering with several teams, manual provisioning and an AI initiative under evaluation. Change any answer to see how the plan shifts.":"Ranked by how strongly your answers point to each one. Each priority shows the answers behind it."}</p>
+        <div class="chips">${summary.map(s=>`<span class="chip">${esc(s)}</span>`).join("")}</div>
+      </div>
+      <button type="button" class="btn ghost small" id="edit">Edit answers</button>
+    </div>
+
+    <div class="prios">${prios}</div>
+
+    <section class="block">
+      <h3>Your first 90 days</h3>
+      <p class="sub">One track per priority. Each phase ends with something you can show: a baseline, a working pilot, a decision.</p>
+      <div class="plan">${plan}</div>
+    </section>
+
+    <div class="two">
+      <div>
+        <h3>Indicators to track</h3>
+        <table class="kpis"><thead><tr><th>#</th><th>Indicator</th><th>When</th></tr></thead><tbody>${kpis}</tbody></table>
+      </div>
+      <div>
+        <h3>Assumptions behind this plan</h3>
+        <ul class="assume">${asm.map(t=>`<li>${esc(t)}</li>`).join("")}
+          <li class="note">This is a structured self-assessment based on your answers. It does not compare you with other companies, so treat it as a starting point for a conversation with your team.</li></ul>
+      </div>
+    </div>
+
+    <div class="agenda-band" id="agenda">
+      <span class="mono">Your PlatformCon agenda</span>
+      <h3>Sessions that help you execute this plan</h3>
+      <p class="invite">${INVITE[A.problem]||INVITE.delivery}</p>
+      <ul class="sessions">${sessions}</ul>
+      <div class="foot"><small>Illustrative session titles. In the live version, these map to the current PlatformCon agenda by track and tag.</small>
+        <button type="button" class="btn on-dark small" id="copyAgenda">Copy agenda</button></div>
+    </div>
+
+    <section class="block" id="next-step">
+      <div class="mono" style="color:var(--accent)">Step 6 of 6 · Next step</div>
+      <h3 style="margin-top:6px">What do you want to do with this?</h3>
+      <div class="actions">
+        <div class="action" aria-current="${openAction==="save"}"><h4>Save the report</h4><p>Get the priorities, plan and agenda in your inbox, or copy them to share with your team now.</p>
+          <button type="button" class="btn small" data-act="save">${saved?"Saved":"Save my report"}</button></div>
+        <div class="action"><h4>Explore the sessions</h4><p>Five sessions picked for your priorities, plus one for anyone who owns the platform budget.</p>
+          <button type="button" class="btn small ghost" data-act="agenda">View my agenda</button></div>
+        <div class="action" aria-current="${openAction==="team"}"><h4>Get options for my team</h4><p>Team passes, a private workshop on your plan, or a call with the PlatformCon team.</p>
+          <button type="button" class="btn small ghost" data-act="team">${teamReq?"Requested":"Request options"}</button></div>
+      </div>
+      <div id="actionPanel"></div>
+    </section>
+
+    <details class="crm">
+      <summary><span>Event team view: what this lead looks like in the CRM</span><span class="mono">Demo for organisers</span></summary>
+      <div class="crm-body">
+        <div>
+          <div class="score"><b>${L.score}</b><span style="color:var(--faint)">/ 100 lead score</span></div>
+          <div class="meter"><i style="width:${L.score}%"></i></div>
+          <span class="seg">${L.seg}</span>
+          <dl><dt>Next action</dt><dd>${L.next}</dd>
+              <dt>Invite angle</dt><dd>${lbl("problem",A.problem)} → ${ag.length} sessions</dd>
+              <dt>Tags</dt><dd><div class="tagrow">${L.tags.map(t=>`<code>${t}</code>`).join("")}</div></dd></dl>
+        </div>
+        <pre id="payload"></pre>
+      </div>
+    </details>
+  </div>`;
+  $("#payload").textContent = JSON.stringify(crmPayload,null,2);
+  renderPanel();
+}
+
+function renderPanel(){
+  const p = $("#actionPanel"); if(!p) return;
+  if(openAction==="save"){
+    p.innerHTML = saved ? `<div class="panel fade"><div class="ok"><span><b>Saved.</b> In the live version, the report is emailed to ${esc(saved.email)} and the contact is synced to the CRM. In this prototype nothing is sent.</span></div>
+      <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap"><button type="button" class="btn small ghost" id="copyReport">Copy report as text</button></div><div id="copyFallback"></div></div>`
+    : `<form class="panel fade" id="saveForm" novalidate>
+      <div class="form">
+        <div class="field"><label for="f-name">Name</label><input id="f-name" autocomplete="name" required></div>
+        <div class="field"><label for="f-email">Work email</label><input id="f-email" type="email" autocomplete="email" required></div>
+        <div class="field full"><label for="f-company">Company</label><input id="f-company" autocomplete="organization"></div>
+        <label class="check full"><input type="checkbox" id="f-consent"> Send me the report and occasional PlatformCon updates related to my priorities. I can unsubscribe at any time.</label>
+        <div class="err full" id="f-err" aria-live="polite"></div>
+        <div class="full" style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn" type="submit">Email me the report</button><button type="button" class="btn ghost" id="copyReport">Copy report as text</button></div>
+      </div><div id="copyFallback"></div></form>`;
+  } else if(openAction==="team"){
+    p.innerHTML = teamReq ? `<div class="panel fade"><div class="ok"><span><b>Request noted.</b> In the live version, the PlatformCon team replies within two working days with options for ${esc(teamReq.people)} people (${esc(teamReq.interest)}). In this prototype nothing is sent.</span></div></div>`
+    : `<form class="panel fade" id="teamForm" novalidate><div class="form">
+        <div class="field"><label for="t-people">How many people would join?</label><select id="t-people"><option>2–5</option><option>6–15</option><option>16–40</option><option>40+</option></select></div>
+        <div class="field"><label for="t-interest">What are you interested in?</label><select id="t-interest"><option>Team passes</option><option>Private workshop on this plan</option><option>Call with the PlatformCon team</option></select></div>
+        <div class="field full"><label for="t-email">Work email</label><input id="t-email" type="email" autocomplete="email" value="${saved?esc(saved.email):""}"></div>
+        <div class="err full" id="t-err" aria-live="polite"></div>
+        <div class="full"><button class="btn" type="submit">Request options</button></div></div></form>`;
+  } else p.innerHTML = "";
+}
+
+function reportText(){
+  const top=rank(A), ag=agenda(A,top);
+  const lines=["PLATFORM INVESTMENT PLANNER — RESULT","",
+    `${lbl("role",A.role)} · ${lbl("size",A.size)} engineers · ${lbl("team",A.team)}`,
+    `Main problem: ${lbl("problem",A.problem)} · Evaluating: ${lbl("initiative",A.initiative)} (${lbl("horizon",A.horizon)})`,""];
+  top.forEach((x,i)=>{lines.push(`PRIORITY ${i+1}: ${x.p.title}`,x.p.summary,"Why:",...x.why.slice(0,3).map(w=>"  - "+w),"");});
+  lines.push("90-DAY PLAN");
+  ["Days 1–30","Days 31–60","Days 61–90"].forEach((ph,pi)=>{lines.push(ph+":",...top.map((x,i)=>`  ${i+1}. ${x.p.plan[pi]}`));});
+  lines.push("","INDICATORS",...top.flatMap((x,i)=>x.p.kpis.map(k=>`  ${i+1}. ${k}`)));
+  lines.push("","ASSUMPTIONS",...assumptions(A).map(t=>"  - "+t));
+  lines.push("","PLATFORMCON AGENDA",...ag.map(s=>`  - ${s.t} (${s.f})`));
+  lines.push("","Self-assessment based on your answers; not a comparison with other companies.");
+  return lines.join("\n");
+}
+function copy(text,btn){
+  const done=()=>{const o=btn.textContent;btn.textContent="Copied";setTimeout(()=>btn.textContent=o,1600);};
+  const fallback=()=>{const f=$("#copyFallback"); if(f){f.innerHTML=`<textarea class="copybox" id="copybox" readonly></textarea>`;const t=$("#copybox");t.value=text;t.select();} else {btn.textContent="Copy not available";}};
+  try{ navigator.clipboard.writeText(text).then(done,fallback); }catch(e){ fallback(); }
+}
+
+/* ---------- Main render ---------- */
+function render(){
+  renderStepper();
+  if(step<4) renderQuestions(); else renderResult();
+}
+function goTop(){ const el=$("#planner"); const y=el.getBoundingClientRect().top+window.scrollY-12; window.scrollTo({top:y,behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"}); }
+
+/* ---------- Events ---------- */
+document.addEventListener("click",e=>{
+  const o=e.target.closest(".opt");
+  if(o){
+    const q=STEPS[step].qs.find(x=>x.id===o.dataset.q), v=o.dataset.v;
+    if(q.type==="multi"){
+      let arr=A[q.id];
+      if(v==="none") arr = arr.includes("none")?[]:["none"];
+      else { arr=arr.filter(x=>x!=="none"); arr = arr.includes(v)?arr.filter(x=>x!==v):[...arr,v]; }
+      A[q.id]=arr;
+    } else {
+      A[q.id]=v;
+      if(q.id==="problem") A.problem2=A.problem2.filter(x=>x!==v);
+    }
+    isExample=false;
+    const y=window.scrollY; renderQuestions(); window.scrollTo(0,y);
+    return;
+  }
+  const t=e.target.closest("button"); if(!t) return;
+  if(t.id==="startBtn"){ A=EMPTY(); step=0; isExample=false; openAction=null; saved=null; teamReq=null; render(); goTop(); }
+  else if(t.id==="exampleBtn"){ A=JSON.parse(JSON.stringify(EXAMPLE)); step=4; isExample=true; openAction=null; saved=null; teamReq=null; render(); goTop(); }
+  else if(t.id==="next" && complete(step)){ step++; render(); goTop(); }
+  else if(t.id==="back"){ step--; render(); goTop(); }
+  else if(t.id==="edit"){ step=0; openAction=null; render(); goTop(); }
+  else if(t.dataset.act==="agenda"){ $("#agenda").scrollIntoView({behavior:"smooth",block:"start"}); }
+  else if(t.dataset.act==="save"||t.dataset.act==="team"){ openAction = openAction===t.dataset.act?null:t.dataset.act; renderStepper(); document.querySelectorAll(".action").forEach((a,i)=>a.setAttribute("aria-current",String((i===0&&openAction==="save")||(i===2&&openAction==="team")))); renderPanel(); }
+  else if(t.id==="copyReport"){ copy(reportText(),t); }
+  else if(t.id==="copyAgenda"){ const ag=agenda(A,rank(A)); copy("My PlatformCon agenda\n"+ag.map(s=>`- ${s.t} (${s.f})`).join("\n"),t); }
+});
+document.addEventListener("submit",e=>{
+  e.preventDefault();
+  if(e.target.id==="saveForm"){
+    const name=$("#f-name").value.trim(), email=$("#f-email").value.trim(), company=$("#f-company").value.trim();
+    const err=$("#f-err");
+    if(!name){err.textContent="Add your name so we know who the report is for.";$("#f-name").focus();return;}
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){err.textContent="Enter a work email like name@company.com.";$("#f-email").focus();return;}
+    saved={name,email,company,consent:$("#f-consent").checked};
+    renderResult(); $("#next-step").scrollIntoView({block:"start"});
+  } else if(e.target.id==="teamForm"){
+    const email=$("#t-email").value.trim();
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){$("#t-err").textContent="Enter a work email so the team can reply.";$("#t-email").focus();return;}
+    teamReq={people:$("#t-people").value,interest:$("#t-interest").value,email};
+    renderResult(); $("#next-step").scrollIntoView({block:"start"});
+  }
+});
+
+/* Opens on the example result so the first view shows what the tool produces */
+A=JSON.parse(JSON.stringify(EXAMPLE)); step=4; isExample=true;
+render();
+})();
+</script>
+</body>
+</html>
