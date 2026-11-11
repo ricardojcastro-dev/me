@@ -23,6 +23,27 @@
 <style>
 :root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 body{margin:0} img{max-width:100%} [hidden]{display:none!important}
+
+/* Lock & unlock */
+.lockwrap{position:relative}
+.locked .plan,.lockwrap.locked .sessions{filter:blur(6px);opacity:.55;pointer-events:none;user-select:none}
+.block.locked .plan{filter:blur(6px);opacity:.55;pointer-events:none;user-select:none}
+.lockpill{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:var(--accent);color:#fff;font-weight:500;font-size:.95rem;padding:.7em 1.2em;border-radius:999px;text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,.18);white-space:nowrap}
+.lockpill:hover{background:var(--accent-hover)}
+.unlock{margin-top:28px;border-radius:var(--r-card);background:rgba(255,255,255,.06);border:1px solid var(--band-line);padding:clamp(20px,3.5vw,32px)}
+.unlock .mono{color:#0cd474}
+.unlock h3{font-size:clamp(1.4rem,3vw,2rem);margin-top:8px}
+.unlock p{color:var(--band-muted);margin-top:8px;max-width:60ch}
+.u-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:20px}
+@media (max-width:720px){.u-grid{grid-template-columns:1fr}}
+.unlock .field{display:flex;flex-direction:column;gap:6px}
+.unlock label{font-size:.85rem;color:var(--band-muted)}
+.unlock input[type=text],.unlock input:not([type]),.unlock input[type=email]{font:inherit;padding:.75em .9em;border-radius:var(--r);border:1px solid var(--band-line);background:rgba(255,255,255,.08);color:var(--band-fg)}
+.unlock input:focus{outline:2px solid var(--accent);outline-offset:1px}
+.unlock .check{display:flex;gap:8px;align-items:flex-start;margin-top:14px;font-size:.85rem;color:var(--band-muted)}
+.unlock .err{min-height:1.2em;margin-top:8px;color:#ff9b9b;font-size:.88rem}
+.btn.big{margin-top:6px;width:100%;padding:1em 1.4em;font-size:1.08rem;font-weight:600}
+.u-ok h3{margin-top:8px}
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -102,7 +123,7 @@ button{font:inherit;color:inherit}
 
 /* Work area */
 main{padding-block:40px 72px}
-.stepper{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px;margin-bottom:28px}
+.stepper{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;margin-bottom:28px}
 .stepper div{display:flex;flex-direction:column;gap:8px;font-size:.82rem;color:var(--faint);min-width:0}
 .stepper div::before{content:"";height:4px;border-radius:2px;background:var(--line)}
 .stepper div.done{color:var(--muted)}
@@ -346,7 +367,7 @@ const STEPS = [
    qs:[{id:"initiative",label:"Which initiative are you evaluating?",type:"single"},
        {id:"horizon",label:"In what timeframe?",type:"single"}]}
 ];
-const STEP_NAMES = ["Context","Main problem","Current state","Priority","Result","Next step"];
+const STEP_NAMES = ["Context","Main problem","Current state","Priority","Result"];
 
 /* ---------- Priority rules ---------- */
 const big = a => a.size==="200-1000"||a.size==="1000+";
@@ -599,7 +620,7 @@ function lead(a){
 
 /* ---------- Render: stepper ---------- */
 function renderStepper(){
-  const cur = step<4?step:(openAction?5:4);
+  const cur = step<4?step:4;
   $("#stepper").innerHTML = STEP_NAMES.map((n,i)=>{
     const c = i<cur?"done":(i===cur?"now":"");
     return `<div class="${c}" ${i===cur?'aria-current="step"':''}><span>${i+1}. ${n}</span></div>`;
@@ -641,6 +662,23 @@ function renderQuestions(){
 /* ---------- Render: results ---------- */
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
 
+function unlockHTML(){
+  if(saved) return `<div class="u-ok"><span class="mono">Full analysis unlocked</span><h3>Thanks, ${esc(saved.name.split(" ")[0])}.</h3><p>In the live version, the full report is emailed to ${esc(saved.email)} and the contact syncs to the CRM. Nothing is sent in this prototype.</p><div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px"><button type="button" class="btn" id="copyReport">Copy report as text</button></div><div id="copyFallback"></div></div>`;
+  return `<form id="unlockForm" novalidate>
+    <span class="mono">Unlock full analysis</span>
+    <h3>Get your PlatformCon agenda</h3>
+    <p>Add your details to unlock the sessions picked for your plan and receive the full report by email.</p>
+    <div class="u-grid">
+      <div class="field"><label for="f-name">Name</label><input id="f-name" autocomplete="name" required></div>
+      <div class="field"><label for="f-email">Work email</label><input id="f-email" type="email" autocomplete="email" required></div>
+      <div class="field"><label for="f-company">Company</label><input id="f-company" autocomplete="organization"></div>
+    </div>
+    <label class="check"><input type="checkbox" id="f-consent"> Send me the report and occasional PlatformCon updates related to my priorities. I can unsubscribe at any time.</label>
+    <div class="err" id="f-err" aria-live="polite"></div>
+    <button class="btn big" type="submit">Unlock full analysis</button>
+  </form>`;
+}
+
 function renderResult(){
   const top = rank(A), asm = assumptions(A), ag = agenda(A,top), L = lead(A);
   const maxS = Math.max(...top.map(x=>x.s),1);
@@ -674,7 +712,7 @@ function renderResult(){
   stage.innerHTML = `<div class="card fade" id="report">
     <div class="r-head">
       <div>
-        <div class="mono" style="color:var(--accent)">Step 5 of 6 · Your result${isExample?" · Example answers":""}</div>
+        <div class="mono" style="color:var(--accent)">Step 5 of 5 · Your result${isExample?" · Example answers":""}</div>
         <h2 style="margin-top:6px">Your three platform priorities</h2>
         <p>${isExample?"This example is a Director of Engineering with several teams, manual provisioning and an AI initiative under evaluation. Change any answer to see how the plan shifts.":"Ranked by how strongly your answers point to each one. Each priority shows the answers behind it."}</p>
         <div class="chips">${summary.map(s=>`<span class="chip">${esc(s)}</span>`).join("")}</div>
@@ -690,40 +728,15 @@ function renderResult(){
       <div class="plan">${plan}</div>
     </section>
 
-    <div class="two">
-      <div>
-        <h3>Indicators to track</h3>
-        <table class="kpis"><thead><tr><th>#</th><th>Indicator</th><th>When</th></tr></thead><tbody>${kpis}</tbody></table>
-      </div>
-      <div>
-        <h3>Assumptions behind this plan</h3>
-        <ul class="assume">${asm.map(t=>`<li>${esc(t)}</li>`).join("")}
-          <li class="note">This is a structured self-assessment based on your answers. It does not compare you with other companies, so treat it as a starting point for a conversation with your team.</li></ul>
-      </div>
-    </div>
-
     <div class="agenda-band" id="agenda">
       <span class="mono">Your PlatformCon agenda</span>
       <h3>Sessions that help you execute this plan</h3>
       <p class="invite">${INVITE[A.problem]||INVITE.delivery}</p>
-      <ul class="sessions">${sessions}</ul>
+      <div class="lockwrap${saved?"":" locked"}"><ul class="sessions" ${saved?"":"aria-hidden=\"true\""}>${sessions}</ul>${saved?"":`<a class="lockpill dark" href="#unlock">Unlock your agenda ↓</a>`}</div>
       <div class="foot"><small>Illustrative session titles. In the live version, these map to the current PlatformCon agenda by track and tag.</small>
-        <button type="button" class="btn on-dark small" id="copyAgenda">Copy agenda</button></div>
+        ${saved?`<button type="button" class="btn on-dark small" id="copyAgenda">Copy agenda</button>`:""}</div>
+      <div class="unlock" id="unlock">${unlockHTML()}</div>
     </div>
-
-    <section class="block" id="next-step">
-      <div class="mono" style="color:var(--accent)">Step 6 of 6 · Next step</div>
-      <h3 style="margin-top:6px">What do you want to do with this?</h3>
-      <div class="actions">
-        <div class="action" aria-current="${openAction==="save"}"><h4>Save the report</h4><p>Get the priorities, plan and agenda in your inbox, or copy them to share with your team now.</p>
-          <button type="button" class="btn small" data-act="save">${saved?"Saved":"Save my report"}</button></div>
-        <div class="action"><h4>Explore the sessions</h4><p>Five sessions picked for your priorities, plus one for anyone who owns the platform budget.</p>
-          <button type="button" class="btn small ghost" data-act="agenda">View my agenda</button></div>
-        <div class="action" aria-current="${openAction==="team"}"><h4>Get options for my team</h4><p>Team passes, a private workshop on your plan, or a call with the PlatformCon team.</p>
-          <button type="button" class="btn small ghost" data-act="team">${teamReq?"Requested":"Request options"}</button></div>
-      </div>
-      <div id="actionPanel"></div>
-    </section>
 
     <details class="crm">
       <summary><span>Event team view: what this lead looks like in the CRM</span><span class="mono">Demo for organisers</span></summary>
@@ -777,8 +790,6 @@ function reportText(){
   top.forEach((x,i)=>{lines.push(`PRIORITY ${i+1}: ${x.p.title}`,x.p.summary,"Why:",...x.why.slice(0,3).map(w=>"  - "+w),"");});
   lines.push("90-DAY PLAN");
   ["Days 1–30","Days 31–60","Days 61–90"].forEach((ph,pi)=>{lines.push(ph+":",...top.map((x,i)=>`  ${i+1}. ${x.p.plan[pi]}`));});
-  lines.push("","INDICATORS",...top.flatMap((x,i)=>x.p.kpis.map(k=>`  ${i+1}. ${k}`)));
-  lines.push("","ASSUMPTIONS",...assumptions(A).map(t=>"  - "+t));
   lines.push("","PLATFORMCON AGENDA",...ag.map(s=>`  - ${s.t} (${s.f})`));
   lines.push("","Self-assessment based on your answers; not a comparison with other companies.");
   return lines.join("\n");
@@ -827,13 +838,13 @@ document.addEventListener("click",e=>{
 });
 document.addEventListener("submit",e=>{
   e.preventDefault();
-  if(e.target.id==="saveForm"){
+  if(e.target.id==="unlockForm"){
     const name=$("#f-name").value.trim(), email=$("#f-email").value.trim(), company=$("#f-company").value.trim();
     const err=$("#f-err");
     if(!name){err.textContent="Add your name so we know who the report is for.";$("#f-name").focus();return;}
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){err.textContent="Enter a work email like name@company.com.";$("#f-email").focus();return;}
     saved={name,email,company,consent:$("#f-consent").checked};
-    renderResult(); $("#next-step").scrollIntoView({block:"start"});
+    renderResult(); $("#unlock").scrollIntoView({block:"center"});
   } else if(e.target.id==="teamForm"){
     const email=$("#t-email").value.trim();
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){$("#t-err").textContent="Enter a work email so the team can reply.";$("#t-email").focus();return;}
@@ -842,8 +853,8 @@ document.addEventListener("submit",e=>{
   }
 });
 
-/* Opens on the example result so the first view shows what the tool produces */
-A=JSON.parse(JSON.stringify(EXAMPLE)); step=4; isExample=true;
+/* Opens on the planner questions */
+A=EMPTY(); step=0; isExample=false;
 render();
 })();
 </script>
